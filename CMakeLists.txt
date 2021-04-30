@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 project(halepensis)
 
@@ -8,8 +8,12 @@ include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-add_executable(pcd_write_test pcd_write.cpp)
-target_link_libraries(pcd_write_test ${PCL_LIBRARIES})
-
-add_executable (pairwise_incremental_registration pairwise_incremental_registration.cpp)
-target_link_libraries (pairwise_incremental_registration ${PCL_LIBRARIES})
+add_executable (alpha1 
+    src/alpha1.cpp 
+    src/utils.cpp 
+    src/object.cpp
+    src/scene.cpp 
+    src/viewer.cpp
+    src/feature_cloud.cpp
+    src/template_alignment.cpp)
+target_link_libraries (alpha1 ${PCL_LIBRARIES})
