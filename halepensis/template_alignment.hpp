@@ -3,9 +3,12 @@
 #include "types.hpp"
 #include "feature_cloud.hpp"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything"
 #include <pcl/memory.h>
 #include <pcl/features/fpfh.h>
 #include <pcl/registration/ia_ransac.h>
+#pragma clang diagnostic pop
 
 class TemplateAlignment
 {

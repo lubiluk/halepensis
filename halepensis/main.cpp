@@ -4,7 +4,9 @@
 #include "viewer.hpp"
 #include "error.hpp"
 
-int main(int argc, char **argv)
+#include <iostream>
+
+int main(int argc, const char *argv[])
 {
     try
     {
@@ -12,8 +14,7 @@ int main(int argc, char **argv)
         auto scene = Scene("/Users/lubiluk/Code/halepensis/data/cutting_board_on_hook.pcd");
 
         Viewer::view(obj);
-        Viewer::view(scene);
-        Viewer::view(scene.findObject(obj));
+//        Viewer::view({obj, scene, scene.findObject(obj)});
     }
     catch (Error e)
     {

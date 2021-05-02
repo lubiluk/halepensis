@@ -1,7 +1,10 @@
 
 #include "utils.hpp"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything"
 #include <pcl/io/pcd_io.h>
+#pragma clang diagnostic pop
 
 PointCloud::Ptr downsample(PointCloud::ConstPtr input)
 {

@@ -1,7 +1,11 @@
 #include "scene.hpp"
 #include "utils.hpp"
 #include "template_alignment.hpp"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything"
 #include <pcl/point_cloud.h>
+#pragma clang diagnostic pop
 
 Scene::Scene(std::string pcd_file)
 {

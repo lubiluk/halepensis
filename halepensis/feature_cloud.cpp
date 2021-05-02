@@ -1,7 +1,10 @@
 #include "feature_cloud.hpp"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything"
 #include <pcl/features/normal_3d.h>
 #include <pcl/features/fpfh.h>
+#pragma clang diagnostic pop
 
 FeatureCloud::FeatureCloud(PointCloud::Ptr cloud) : search_method(new SearchMethod),
                                                     normal_radius(0.02f),

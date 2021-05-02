@@ -9,11 +9,11 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 add_executable (alpha1 
-    src/alpha1.cpp 
-    src/utils.cpp 
-    src/object.cpp
-    src/scene.cpp 
-    src/viewer.cpp
-    src/feature_cloud.cpp
-    src/template_alignment.cpp)
+    halepensis/alpha1.cpp 
+    halepensis/utils.cpp 
+    halepensis/object.cpp
+    halepensis/scene.cpp 
+    halepensis/viewer.cpp
+    halepensis/feature_cloud.cpp
+    halepensis/template_alignment.cpp)
 target_link_libraries (alpha1 ${PCL_LIBRARIES})
