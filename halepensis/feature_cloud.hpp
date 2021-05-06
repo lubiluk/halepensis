@@ -2,6 +2,11 @@
 
 #include "types.hpp"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything"
+#include <pcl/segmentation/sac_segmentation.h>
+#pragma clang diagnostic pop
+
 class FeatureCloud
 {
 public:

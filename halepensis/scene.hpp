@@ -1,7 +1,9 @@
 #pragma once
 
 #include "types.hpp"
-#include "object.hpp"
+#include "feature_cloud.hpp"
+
+class Object;
 
 class Scene
 {
@@ -10,5 +12,5 @@ public:
 
     Scene(std::string pcd_file);
     PointCloud::Ptr getPointCloud() const;
-    PointCloud::Ptr findObject(Object &object);
+    PointCloud::Ptr findObject(const Object& object) const;
 };

@@ -6,9 +6,13 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Weverything"
 #include <pcl/memory.h>
-#include <pcl/features/fpfh.h>
 #include <pcl/registration/ia_ransac.h>
 #pragma clang diagnostic pop
+
+
+namespace pcl {
+    struct FPFHSignature33;
+}
 
 class TemplateAlignment
 {
@@ -23,11 +27,11 @@ public:
 
     TemplateAlignment();
     // Set the given cloud as the target to which the templates will be aligned
-    void setTargetCloud (FeatureCloud &target_cloud);
+    void setTargetCloud (const FeatureCloud &target_cloud);
     // Add the given cloud to the list of template clouds
-    void addTemplateCloud (FeatureCloud &template_cloud);
+    void addTemplateCloud (const FeatureCloud &template_cloud);
     // Align the given template cloud to the target specified by setTargetCloud ()
-    void align (FeatureCloud &template_cloud, TemplateAlignment::Result &result);
+    void align (const FeatureCloud &template_cloud, TemplateAlignment::Result &result);
     // Align all of template clouds set by addTemplateCloud to the target specified by setTargetCloud ()
     void alignAll (std::vector<TemplateAlignment::Result, Eigen::aligned_allocator<Result> > &results);
     // Align all of template clouds to the target cloud to find the one with best alignment score
@@ -35,7 +39,7 @@ public:
 
 private:
     // A list of template clouds and the target to which they will be aligned
-    std::vector<FeatureCloud> templates_;
+    std::vector<const FeatureCloud> templates_;
     FeatureCloud target_;
 
     // The Sample Consensus Initial Alignment (SAC-IA) registration routine and its parameters

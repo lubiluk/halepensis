@@ -1,6 +1,7 @@
 #include "scene.hpp"
 #include "utils.hpp"
 #include "template_alignment.hpp"
+#include "object.hpp"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Weverything"
@@ -21,20 +22,25 @@ PointCloud::Ptr Scene::getPointCloud() const
     return feature_cloud.getPointCloud();
 }
 
-PointCloud::Ptr Scene::findObject(Object &object)
+PointCloud::Ptr Scene::findObject(const Object &object) const
 {
     TemplateAlignment template_align;
-    template_align.addTemplateCloud(object.feature_cloud);
+    
+    for (const auto &fc : object.feature_clouds)
+    {
+        template_align.addTemplateCloud(fc);
+    }
+    
     template_align.setTargetCloud(feature_cloud);
 
     // Find the best template alignment
     TemplateAlignment::Result best_alignment;
-    int best_index = template_align.findBestAlignment(best_alignment);
-    // const FeatureCloud &best_template = object_templates[best_index];
-
+    const int best_index = template_align.findBestAlignment(best_alignment);
+    const FeatureCloud &best_template = object.feature_clouds[best_index];
+    
     // Save the aligned template for visualization
     PointCloud::Ptr transformed_cloud(new PointCloud);
-    pcl::transformPointCloud(*(object.feature_cloud.getPointCloud()), *transformed_cloud, best_alignment.final_transformation);
+    pcl::transformPointCloud(*best_template.getPointCloud(), *transformed_cloud, best_alignment.final_transformation);
 
     return transformed_cloud;
 }

@@ -1,13 +1,20 @@
 #pragma once
 
 #include "types.hpp"
+
 #include "feature_cloud.hpp"
+#include "part.hpp"
+
+#include <initializer_list>
+#include <vector>
 
 class Object
 {
 public:
-    FeatureCloud feature_cloud;
+    std::vector<const FeatureCloud> feature_clouds;
+    std::vector<const Part> parts;
 
-    Object(std::string pcd_file);
-    PointCloud::Ptr getPointCloud() const;
+    Object(std::initializer_list<std::string> const &pcd_files);
+    std::vector<PointCloud::Ptr> getPointClouds() const;
+    auto findParts() -> void;
 };

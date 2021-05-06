@@ -10,19 +10,19 @@ TemplateAlignment::TemplateAlignment() : min_sample_distance_(0.05f),
     sac_ia_.setMaximumIterations(nr_iterations_);
 }
 
-void TemplateAlignment::setTargetCloud(FeatureCloud &target_cloud)
+void TemplateAlignment::setTargetCloud(const FeatureCloud &target_cloud)
 {
     target_ = target_cloud;
     sac_ia_.setInputTarget(target_cloud.getPointCloud());
     sac_ia_.setTargetFeatures(target_cloud.getLocalFeatures());
 }
 
-void TemplateAlignment::addTemplateCloud(FeatureCloud &template_cloud)
+void TemplateAlignment::addTemplateCloud(const FeatureCloud &template_cloud)
 {
     templates_.push_back(template_cloud);
 }
 
-void TemplateAlignment::align(FeatureCloud &template_cloud, TemplateAlignment::Result &result)
+void TemplateAlignment::align(const FeatureCloud &template_cloud, TemplateAlignment::Result &result)
 {
     sac_ia_.setInputSource(template_cloud.getPointCloud());
     sac_ia_.setSourceFeatures(template_cloud.getLocalFeatures());

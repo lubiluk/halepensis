@@ -2,13 +2,24 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Weverything"
-#include <pcl/point_cloud.h>
-#include <pcl/point_types.h>
 #include <pcl/search/kdtree.h>
-#include <pcl/filters/voxel_grid.h>
-#include <pcl/filters/passthrough.h>
-#include <pcl/filters/extract_indices.h>
 #pragma clang diagnostic pop
+
+
+namespace pcl
+{
+    struct PointXYZ;
+    struct Normal;
+    struct FPFHSignature33;
+    template<class T>
+    class PointCloud;
+    template<class T>
+    class VoxelGrid;
+    template<class T>
+    class PassThrough;
+    template<class T>
+    class ExtractIndices;
+}
 
 using Point = pcl::PointXYZ;
 using Normal = pcl::Normal;

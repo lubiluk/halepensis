@@ -15,17 +15,9 @@
 class Viewer
 {
 public:
-    std::vector<std::array<int, 3>> color_pallete = {
-        {255, 89, 94},
-        {255, 202, 58},
-        {138, 201, 38},
-        {25, 130, 196},
-        {106, 76, 147},
-    };
+    static std::vector<std::array<int, 3>> color_pallete;
 
-    static void view(const Object &object);
-    static void view(const Scene &scene);
-    static void view(const PointCloud::Ptr cloud);
-    static void view(const std::vector<const PointCloud::Ptr> &clouds);
-    static void view(std::initializer_list<PointCloud::Ptr> clouds);
+    static void view(const PointCloud::ConstPtr cloud);
+    static void view(std::vector<PointCloud::ConstPtr> const &clouds, bool split_viewports = false);
+    static void view(std::initializer_list<PointCloud::ConstPtr> const &clouds, bool split_viewports = false);
 };

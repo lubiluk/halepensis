@@ -4,28 +4,51 @@
 
 using namespace std::chrono_literals;
 
-void Viewer::view(const Object &object)
+std::vector<std::array<int, 3>> Viewer::color_pallete {
+    {255, 89, 94},
+    {255, 202, 58},
+    {138, 201, 38},
+    {25, 130, 196},
+    {106, 76, 147},
+};
+
+void Viewer::view(const PointCloud::ConstPtr cloud)
 {
-    Viewer::view(object.getPointCloud());
+    view(std::vector<PointCloud::ConstPtr> {cloud});
 }
 
-void Viewer::view(const Scene &scene)
+void Viewer::view(std::initializer_list<PointCloud::ConstPtr> const &clouds_init, bool split_viewports)
 {
-    Viewer::view(scene.getPointCloud());
+    std::vector<PointCloud::ConstPtr> clouds(clouds_init);
+    view(clouds, split_viewports);
 }
 
-void Viewer::view(const PointCloud::Ptr cloud) {
-    pcl::visualization::PCLVisualizer viz("3D Viewer");
+void Viewer::view(std::vector<PointCloud::ConstPtr> const &clouds, bool split_viewports)
+{
+    pcl::visualization::PCLVisualizer viz("3D Viewer" + std::to_string(clouds.size()));
     viz.setBackgroundColor(0, 0, 0);
     viz.initCameraParameters();
     viz.setCameraPosition(0, 0, 0, 0, -1, 0);
-
-    pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> color(cloud, 1, 0, 0);
-    viz.addPointCloud<pcl::PointXYZ>(cloud, "cloud");
-
-    while (!viz.wasStopped())
-    {
-        viz.spinOnce(100);
-        std::this_thread::sleep_for(100ms);
+    
+    for (int i = 0; i < clouds.size(); ++i) {
+        pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> color(clouds[i],
+                                                                              color_pallete[i % color_pallete.size()][0],
+                                                                              color_pallete[i % color_pallete.size()][1],
+                                                                              color_pallete[i % color_pallete.size()][2]);
+         
+        if (split_viewports)
+        {
+            int viewport(0);
+            viz.createViewPort(1.0 / clouds.size() * i, 0.0, 1.0 / clouds.size() * (i + 1), 1.0, viewport);
+            viz.addPointCloud<pcl::PointXYZ>(clouds[i], color, "cloud" + std::to_string(i), viewport);
+        }
+        else
+        {
+            viz.addPointCloud<pcl::PointXYZ>(clouds[i], color, "cloud" + std::to_string(i));
+        }
+        
     }
+
+    viz.spin();
+    viz.close();
 }

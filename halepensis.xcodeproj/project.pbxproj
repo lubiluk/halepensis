@@ -94,6 +94,7 @@
 		930027D0263F649400FA265E /* libvtkCommonSystem-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300243D263F450F00FA265E /* libvtkCommonSystem-8.2.1.dylib */; };
 		930027D1263F649D00FA265E /* libvtkCommonCore-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002531263F451500FA265E /* libvtkCommonCore-8.2.1.dylib */; };
 		930027D2263F64B200FA265E /* libvtksys-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023F4263F450E00FA265E /* libvtksys-8.2.1.dylib */; };
+		93CF34DB26449A6F00653E06 /* part.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93CF34D926449A6F00653E06 /* part.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -647,6 +648,12 @@
 		93002788263F4A9800FA265E /* libboost_regex-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_regex-mt.dylib"; path = "../../../../../usr/local/Cellar/boost/1.75.0_2/lib/libboost_regex-mt.dylib"; sourceTree = "<group>"; };
 		9300278A263F4AB300FA265E /* libqhull_p.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libqhull_p.dylib; path = ../../../../../usr/local/Cellar/qhull/2020.1/lib/libqhull_p.dylib; sourceTree = "<group>"; };
 		93002797263F4BAE00FA265E /* libflann_cpp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libflann_cpp.dylib; path = ../../../../../usr/local/Cellar/flann/1.9.1_10/lib/libflann_cpp.dylib; sourceTree = "<group>"; };
+		938BC1842642A6DC004E3B5C /* hook_scan_0.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_0.pcd; sourceTree = "<group>"; };
+		938BC1852642A73A004E3B5C /* hook_scan_1.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_1.pcd; sourceTree = "<group>"; };
+		938BC1862642A76B004E3B5C /* hook_scan_2.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_2.pcd; sourceTree = "<group>"; };
+		938BC1872642A7A9004E3B5C /* hook_scan_3.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_3.pcd; sourceTree = "<group>"; };
+		93CF34D926449A6F00653E06 /* part.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = part.cpp; sourceTree = "<group>"; };
+		93CF34DA26449A6F00653E06 /* part.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = part.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -776,6 +783,8 @@
 				9300236D263F3E5100FA265E /* utils.hpp */,
 				93002365263F3E5100FA265E /* viewer.cpp */,
 				93002369263F3E5100FA265E /* viewer.hpp */,
+				93CF34D926449A6F00653E06 /* part.cpp */,
+				93CF34DA26449A6F00653E06 /* part.hpp */,
 			);
 			path = halepensis;
 			sourceTree = "<group>";
@@ -783,6 +792,7 @@
 		9300237A263F3E6600FA265E /* data */ = {
 			isa = PBXGroup;
 			children = (
+				938BBEF02642A65D004E3B5C /* hook_scan */,
 				9300237B263F3E6600FA265E /* cutting_board.pcd */,
 				9300237C263F3E6600FA265E /* cutting_board_on_hook.pcd */,
 				9300237D263F3E6600FA265E /* cutting_board_scan */,
@@ -1324,6 +1334,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		938BBEF02642A65D004E3B5C /* hook_scan */ = {
+			isa = PBXGroup;
+			children = (
+				938BC1842642A6DC004E3B5C /* hook_scan_0.pcd */,
+				938BC1852642A73A004E3B5C /* hook_scan_1.pcd */,
+				938BC1862642A76B004E3B5C /* hook_scan_2.pcd */,
+				938BC1872642A7A9004E3B5C /* hook_scan_3.pcd */,
+			);
+			path = hook_scan;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1380,6 +1401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93CF34DB26449A6F00653E06 /* part.cpp in Sources */,
 				93002376263F3E5100FA265E /* scene.cpp in Sources */,
 				93002373263F3E5100FA265E /* feature_cloud.cpp in Sources */,
 				93002379263F3E5100FA265E /* main.cpp in Sources */,
