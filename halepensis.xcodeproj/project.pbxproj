@@ -94,6 +94,8 @@
 		930027D0263F649400FA265E /* libvtkCommonSystem-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300243D263F450F00FA265E /* libvtkCommonSystem-8.2.1.dylib */; };
 		930027D1263F649D00FA265E /* libvtkCommonCore-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002531263F451500FA265E /* libvtkCommonCore-8.2.1.dylib */; };
 		930027D2263F64B200FA265E /* libvtksys-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023F4263F450E00FA265E /* libvtksys-8.2.1.dylib */; };
+		93B024ED2647226A00C37451 /* sac_part_recognition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93B024EB2647226A00C37451 /* sac_part_recognition.cpp */; };
+		93B024F52647376400C37451 /* surface_recognition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93B024F32647376400C37451 /* surface_recognition.cpp */; };
 		93CF34DB26449A6F00653E06 /* part.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93CF34D926449A6F00653E06 /* part.cpp */; };
 /* End PBXBuildFile section */
 
@@ -652,6 +654,11 @@
 		938BC1852642A73A004E3B5C /* hook_scan_1.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_1.pcd; sourceTree = "<group>"; };
 		938BC1862642A76B004E3B5C /* hook_scan_2.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_2.pcd; sourceTree = "<group>"; };
 		938BC1872642A7A9004E3B5C /* hook_scan_3.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_3.pcd; sourceTree = "<group>"; };
+		93B024EB2647226A00C37451 /* sac_part_recognition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sac_part_recognition.cpp; sourceTree = "<group>"; };
+		93B024EC2647226A00C37451 /* sac_part_recognition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sac_part_recognition.hpp; sourceTree = "<group>"; };
+		93B024EF2647370000C37451 /* part_recognition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = part_recognition.hpp; sourceTree = "<group>"; };
+		93B024F32647376400C37451 /* surface_recognition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = surface_recognition.cpp; sourceTree = "<group>"; };
+		93B024F42647376400C37451 /* surface_recognition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = surface_recognition.hpp; sourceTree = "<group>"; };
 		93CF34D926449A6F00653E06 /* part.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = part.cpp; sourceTree = "<group>"; };
 		93CF34DA26449A6F00653E06 /* part.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = part.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -785,6 +792,11 @@
 				93002369263F3E5100FA265E /* viewer.hpp */,
 				93CF34D926449A6F00653E06 /* part.cpp */,
 				93CF34DA26449A6F00653E06 /* part.hpp */,
+				93B024EB2647226A00C37451 /* sac_part_recognition.cpp */,
+				93B024EC2647226A00C37451 /* sac_part_recognition.hpp */,
+				93B024EF2647370000C37451 /* part_recognition.hpp */,
+				93B024F32647376400C37451 /* surface_recognition.cpp */,
+				93B024F42647376400C37451 /* surface_recognition.hpp */,
 			);
 			path = halepensis;
 			sourceTree = "<group>";
@@ -1408,6 +1420,8 @@
 				93002374263F3E5100FA265E /* viewer.cpp in Sources */,
 				93002375263F3E5100FA265E /* object.cpp in Sources */,
 				93002377263F3E5100FA265E /* template_alignment.cpp in Sources */,
+				93B024F52647376400C37451 /* surface_recognition.cpp in Sources */,
+				93B024ED2647226A00C37451 /* sac_part_recognition.cpp in Sources */,
 				93002378263F3E5100FA265E /* utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
