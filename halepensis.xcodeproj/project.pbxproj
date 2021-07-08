@@ -23,7 +23,6 @@
 		93002785263F4A7A00FA265E /* libboost_date_time-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002784263F4A7A00FA265E /* libboost_date_time-mt.dylib */; };
 		93002787263F4A8A00FA265E /* libboost_iostreams-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002786263F4A8A00FA265E /* libboost_iostreams-mt.dylib */; };
 		93002789263F4A9800FA265E /* libboost_regex-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002788263F4A9800FA265E /* libboost_regex-mt.dylib */; };
-		9300278B263F4AB300FA265E /* libqhull_p.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300278A263F4AB300FA265E /* libqhull_p.dylib */; };
 		9300278C263F4AE000FA265E /* libvtkChartsCore-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002387263F44DD00FA265E /* libvtkChartsCore-8.2.1.dylib */; };
 		9300278D263F4AF600FA265E /* libvtkInfovisCore-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002458263F451000FA265E /* libvtkInfovisCore-8.2.1.dylib */; };
 		9300278E263F4B1F00FA265E /* libvtkIOGeometry-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023EA263F450E00FA265E /* libvtkIOGeometry-8.2.1.dylib */; };
@@ -680,7 +679,6 @@
 				93002785263F4A7A00FA265E /* libboost_date_time-mt.dylib in Frameworks */,
 				93002787263F4A8A00FA265E /* libboost_iostreams-mt.dylib in Frameworks */,
 				93002789263F4A9800FA265E /* libboost_regex-mt.dylib in Frameworks */,
-				9300278B263F4AB300FA265E /* libqhull_p.dylib in Frameworks */,
 				9300278C263F4AE000FA265E /* libvtkChartsCore-8.2.1.dylib in Frameworks */,
 				9300278D263F4AF600FA265E /* libvtkInfovisCore-8.2.1.dylib in Frameworks */,
 				9300278E263F4B1F00FA265E /* libvtkIOGeometry-8.2.1.dylib in Frameworks */,
@@ -1487,17 +1485,17 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"/usr/local/Cellar/flann/1.9.1_10/include/**",
-					"\"/usr/local/Cellar/pcl/1.11.1_6/include/pcl-1.11\"",
+					"\"/usr/local/Cellar/pcl/1.11.1_8/include/pcl-1.11\"",
 					/usr/local/Cellar/eigen/3.3.9/include/eigen3,
-					/usr/local/Cellar/boost/1.75.0_2/include,
-					"\"/usr/local/Cellar/vtk@8.2/8.2.0_4/include/vtk-8.2\"",
+					/usr/local/Cellar/boost/1.76.0/include,
+					"\"/usr/local/Cellar/vtk@8.2/8.2.0_6/include/vtk-8.2\"",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					/usr/local/Cellar/pcl/1.11.1_6/lib,
-					"\"/usr/local/Cellar/vtk@8.2/8.2.0_4/lib\"",
+					/usr/local/Cellar/pcl/1.11.1_8/lib,
+					"\"/usr/local/Cellar/vtk@8.2/8.2.0_6/lib\"",
 					/usr/local/Cellar/flann/1.9.1_10/lib,
-					/usr/local/Cellar/boost/1.75.0_2/lib,
-					/usr/local/Cellar/netcdf/4.7.4_2/lib,
+					/usr/local/Cellar/boost/1.76.0/lib,
+					/usr/local/Cellar/netcdf/4.8.0_1/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -1562,17 +1560,17 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"/usr/local/Cellar/flann/1.9.1_10/include/**",
-					"\"/usr/local/Cellar/pcl/1.11.1_6/include/pcl-1.11\"",
+					"\"/usr/local/Cellar/pcl/1.11.1_8/include/pcl-1.11\"",
 					/usr/local/Cellar/eigen/3.3.9/include/eigen3,
-					/usr/local/Cellar/boost/1.75.0_2/include,
-					"\"/usr/local/Cellar/vtk@8.2/8.2.0_4/include/vtk-8.2\"",
+					/usr/local/Cellar/boost/1.76.0/include,
+					"\"/usr/local/Cellar/vtk@8.2/8.2.0_6/include/vtk-8.2\"",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					/usr/local/Cellar/pcl/1.11.1_6/lib,
-					"\"/usr/local/Cellar/vtk@8.2/8.2.0_4/lib\"",
+					/usr/local/Cellar/pcl/1.11.1_8/lib,
+					"\"/usr/local/Cellar/vtk@8.2/8.2.0_6/lib\"",
 					/usr/local/Cellar/flann/1.9.1_10/lib,
-					/usr/local/Cellar/boost/1.75.0_2/lib,
-					/usr/local/Cellar/netcdf/4.7.4_2/lib,
+					/usr/local/Cellar/boost/1.76.0/lib,
+					/usr/local/Cellar/netcdf/4.8.0_1/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -1594,11 +1592,6 @@
 					"vtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\"",
 					"DEBUG=1",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/Cellar/pcl/1.11.1_6/lib,
-					/usr/local/Cellar/qhull/2020.1/lib,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1614,11 +1607,6 @@
 					qh_QHpointer,
 					"vtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\"",
 					"vtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\"",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/Cellar/pcl/1.11.1_6/lib,
-					/usr/local/Cellar/qhull/2020.1/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
