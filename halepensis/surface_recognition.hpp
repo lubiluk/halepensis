@@ -5,5 +5,5 @@
 class SurfaceRecognition: public SacPartRecognition {
 public:
     SurfaceRecognition();
-    ~SurfaceRecognition() {}
+    virtual ~SurfaceRecognition() {}
 };

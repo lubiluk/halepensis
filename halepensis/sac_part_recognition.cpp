@@ -58,7 +58,7 @@ auto SacPartRecognition::recognize(const FeatureCloud& feature_cloud) const -> s
         extract.filter(*tmp_cloud);
         source_cloud.swap(tmp_cloud);
         
-        parts.push_back(Part(PartType::surface, inliers, part_cloud));
+        parts.push_back(Part(PartType::surface, inliers, part_cloud, coefficients));
         
         if (source_cloud->size() == 0) break;
     }

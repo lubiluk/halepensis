@@ -8,3 +8,11 @@ class Error {
 
     Error(std::string message): message(message) {}
 };
+
+
+class error {
+    public:
+    std::string message;
+
+    error(std::string message): message(message) {}
+};

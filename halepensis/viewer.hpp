@@ -18,6 +18,6 @@ public:
     static std::vector<std::array<int, 3>> color_pallete;
 
     static void view(const PointCloud::ConstPtr cloud);
-    static void view(std::vector<PointCloud::ConstPtr> const &clouds, bool split_viewports = false);
-    static void view(std::initializer_list<PointCloud::ConstPtr> const &clouds, bool split_viewports = false);
+    static void view(const std::vector<PointCloud::ConstPtr> & clouds, bool split_viewports = false);
+    static void view(const std::initializer_list<PointCloud::ConstPtr> &clouds, bool split_viewports = false);
 };

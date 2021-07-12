@@ -7,8 +7,8 @@
 
 #include "part.hpp"
 
-Part::Part(PartType type, pcl::PointIndices::ConstPtr indices, PointCloud::ConstPtr cloud):
-    type(type), indices(indices), cloud(cloud)
+Part::Part(PartType type, pcl::PointIndices::ConstPtr indices, PointCloud::ConstPtr cloud, pcl::ModelCoefficients::Ptr coefficients):
+    type(type), indices(indices), cloud(cloud), coefficients(coefficients)
 {
     
 }

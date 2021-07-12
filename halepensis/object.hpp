@@ -16,5 +16,6 @@ public:
 
     Object(std::initializer_list<std::string> const &pcd_files);
     std::vector<PointCloud::Ptr> getPointClouds() const;
+    std::vector<PointCloud::ConstPtr> getConstPointClouds() const;
     auto findParts() -> void;
 };

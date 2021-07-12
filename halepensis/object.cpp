@@ -26,6 +26,16 @@ std::vector<PointCloud::Ptr> Object::getPointClouds() const
     return out;
 }
 
+std::vector<PointCloud::ConstPtr> Object::getConstPointClouds() const
+{
+    std::vector<PointCloud::ConstPtr> out(feature_clouds.size());
+    std::transform(feature_clouds.begin(), feature_clouds.end(), out.begin(), [](auto const &f) {
+        return f.getPointCloud();
+    });
+    
+    return out;
+}
+
 auto Object::findParts() -> void
 {
     const SurfaceRecognition surface_recognition;

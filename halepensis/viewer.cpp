@@ -17,13 +17,13 @@ void Viewer::view(const PointCloud::ConstPtr cloud)
     view(std::vector<PointCloud::ConstPtr> {cloud});
 }
 
-void Viewer::view(std::initializer_list<PointCloud::ConstPtr> const &clouds_init, bool split_viewports)
+void Viewer::view(const std::initializer_list<PointCloud::ConstPtr> &clouds_init, bool split_viewports)
 {
-    std::vector<PointCloud::ConstPtr> clouds(clouds_init);
+    const std::vector<PointCloud::ConstPtr> clouds(clouds_init);
     view(clouds, split_viewports);
 }
 
-void Viewer::view(std::vector<PointCloud::ConstPtr> const &clouds, bool split_viewports)
+void Viewer::view(const std::vector<PointCloud::ConstPtr> & clouds, bool split_viewports)
 {
     pcl::visualization::PCLVisualizer viz("3D Viewer" + std::to_string(clouds.size()));
     viz.setBackgroundColor(0, 0, 0);
