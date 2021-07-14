@@ -13,7 +13,7 @@ std::shared_ptr<sufrace_normals> compute_surface_normals(const std::shared_ptr<p
 {
     const auto normals = std::make_shared<sufrace_normals>();
 
-    pcl::NormalEstimation<Point, Normal> norm_est;
+    pcl::NormalEstimation<point, normal> norm_est;
     norm_est.setInputCloud(cloud);
     norm_est.setSearchMethod(search_method);
     norm_est.setRadiusSearch(normal_radius);
@@ -29,7 +29,7 @@ std::shared_ptr<local_features> compute_local_features(const std::shared_ptr<poi
 {
     const auto features = std::make_shared<local_features> ();
 
-    pcl::FPFHEstimation<Point, Normal, pcl::FPFHSignature33> fpfh_est;
+    pcl::FPFHEstimation<point, normal, pcl::FPFHSignature33> fpfh_est;
     fpfh_est.setInputCloud(cloud);
     fpfh_est.setInputNormals(normals);
     fpfh_est.setSearchMethod(search_method);

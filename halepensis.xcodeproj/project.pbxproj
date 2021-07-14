@@ -7,12 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93002373263F3E5100FA265E /* feature_cloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93002364263F3E5100FA265E /* feature_cloud.cpp */; };
 		93002374263F3E5100FA265E /* viewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93002365263F3E5100FA265E /* viewer.cpp */; };
-		93002375263F3E5100FA265E /* object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93002368263F3E5100FA265E /* object.cpp */; };
-		93002376263F3E5100FA265E /* scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9300236E263F3E5100FA265E /* scene.cpp */; };
 		93002377263F3E5100FA265E /* template_alignment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9300236F263F3E5100FA265E /* template_alignment.cpp */; };
-		93002378263F3E5100FA265E /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93002370263F3E5100FA265E /* utils.cpp */; };
 		93002379263F3E5100FA265E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93002372263F3E5100FA265E /* main.cpp */; };
 		9300277C263F4A0800FA265E /* libpcl_apps.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002733263F453500FA265E /* libpcl_apps.dylib */; };
 		9300277D263F4A2500FA265E /* libpcl_outofcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930026FF263F453200FA265E /* libpcl_outofcore.dylib */; };
@@ -93,14 +89,11 @@
 		930027D0263F649400FA265E /* libvtkCommonSystem-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300243D263F450F00FA265E /* libvtkCommonSystem-8.2.1.dylib */; };
 		930027D1263F649D00FA265E /* libvtkCommonCore-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002531263F451500FA265E /* libvtkCommonCore-8.2.1.dylib */; };
 		930027D2263F64B200FA265E /* libvtksys-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023F4263F450E00FA265E /* libvtksys-8.2.1.dylib */; };
-		930F18B2269CD3A8004BB96E /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930F18B0269CD3A8004BB96E /* entity.cpp */; };
+		930F18B2269CD3A8004BB96E /* scene_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930F18B0269CD3A8004BB96E /* scene_entity.cpp */; };
 		930F18B5269CD4E4004BB96E /* entity_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930F18B3269CD4E4004BB96E /* entity_surface.cpp */; };
 		930F18B8269CDF61004BB96E /* entity_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930F18B6269CDF61004BB96E /* entity_component.cpp */; };
 		930F18BB269CEA84004BB96E /* entity_viewing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930F18B9269CEA84004BB96E /* entity_viewing.cpp */; };
 		93B024ED2647226A00C37451 /* sac_part_recognition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93B024EB2647226A00C37451 /* sac_part_recognition.cpp */; };
-		93B024F52647376400C37451 /* surface_recognition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93B024F32647376400C37451 /* surface_recognition.cpp */; };
-		93CF34DB26449A6F00653E06 /* part.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93CF34D926449A6F00653E06 /* part.cpp */; };
-		93EDE919269B9C39008C73AB /* cylinder_recognition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EDE917269B9C39008C73AB /* cylinder_recognition.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -117,20 +110,11 @@
 
 /* Begin PBXFileReference section */
 		9300235A263F3E0800FA265E /* halepensis */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = halepensis; sourceTree = BUILT_PRODUCTS_DIR; };
-		93002364263F3E5100FA265E /* feature_cloud.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = feature_cloud.cpp; sourceTree = "<group>"; };
 		93002365263F3E5100FA265E /* viewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = viewer.cpp; sourceTree = "<group>"; };
-		93002366263F3E5100FA265E /* feature_cloud.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = feature_cloud.hpp; sourceTree = "<group>"; };
 		93002367263F3E5100FA265E /* template_alignment.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = template_alignment.hpp; sourceTree = "<group>"; };
-		93002368263F3E5100FA265E /* object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = object.cpp; sourceTree = "<group>"; };
-		93002369263F3E5100FA265E /* viewer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = viewer.hpp; sourceTree = "<group>"; };
 		9300236A263F3E5100FA265E /* error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = error.hpp; sourceTree = "<group>"; };
 		9300236B263F3E5100FA265E /* types.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = types.hpp; sourceTree = "<group>"; };
-		9300236C263F3E5100FA265E /* object.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = object.hpp; sourceTree = "<group>"; };
-		9300236D263F3E5100FA265E /* utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
-		9300236E263F3E5100FA265E /* scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene.cpp; sourceTree = "<group>"; };
 		9300236F263F3E5100FA265E /* template_alignment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = template_alignment.cpp; sourceTree = "<group>"; };
-		93002370263F3E5100FA265E /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
-		93002371263F3E5100FA265E /* scene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = scene.hpp; sourceTree = "<group>"; };
 		93002372263F3E5100FA265E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9300237B263F3E6600FA265E /* cutting_board.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = cutting_board.pcd; sourceTree = "<group>"; };
 		9300237C263F3E6600FA265E /* cutting_board_on_hook.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = cutting_board_on_hook.pcd; sourceTree = "<group>"; };
@@ -654,8 +638,8 @@
 		93002788263F4A9800FA265E /* libboost_regex-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_regex-mt.dylib"; path = "../../../../../usr/local/Cellar/boost/1.75.0_2/lib/libboost_regex-mt.dylib"; sourceTree = "<group>"; };
 		9300278A263F4AB300FA265E /* libqhull_p.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libqhull_p.dylib; path = ../../../../../usr/local/Cellar/qhull/2020.1/lib/libqhull_p.dylib; sourceTree = "<group>"; };
 		93002797263F4BAE00FA265E /* libflann_cpp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libflann_cpp.dylib; path = ../../../../../usr/local/Cellar/flann/1.9.1_10/lib/libflann_cpp.dylib; sourceTree = "<group>"; };
-		930F18B0269CD3A8004BB96E /* entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = entity.cpp; sourceTree = "<group>"; };
-		930F18B1269CD3A8004BB96E /* entity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = entity.hpp; sourceTree = "<group>"; };
+		930F18B0269CD3A8004BB96E /* scene_entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = scene_entity.cpp; sourceTree = "<group>"; };
+		930F18B1269CD3A8004BB96E /* scene_entity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = scene_entity.hpp; sourceTree = "<group>"; };
 		930F18B3269CD4E4004BB96E /* entity_surface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = entity_surface.cpp; sourceTree = "<group>"; };
 		930F18B4269CD4E4004BB96E /* entity_surface.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = entity_surface.hpp; sourceTree = "<group>"; };
 		930F18B6269CDF61004BB96E /* entity_component.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = entity_component.cpp; sourceTree = "<group>"; };
@@ -667,14 +651,6 @@
 		938BC1862642A76B004E3B5C /* hook_scan_2.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_2.pcd; sourceTree = "<group>"; };
 		938BC1872642A7A9004E3B5C /* hook_scan_3.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_3.pcd; sourceTree = "<group>"; };
 		93B024EB2647226A00C37451 /* sac_part_recognition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sac_part_recognition.cpp; sourceTree = "<group>"; };
-		93B024EC2647226A00C37451 /* sac_part_recognition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sac_part_recognition.hpp; sourceTree = "<group>"; };
-		93B024EF2647370000C37451 /* part_recognition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = part_recognition.hpp; sourceTree = "<group>"; };
-		93B024F32647376400C37451 /* surface_recognition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = surface_recognition.cpp; sourceTree = "<group>"; };
-		93B024F42647376400C37451 /* surface_recognition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = surface_recognition.hpp; sourceTree = "<group>"; };
-		93CF34D926449A6F00653E06 /* part.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = part.cpp; sourceTree = "<group>"; };
-		93CF34DA26449A6F00653E06 /* part.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = part.hpp; sourceTree = "<group>"; };
-		93EDE917269B9C39008C73AB /* cylinder_recognition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cylinder_recognition.cpp; sourceTree = "<group>"; };
-		93EDE918269B9C39008C73AB /* cylinder_recognition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = cylinder_recognition.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -790,30 +766,13 @@
 			children = (
 				93002372263F3E5100FA265E /* main.cpp */,
 				9300236A263F3E5100FA265E /* error.hpp */,
-				93002364263F3E5100FA265E /* feature_cloud.cpp */,
-				93002366263F3E5100FA265E /* feature_cloud.hpp */,
-				93002368263F3E5100FA265E /* object.cpp */,
-				9300236C263F3E5100FA265E /* object.hpp */,
-				9300236E263F3E5100FA265E /* scene.cpp */,
-				93002371263F3E5100FA265E /* scene.hpp */,
 				9300236F263F3E5100FA265E /* template_alignment.cpp */,
 				93002367263F3E5100FA265E /* template_alignment.hpp */,
 				9300236B263F3E5100FA265E /* types.hpp */,
-				93002370263F3E5100FA265E /* utils.cpp */,
-				9300236D263F3E5100FA265E /* utils.hpp */,
 				93002365263F3E5100FA265E /* viewer.cpp */,
-				93002369263F3E5100FA265E /* viewer.hpp */,
-				93CF34D926449A6F00653E06 /* part.cpp */,
-				93CF34DA26449A6F00653E06 /* part.hpp */,
 				93B024EB2647226A00C37451 /* sac_part_recognition.cpp */,
-				93B024EC2647226A00C37451 /* sac_part_recognition.hpp */,
-				93B024EF2647370000C37451 /* part_recognition.hpp */,
-				93B024F32647376400C37451 /* surface_recognition.cpp */,
-				93B024F42647376400C37451 /* surface_recognition.hpp */,
-				93EDE917269B9C39008C73AB /* cylinder_recognition.cpp */,
-				93EDE918269B9C39008C73AB /* cylinder_recognition.hpp */,
-				930F18B0269CD3A8004BB96E /* entity.cpp */,
-				930F18B1269CD3A8004BB96E /* entity.hpp */,
+				930F18B0269CD3A8004BB96E /* scene_entity.cpp */,
+				930F18B1269CD3A8004BB96E /* scene_entity.hpp */,
 				930F18B6269CDF61004BB96E /* entity_component.cpp */,
 				930F18B7269CDF61004BB96E /* entity_component.hpp */,
 				930F18B3269CD4E4004BB96E /* entity_surface.cpp */,
@@ -1436,21 +1395,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93CF34DB26449A6F00653E06 /* part.cpp in Sources */,
 				930F18B8269CDF61004BB96E /* entity_component.cpp in Sources */,
-				93002376263F3E5100FA265E /* scene.cpp in Sources */,
 				930F18BB269CEA84004BB96E /* entity_viewing.cpp in Sources */,
-				93002373263F3E5100FA265E /* feature_cloud.cpp in Sources */,
 				93002379263F3E5100FA265E /* main.cpp in Sources */,
-				930F18B2269CD3A8004BB96E /* entity.cpp in Sources */,
+				930F18B2269CD3A8004BB96E /* scene_entity.cpp in Sources */,
 				93002374263F3E5100FA265E /* viewer.cpp in Sources */,
-				93002375263F3E5100FA265E /* object.cpp in Sources */,
 				93002377263F3E5100FA265E /* template_alignment.cpp in Sources */,
-				93B024F52647376400C37451 /* surface_recognition.cpp in Sources */,
 				93B024ED2647226A00C37451 /* sac_part_recognition.cpp in Sources */,
 				930F18B5269CD4E4004BB96E /* entity_surface.cpp in Sources */,
-				93EDE919269B9C39008C73AB /* cylinder_recognition.cpp in Sources */,
-				93002378263F3E5100FA265E /* utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

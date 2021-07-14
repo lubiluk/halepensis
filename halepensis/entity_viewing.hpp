@@ -3,6 +3,6 @@
 #include <vector>
 #include <array>
 
-class entity;
+class scene_entity;
 
-void view_entity(const entity& item);
+void view_entity(const scene_entity& item);

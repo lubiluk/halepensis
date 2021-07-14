@@ -6,11 +6,11 @@
 #include <string>
 #include <vector>
 
-class entity
+class scene_entity
 {
 public:
     const entity_surface surface;
     const std::vector<entity_component> components;
     
-    entity(const std::string& pcd_file) throw(error);
+    scene_entity(const std::string& pcd_file) throw(error);
 };

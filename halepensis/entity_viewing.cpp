@@ -1,5 +1,5 @@
 #include "entity_viewing.hpp"
-#include "entity.hpp"
+#include "scene_entity.hpp"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Weverything"
@@ -14,7 +14,7 @@ std::vector<std::array<int, 3>> color_pallete {
     {106, 76, 147},
 };
 
-void view_entity(const entity& item)
+void view_entity(const scene_entity& entity)
 {
     pcl::visualization::PCLVisualizer viz("3D Viewer");
     viz.setBackgroundColor(0, 0, 0);
@@ -22,7 +22,7 @@ void view_entity(const entity& item)
     viz.setCameraPosition(0, 0, 0, 0, -1, 0);
     
     int i = 0;
-    auto cloud = item.surface.cloud;
+    auto cloud = entity.surface.cloud;
     
     pcl::visualization::PointCloudColorHandlerCustom<point> color(cloud,
                                                                   color_pallete[i % color_pallete.size()][0],

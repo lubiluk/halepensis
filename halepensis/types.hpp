@@ -22,16 +22,6 @@ class ExtractIndices;
 struct ModelCoefficients;
 }
 
-using Point = pcl::PointXYZ;
-using Normal = pcl::Normal;
-using PointCloud = pcl::PointCloud<pcl::PointXYZ>;
-using SurfaceNormals = pcl::PointCloud<pcl::Normal>;
-using LocalFeatures = pcl::PointCloud<pcl::FPFHSignature33>;
-using SearchMethod = pcl::search::KdTree<pcl::PointXYZ>;
-using VoxelGrid = pcl::VoxelGrid<pcl::PointXYZ>;
-using PassThrough = pcl::PassThrough<pcl::PointXYZ>;
-using ExtractIndices = pcl::ExtractIndices<pcl::PointXYZ>;
-
 using point = pcl::PointXYZ;
 using point_cloud = pcl::PointCloud<point>;
 using normal = pcl::Normal;
@@ -40,3 +30,4 @@ using local_features = pcl::PointCloud<pcl::FPFHSignature33>;
 using search_method = pcl::search::KdTree<point>;
 using point_indices = pcl::PointIndices;
 using model_coefficients = pcl::ModelCoefficients;
+using voxel_grid = pcl::VoxelGrid<point>;
