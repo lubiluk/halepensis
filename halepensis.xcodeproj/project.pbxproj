@@ -93,7 +93,6 @@
 		930F18B5269CD4E4004BB96E /* entity_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930F18B3269CD4E4004BB96E /* entity_surface.cpp */; };
 		930F18B8269CDF61004BB96E /* entity_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930F18B6269CDF61004BB96E /* entity_component.cpp */; };
 		930F18BB269CEA84004BB96E /* entity_viewing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930F18B9269CEA84004BB96E /* entity_viewing.cpp */; };
-		93B024ED2647226A00C37451 /* sac_part_recognition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93B024EB2647226A00C37451 /* sac_part_recognition.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -650,7 +649,6 @@
 		938BC1852642A73A004E3B5C /* hook_scan_1.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_1.pcd; sourceTree = "<group>"; };
 		938BC1862642A76B004E3B5C /* hook_scan_2.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_2.pcd; sourceTree = "<group>"; };
 		938BC1872642A7A9004E3B5C /* hook_scan_3.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_3.pcd; sourceTree = "<group>"; };
-		93B024EB2647226A00C37451 /* sac_part_recognition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sac_part_recognition.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -770,7 +768,6 @@
 				93002367263F3E5100FA265E /* template_alignment.hpp */,
 				9300236B263F3E5100FA265E /* types.hpp */,
 				93002365263F3E5100FA265E /* viewer.cpp */,
-				93B024EB2647226A00C37451 /* sac_part_recognition.cpp */,
 				930F18B0269CD3A8004BB96E /* scene_entity.cpp */,
 				930F18B1269CD3A8004BB96E /* scene_entity.hpp */,
 				930F18B6269CDF61004BB96E /* entity_component.cpp */,
@@ -1401,7 +1398,6 @@
 				930F18B2269CD3A8004BB96E /* scene_entity.cpp in Sources */,
 				93002374263F3E5100FA265E /* viewer.cpp in Sources */,
 				93002377263F3E5100FA265E /* template_alignment.cpp in Sources */,
-				93B024ED2647226A00C37451 /* sac_part_recognition.cpp in Sources */,
 				930F18B5269CD4E4004BB96E /* entity_surface.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

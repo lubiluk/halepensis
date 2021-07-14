@@ -1,5 +1,6 @@
 #include "scene_entity.hpp"
 #include "types.hpp"
+#include "entity_component.hpp"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Weverything"
@@ -10,7 +11,7 @@
 #include <pcl/filters/passthrough.h>
 #pragma clang diagnostic pop
 
-std::shared_ptr<point_cloud> downsample(const std::shared_ptr<point_cloud>& input)
+auto downsample(const std::shared_ptr<point_cloud>& input) -> std::shared_ptr<point_cloud>
 {
     const float voxel_grid_size = 0.005f;
     voxel_grid vox_grid;
@@ -22,8 +23,8 @@ std::shared_ptr<point_cloud> downsample(const std::shared_ptr<point_cloud>& inpu
     return output;
 }
 
-std::shared_ptr<point_cloud> remove_background(const std::shared_ptr<point_cloud>& input,
-                                               double threshold = 1.0)
+auto remove_background(const std::shared_ptr<point_cloud>& input,
+                                               double threshold = 1.0) -> std::shared_ptr<point_cloud>
 {
     const float depth_limit = 1.0;
     pcl::PassThrough<point> pass;
@@ -36,7 +37,7 @@ std::shared_ptr<point_cloud> remove_background(const std::shared_ptr<point_cloud
     return output;
 }
 
-std::shared_ptr<point_cloud> load_cloud(const std::string& pcd_file) throw(error)
+auto load_cloud(const std::string& pcd_file) throw(error) -> std::shared_ptr<point_cloud>
 {
     auto cloud = std::make_shared<point_cloud>();
 
@@ -48,16 +49,13 @@ std::shared_ptr<point_cloud> load_cloud(const std::string& pcd_file) throw(error
     return cloud;
 }
 
-std::vector<entity_component> recognize_components(const entity_surface surface)
-{
-    std::vector<entity_component> components;
-    
-    return components;
-}
-
 scene_entity::scene_entity(const std::string& pcd_file) throw(error):
-surface(downsample(remove_background(load_cloud(pcd_file)))),
-components(recognize_components(surface))
+surface(downsample(remove_background(load_cloud(pcd_file))))
 {
    
+}
+
+auto scene_entity::components(const component_type type) -> std::vector<const entity_component>
+{
+    return recognize_components(type, surface);
 }
