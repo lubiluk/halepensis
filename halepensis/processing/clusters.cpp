@@ -15,7 +15,7 @@ auto extract_euclidean_clusters(const std::shared_ptr<point_cloud>& input,
                       const double tolerance,
                       const int min_size,
                       const int max_size)
--> std::vector<point_indices>
+-> std::vector<std::shared_ptr<point_indices>>
 {
     // Creating the KdTree object for the search method of the extraction
     pcl::search::KdTree<point>::Ptr tree(new pcl::search::KdTree<point>);
@@ -30,5 +30,12 @@ auto extract_euclidean_clusters(const std::shared_ptr<point_cloud>& input,
     ec.setInputCloud(input);
     ec.extract(cluster_indices);
     
-    return cluster_indices;
+    // extraction method wants pointers hence the conversion
+    std::vector<std::shared_ptr<point_indices>> cluster_ptrs;
+    std::transform(cluster_indices.begin(), cluster_indices.end(), std::back_inserter(cluster_ptrs), [](const auto& i) -> auto
+    {
+        return std::make_shared<point_indices>(i);
+    });
+    
+    return cluster_ptrs;
 }

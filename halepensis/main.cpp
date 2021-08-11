@@ -3,35 +3,39 @@
 #include "normals.hpp"
 #include "regions.hpp"
 #include "visualization.hpp"
+#include "ransac.hpp"
+#include "search.hpp"
+#include "features.hpp"
+#include "clusters.hpp"
 #include <iostream>
 #include <algorithm>
 #include <vector>
 
-//auto scene_entity::find_apertures() -> std::vector<const entity_surface>
-//{
-//    std::vector<const entity_surface> results;
-//
-//    const auto regions = surface.downsampled().without_background().with_normals().find_regions();
-//
-//    for (const auto& r: regions)
-//    {
-//        const auto circle = fit_model(1, r.cloud, r.normals);
-//
-//        if (!circle) continue;
-//
-//        // Check if there's a hole
-//        const auto [ inliers, coefficients ] = *circle;
-//        const auto circle_cloud = extract_cloud(surface.cloud, inliers);
-//        const point search_point(coefficients->values[0], coefficients->values[1], coefficients->values[2]);
-//
-//        if (count_nearby_points(circle_cloud, search_point, 0.02) == 0 )
-//        {
-//            results.push_back(entity_surface(circle_cloud));
-//        }
-//    }
-//
-//    return results;
-//}
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything"
+#include <pcl/point_types.h>
+#include <pcl/point_cloud.h>
+#include <pcl/common/centroid.h>
+#pragma clang diagnostic pop
+
+auto find_apertures(std::vector<std::shared_ptr<point_cloud>> clusters, std::vector<std::shared_ptr<surface_normals>> cluster_normals)
+-> std::vector<std::shared_ptr<point_cloud>>
+{
+    std::vector<std::shared_ptr<point_cloud>> results;
+
+    for (int i = 0; i < clusters.size(); ++i)
+    {
+        const auto& cloud = clusters[i];
+        const auto& normals = cluster_normals[i];
+        
+        const auto inliers = estimate_boundaries(cloud, normals);
+        const auto bound_cloud = extract_cloud(cloud, inliers);
+
+        results.push_back(bound_cloud);
+    }
+
+    return results;
+}
 
 int main(int argc, const char *argv[])
 {
@@ -53,8 +57,56 @@ int main(int argc, const char *argv[])
     {
         return extract_cloud(cloud, i);
     });
+    std::vector<std::shared_ptr<surface_normals>> cluster_normals;
+    std::transform(indices.begin(), indices.end(), std::back_inserter(cluster_normals), [&normals](const auto& i) -> auto
+    {
+        return extract_normals(normals, i);
+    });
        
     view_clusters(cloud, clusters);
+    
+    const auto circles = find_apertures(clusters, cluster_normals);
+    view_clusters(cloud, circles);
+    
+    
+    //
+    
+    const auto inliers = estimate_boundaries(cloud, normals);
+    const auto bound_cloud = extract_cloud(cloud, inliers);
+    const auto bound_normals = extract_normals(normals, inliers);
+    const auto bound_cluster_indices = segment_regions(bound_cloud, bound_normals);
+    std::vector<std::shared_ptr<point_cloud>> bound_clusters;
+    std::transform(bound_cluster_indices.begin(), bound_cluster_indices.end(), std::back_inserter(bound_clusters), [&bound_cloud](const auto& i) -> auto
+    {
+        return extract_cloud(bound_cloud, i);
+    });
+    std::vector<std::shared_ptr<point_cloud>> holes;
+    for (const auto& c: bound_clusters)
+    {
+        float x { 0.0 };
+        float y { 0.0 };
+        float z { 0.0 };
+        
+        for (const auto& p: *c)
+        {
+            x += p.x;
+            y += p.y;
+            z += p.z;
+        }
+        
+        x = x / c->size();
+        y = y / c->size();
+        z = z / c->size();
+        
+        point center {x, y, z};
+        
+        if (count_nearby_points(cloud, center, 0.005) == 0)
+        {
+            holes.push_back(c);
+        }
+    }
+    
+    view_clusters(cloud, holes);
 
     return 0;
 }

@@ -90,15 +90,110 @@
 		9311008626A6F7870047F836 /* regions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9311008426A6F7870047F836 /* regions.cpp */; };
 		9329396326B408C900AEF37A /* search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9329396126B408C900AEF37A /* search.cpp */; };
 		9329396626B41E8600AEF37A /* filtering.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9329396426B41E8600AEF37A /* filtering.cpp */; };
+		936320DC26C3DA48009B134A /* visualization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9377E2BB26A613AE0075D421 /* visualization.cpp */; };
+		936320E126C3E408009B134A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936320DF26C3E408009B134A /* OpenGL.framework */; };
+		936320E226C3E408009B134A /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936320E026C3E408009B134A /* GLUT.framework */; };
 		936A43BB26B2A2140053C3A8 /* ransac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936A43B926B2A2140053C3A8 /* ransac.cpp */; };
 		9372E35E26B89C4200D0675E /* io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9372E35C26B89C4200D0675E /* io.cpp */; };
 		9372E36126B89D6700D0675E /* normals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9372E35F26B89D6700D0675E /* normals.cpp */; };
 		9377E2BD26A613AE0075D421 /* visualization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9377E2BB26A613AE0075D421 /* visualization.cpp */; };
 		9377E2C126A62C0F0075D421 /* clusters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9377E2BF26A62C0F0075D421 /* clusters.cpp */; };
+		9389B86A26C1394B006ACA66 /* libfreenect.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9389B86926C1394B006ACA66 /* libfreenect.dylib */; };
+		9389B87926C139A5006ACA66 /* libfreenect.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9389B86926C1394B006ACA66 /* libfreenect.dylib */; };
+		9389B87A26C139A5006ACA66 /* libvtkCommonColor-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023DC263F450E00FA265E /* libvtkCommonColor-8.2.1.dylib */; };
+		9389B87B26C139A5006ACA66 /* libvtkImagingColor-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300250E263F451400FA265E /* libvtkImagingColor-8.2.1.dylib */; };
+		9389B87C26C139A5006ACA66 /* libpcl_io.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300272C263F453500FA265E /* libpcl_io.dylib */; };
+		9389B87D26C139A5006ACA66 /* libpcl_apps.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002733263F453500FA265E /* libpcl_apps.dylib */; };
+		9389B87E26C139A5006ACA66 /* libpcl_outofcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930026FF263F453200FA265E /* libpcl_outofcore.dylib */; };
+		9389B87F26C139A5006ACA66 /* libpcl_people.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300271F263F453400FA265E /* libpcl_people.dylib */; };
+		9389B88026C139A5006ACA66 /* libpcl_simulation.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002726263F453500FA265E /* libpcl_simulation.dylib */; };
+		9389B88126C139A5006ACA66 /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002780263F4A5D00FA265E /* libboost_system-mt.dylib */; };
+		9389B88226C139A5006ACA66 /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002782263F4A6A00FA265E /* libboost_filesystem-mt.dylib */; };
+		9389B88326C139A5006ACA66 /* libboost_date_time-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002784263F4A7A00FA265E /* libboost_date_time-mt.dylib */; };
+		9389B88426C139A5006ACA66 /* libboost_iostreams-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002786263F4A8A00FA265E /* libboost_iostreams-mt.dylib */; };
+		9389B88526C139A5006ACA66 /* libboost_regex-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002788263F4A9800FA265E /* libboost_regex-mt.dylib */; };
+		9389B88626C139A5006ACA66 /* libvtkChartsCore-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002387263F44DD00FA265E /* libvtkChartsCore-8.2.1.dylib */; };
+		9389B88726C139A5006ACA66 /* libvtkInfovisCore-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002458263F451000FA265E /* libvtkInfovisCore-8.2.1.dylib */; };
+		9389B88826C139A5006ACA66 /* libvtkIOGeometry-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023EA263F450E00FA265E /* libvtkIOGeometry-8.2.1.dylib */; };
+		9389B88926C139A5006ACA66 /* libvtkIOLegacy-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300248A263F451100FA265E /* libvtkIOLegacy-8.2.1.dylib */; };
+		9389B88A26C139A5006ACA66 /* libvtkIOPLY-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023FC263F450E00FA265E /* libvtkIOPLY-8.2.1.dylib */; };
+		9389B88B26C139A5006ACA66 /* libvtkRenderingLOD-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300253A263F451600FA265E /* libvtkRenderingLOD-8.2.1.dylib */; };
+		9389B88C26C139A5006ACA66 /* libvtkViewsContext2D-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002472263F451000FA265E /* libvtkViewsContext2D-8.2.1.dylib */; };
+		9389B88D26C139A5006ACA66 /* libvtkViewsCore-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002496263F451100FA265E /* libvtkViewsCore-8.2.1.dylib */; };
+		9389B88E26C139A5006ACA66 /* libvtkRenderingContextOpenGL2-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023C0263F450D00FA265E /* libvtkRenderingContextOpenGL2-8.2.1.dylib */; };
+		9389B88F26C139A5006ACA66 /* libvtkRenderingOpenGL2-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300244A263F451000FA265E /* libvtkRenderingOpenGL2-8.2.1.dylib */; };
+		9389B89026C139A5006ACA66 /* libvtkglew-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023A3263F450D00FA265E /* libvtkglew-8.2.1.dylib */; };
+		9389B89126C139A5006ACA66 /* libflann_cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002797263F4BAE00FA265E /* libflann_cpp.dylib */; };
+		9389B89226C139A5006ACA66 /* libpcl_keypoints.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002714263F453300FA265E /* libpcl_keypoints.dylib */; };
+		9389B89326C139A5006ACA66 /* libpcl_tracking.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300272D263F453500FA265E /* libpcl_tracking.dylib */; };
+		9389B89426C139A5006ACA66 /* libpcl_recognition.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002711263F453300FA265E /* libpcl_recognition.dylib */; };
+		9389B89526C139A5006ACA66 /* libpcl_registration.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930026FC263F453200FA265E /* libpcl_registration.dylib */; };
+		9389B89626C139A5006ACA66 /* libpcl_stereo.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300271D263F453400FA265E /* libpcl_stereo.dylib */; };
+		9389B89726C139A5006ACA66 /* libpcl_segmentation.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930026F8263F453200FA265E /* libpcl_segmentation.dylib */; };
+		9389B89826C139A5006ACA66 /* libpcl_ml.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930026F6263F453100FA265E /* libpcl_ml.dylib */; };
+		9389B89926C139A5006ACA66 /* libpcl_features.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002722263F453400FA265E /* libpcl_features.dylib */; };
+		9389B89A26C139A5006ACA66 /* libpcl_filters.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002716263F453300FA265E /* libpcl_filters.dylib */; };
+		9389B89B26C139A5006ACA66 /* libpcl_sample_consensus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300272E263F453500FA265E /* libpcl_sample_consensus.dylib */; };
+		9389B89C26C139A5006ACA66 /* libpcl_visualization.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300271B263F453400FA265E /* libpcl_visualization.dylib */; };
+		9389B89D26C139A5006ACA66 /* libpcl_surface.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002707263F453300FA265E /* libpcl_surface.dylib */; };
+		9389B89E26C139A5006ACA66 /* libpcl_search.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930026F4263F453100FA265E /* libpcl_search.dylib */; };
+		9389B89F26C139A5006ACA66 /* libpcl_kdtree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002718263F453400FA265E /* libpcl_kdtree.dylib */; };
+		9389B8A026C139A5006ACA66 /* libpcl_octree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930026FD263F453200FA265E /* libpcl_octree.dylib */; };
+		9389B8A126C139A5006ACA66 /* libvtkInteractionWidgets-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002517263F451500FA265E /* libvtkInteractionWidgets-8.2.1.dylib */; };
+		9389B8A226C139A5006ACA66 /* libpcl_common.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002700263F453200FA265E /* libpcl_common.dylib */; };
+		9389B8A326C139A5006ACA66 /* libvtkFiltersModeling-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300243C263F450F00FA265E /* libvtkFiltersModeling-8.2.1.dylib */; };
+		9389B8A426C139A5006ACA66 /* libvtkInteractionStyle-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930024C4263F451200FA265E /* libvtkInteractionStyle-8.2.1.dylib */; };
+		9389B8A526C139A5006ACA66 /* libvtkFiltersExtraction-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930024B2263F451200FA265E /* libvtkFiltersExtraction-8.2.1.dylib */; };
+		9389B8A626C139A5006ACA66 /* libvtkFiltersStatistics-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930024A3263F451200FA265E /* libvtkFiltersStatistics-8.2.1.dylib */; };
+		9389B8A726C139A5006ACA66 /* libvtkImagingFourier-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930024E0263F451300FA265E /* libvtkImagingFourier-8.2.1.dylib */; };
+		9389B8A826C139A5006ACA66 /* libvtkFiltersHybrid-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002459263F451000FA265E /* libvtkFiltersHybrid-8.2.1.dylib */; };
+		9389B8A926C139A5006ACA66 /* libvtkImagingGeneral-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002431263F450F00FA265E /* libvtkImagingGeneral-8.2.1.dylib */; };
+		9389B8AA26C139A5006ACA66 /* libvtkImagingSources-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023C3263F450D00FA265E /* libvtkImagingSources-8.2.1.dylib */; };
+		9389B8AB26C139A5006ACA66 /* libvtkImagingHybrid-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930024A5263F451200FA265E /* libvtkImagingHybrid-8.2.1.dylib */; };
+		9389B8AC26C139A5006ACA66 /* libvtkIOImage-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002507263F451400FA265E /* libvtkIOImage-8.2.1.dylib */; };
+		9389B8AD26C139A5006ACA66 /* libvtkDICOMParser-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300246B263F451000FA265E /* libvtkDICOMParser-8.2.1.dylib */; };
+		9389B8AE26C139A5006ACA66 /* libvtkmetaio-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300240F263F450F00FA265E /* libvtkmetaio-8.2.1.dylib */; };
+		9389B8AF26C139A5006ACA66 /* libvtkRenderingAnnotation-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930024F0263F451400FA265E /* libvtkRenderingAnnotation-8.2.1.dylib */; };
+		9389B8B026C139A5006ACA66 /* libvtkRenderingVolumeOpenGL2-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930024C7263F451200FA265E /* libvtkRenderingVolumeOpenGL2-8.2.1.dylib */; };
+		9389B8B126C139A5006ACA66 /* libvtkIOXML-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023C6263F450D00FA265E /* libvtkIOXML-8.2.1.dylib */; };
+		9389B8B226C139A5006ACA66 /* libvtkIOXMLParser-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002462263F451000FA265E /* libvtkIOXMLParser-8.2.1.dylib */; };
+		9389B8B326C139A5006ACA66 /* libvtkIOCore-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300253B263F451600FA265E /* libvtkIOCore-8.2.1.dylib */; };
+		9389B8B426C139A5006ACA66 /* libvtkdoubleconversion-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300244F263F451000FA265E /* libvtkdoubleconversion-8.2.1.dylib */; };
+		9389B8B526C139A5006ACA66 /* libvtklz4-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023DF263F450E00FA265E /* libvtklz4-8.2.1.dylib */; };
+		9389B8B626C139A5006ACA66 /* libvtklzma-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023E5263F450E00FA265E /* libvtklzma-8.2.1.dylib */; };
+		9389B8B726C139A5006ACA66 /* libvtkImagingCore-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023B5263F450D00FA265E /* libvtkImagingCore-8.2.1.dylib */; };
+		9389B8B826C139A5006ACA66 /* libvtkRenderingContext2D-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930024B6263F451200FA265E /* libvtkRenderingContext2D-8.2.1.dylib */; };
+		9389B8B926C139A5006ACA66 /* libvtkRenderingFreeType-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023A9263F450D00FA265E /* libvtkRenderingFreeType-8.2.1.dylib */; };
+		9389B8BA26C139A5006ACA66 /* libvtkfreetype-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023D5263F450E00FA265E /* libvtkfreetype-8.2.1.dylib */; };
+		9389B8BB26C139A5006ACA66 /* libvtkRenderingCore-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300251B263F451500FA265E /* libvtkRenderingCore-8.2.1.dylib */; };
+		9389B8BC26C139A5006ACA66 /* libvtkFiltersGeometry-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002402263F450E00FA265E /* libvtkFiltersGeometry-8.2.1.dylib */; };
+		9389B8BD26C139A5006ACA66 /* libvtkFiltersSources-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002397263F450D00FA265E /* libvtkFiltersSources-8.2.1.dylib */; };
+		9389B8BE26C139A5006ACA66 /* libvtkFiltersGeneral-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300248B263F451100FA265E /* libvtkFiltersGeneral-8.2.1.dylib */; };
+		9389B8BF26C139A5006ACA66 /* libvtkCommonComputationalGeometry-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002475263F451100FA265E /* libvtkCommonComputationalGeometry-8.2.1.dylib */; };
+		9389B8C026C139A5006ACA66 /* libvtkFiltersCore-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300245A263F451000FA265E /* libvtkFiltersCore-8.2.1.dylib */; };
+		9389B8C126C139A5006ACA66 /* libvtkCommonExecutionModel-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300243A263F450F00FA265E /* libvtkCommonExecutionModel-8.2.1.dylib */; };
+		9389B8C226C139A5006ACA66 /* libvtkCommonDataModel-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002451263F451000FA265E /* libvtkCommonDataModel-8.2.1.dylib */; };
+		9389B8C326C139A5006ACA66 /* libvtkCommonTransforms-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023AE263F450D00FA265E /* libvtkCommonTransforms-8.2.1.dylib */; };
+		9389B8C426C139A5006ACA66 /* libvtkCommonMath-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300246F263F451000FA265E /* libvtkCommonMath-8.2.1.dylib */; };
+		9389B8C526C139A5006ACA66 /* libvtkCommonMisc-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002404263F450E00FA265E /* libvtkCommonMisc-8.2.1.dylib */; };
+		9389B8C626C139A5006ACA66 /* libvtkCommonSystem-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300243D263F450F00FA265E /* libvtkCommonSystem-8.2.1.dylib */; };
+		9389B8C726C139A5006ACA66 /* libvtkCommonCore-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002531263F451500FA265E /* libvtkCommonCore-8.2.1.dylib */; };
+		9389B8C826C139A5006ACA66 /* libvtksys-8.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 930023F4263F450E00FA265E /* libvtksys-8.2.1.dylib */; };
+		9389B8CE26C139BB006ACA66 /* capture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9389B86726C137D5006ACA66 /* capture.cpp */; };
+		939CE33C26B98F6700A93166 /* features.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 939CE33A26B98F6700A93166 /* features.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		93002358263F3E0800FA265E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		9389B8C926C139A5006ACA66 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -641,6 +736,9 @@
 		9329396226B408C900AEF37A /* search.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = search.hpp; sourceTree = "<group>"; };
 		9329396426B41E8600AEF37A /* filtering.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = filtering.cpp; sourceTree = "<group>"; };
 		9329396526B41E8600AEF37A /* filtering.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = filtering.hpp; sourceTree = "<group>"; };
+		936320DD26C3E3D6009B134A /* libglut.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglut.dylib; path = ../../../../usr/local/Cellar/freeglut/3.2.1_1/lib/libglut.dylib; sourceTree = "<group>"; };
+		936320DF26C3E408009B134A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		936320E026C3E408009B134A /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		936A43B926B2A2140053C3A8 /* ransac.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ransac.cpp; sourceTree = "<group>"; };
 		936A43BA26B2A2140053C3A8 /* ransac.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ransac.hpp; sourceTree = "<group>"; };
 		9372E35C26B89C4200D0675E /* io.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = io.cpp; sourceTree = "<group>"; };
@@ -651,10 +749,15 @@
 		9377E2BC26A613AE0075D421 /* visualization.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = visualization.hpp; sourceTree = "<group>"; };
 		9377E2BF26A62C0F0075D421 /* clusters.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = clusters.cpp; sourceTree = "<group>"; };
 		9377E2C026A62C0F0075D421 /* clusters.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = clusters.hpp; sourceTree = "<group>"; };
+		9389B86726C137D5006ACA66 /* capture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = capture.cpp; sourceTree = "<group>"; };
+		9389B86926C1394B006ACA66 /* libfreenect.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreenect.dylib; path = ../../../../usr/local/Cellar/libfreenect/0.6.2/lib/libfreenect.dylib; sourceTree = "<group>"; };
+		9389B8CD26C139A5006ACA66 /* capture */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capture; sourceTree = BUILT_PRODUCTS_DIR; };
 		938BC1842642A6DC004E3B5C /* hook_scan_0.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_0.pcd; sourceTree = "<group>"; };
 		938BC1852642A73A004E3B5C /* hook_scan_1.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_1.pcd; sourceTree = "<group>"; };
 		938BC1862642A76B004E3B5C /* hook_scan_2.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_2.pcd; sourceTree = "<group>"; };
 		938BC1872642A7A9004E3B5C /* hook_scan_3.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_3.pcd; sourceTree = "<group>"; };
+		939CE33A26B98F6700A93166 /* features.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = features.cpp; sourceTree = "<group>"; };
+		939CE33B26B98F6700A93166 /* features.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = features.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -662,6 +765,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9389B86A26C1394B006ACA66 /* libfreenect.dylib in Frameworks */,
 				930027C5263F63F700FA265E /* libvtkCommonColor-8.2.1.dylib in Frameworks */,
 				930027B8263F4D6D00FA265E /* libvtkImagingColor-8.2.1.dylib in Frameworks */,
 				930027A4263F4C3B00FA265E /* libpcl_io.dylib in Frameworks */,
@@ -744,6 +848,95 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9389B87826C139A5006ACA66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9389B87926C139A5006ACA66 /* libfreenect.dylib in Frameworks */,
+				9389B87A26C139A5006ACA66 /* libvtkCommonColor-8.2.1.dylib in Frameworks */,
+				936320E126C3E408009B134A /* OpenGL.framework in Frameworks */,
+				9389B87B26C139A5006ACA66 /* libvtkImagingColor-8.2.1.dylib in Frameworks */,
+				9389B87C26C139A5006ACA66 /* libpcl_io.dylib in Frameworks */,
+				9389B87D26C139A5006ACA66 /* libpcl_apps.dylib in Frameworks */,
+				9389B87E26C139A5006ACA66 /* libpcl_outofcore.dylib in Frameworks */,
+				9389B87F26C139A5006ACA66 /* libpcl_people.dylib in Frameworks */,
+				9389B88026C139A5006ACA66 /* libpcl_simulation.dylib in Frameworks */,
+				9389B88126C139A5006ACA66 /* libboost_system-mt.dylib in Frameworks */,
+				9389B88226C139A5006ACA66 /* libboost_filesystem-mt.dylib in Frameworks */,
+				9389B88326C139A5006ACA66 /* libboost_date_time-mt.dylib in Frameworks */,
+				9389B88426C139A5006ACA66 /* libboost_iostreams-mt.dylib in Frameworks */,
+				9389B88526C139A5006ACA66 /* libboost_regex-mt.dylib in Frameworks */,
+				9389B88626C139A5006ACA66 /* libvtkChartsCore-8.2.1.dylib in Frameworks */,
+				9389B88726C139A5006ACA66 /* libvtkInfovisCore-8.2.1.dylib in Frameworks */,
+				9389B88826C139A5006ACA66 /* libvtkIOGeometry-8.2.1.dylib in Frameworks */,
+				9389B88926C139A5006ACA66 /* libvtkIOLegacy-8.2.1.dylib in Frameworks */,
+				9389B88A26C139A5006ACA66 /* libvtkIOPLY-8.2.1.dylib in Frameworks */,
+				9389B88B26C139A5006ACA66 /* libvtkRenderingLOD-8.2.1.dylib in Frameworks */,
+				9389B88C26C139A5006ACA66 /* libvtkViewsContext2D-8.2.1.dylib in Frameworks */,
+				9389B88D26C139A5006ACA66 /* libvtkViewsCore-8.2.1.dylib in Frameworks */,
+				9389B88E26C139A5006ACA66 /* libvtkRenderingContextOpenGL2-8.2.1.dylib in Frameworks */,
+				9389B88F26C139A5006ACA66 /* libvtkRenderingOpenGL2-8.2.1.dylib in Frameworks */,
+				9389B89026C139A5006ACA66 /* libvtkglew-8.2.1.dylib in Frameworks */,
+				9389B89126C139A5006ACA66 /* libflann_cpp.dylib in Frameworks */,
+				9389B89226C139A5006ACA66 /* libpcl_keypoints.dylib in Frameworks */,
+				9389B89326C139A5006ACA66 /* libpcl_tracking.dylib in Frameworks */,
+				9389B89426C139A5006ACA66 /* libpcl_recognition.dylib in Frameworks */,
+				9389B89526C139A5006ACA66 /* libpcl_registration.dylib in Frameworks */,
+				9389B89626C139A5006ACA66 /* libpcl_stereo.dylib in Frameworks */,
+				9389B89726C139A5006ACA66 /* libpcl_segmentation.dylib in Frameworks */,
+				9389B89826C139A5006ACA66 /* libpcl_ml.dylib in Frameworks */,
+				9389B89926C139A5006ACA66 /* libpcl_features.dylib in Frameworks */,
+				9389B89A26C139A5006ACA66 /* libpcl_filters.dylib in Frameworks */,
+				9389B89B26C139A5006ACA66 /* libpcl_sample_consensus.dylib in Frameworks */,
+				9389B89C26C139A5006ACA66 /* libpcl_visualization.dylib in Frameworks */,
+				9389B89D26C139A5006ACA66 /* libpcl_surface.dylib in Frameworks */,
+				9389B89E26C139A5006ACA66 /* libpcl_search.dylib in Frameworks */,
+				9389B89F26C139A5006ACA66 /* libpcl_kdtree.dylib in Frameworks */,
+				9389B8A026C139A5006ACA66 /* libpcl_octree.dylib in Frameworks */,
+				9389B8A126C139A5006ACA66 /* libvtkInteractionWidgets-8.2.1.dylib in Frameworks */,
+				9389B8A226C139A5006ACA66 /* libpcl_common.dylib in Frameworks */,
+				9389B8A326C139A5006ACA66 /* libvtkFiltersModeling-8.2.1.dylib in Frameworks */,
+				9389B8A426C139A5006ACA66 /* libvtkInteractionStyle-8.2.1.dylib in Frameworks */,
+				9389B8A526C139A5006ACA66 /* libvtkFiltersExtraction-8.2.1.dylib in Frameworks */,
+				9389B8A626C139A5006ACA66 /* libvtkFiltersStatistics-8.2.1.dylib in Frameworks */,
+				9389B8A726C139A5006ACA66 /* libvtkImagingFourier-8.2.1.dylib in Frameworks */,
+				9389B8A826C139A5006ACA66 /* libvtkFiltersHybrid-8.2.1.dylib in Frameworks */,
+				9389B8A926C139A5006ACA66 /* libvtkImagingGeneral-8.2.1.dylib in Frameworks */,
+				9389B8AA26C139A5006ACA66 /* libvtkImagingSources-8.2.1.dylib in Frameworks */,
+				9389B8AB26C139A5006ACA66 /* libvtkImagingHybrid-8.2.1.dylib in Frameworks */,
+				9389B8AC26C139A5006ACA66 /* libvtkIOImage-8.2.1.dylib in Frameworks */,
+				9389B8AD26C139A5006ACA66 /* libvtkDICOMParser-8.2.1.dylib in Frameworks */,
+				9389B8AE26C139A5006ACA66 /* libvtkmetaio-8.2.1.dylib in Frameworks */,
+				9389B8AF26C139A5006ACA66 /* libvtkRenderingAnnotation-8.2.1.dylib in Frameworks */,
+				9389B8B026C139A5006ACA66 /* libvtkRenderingVolumeOpenGL2-8.2.1.dylib in Frameworks */,
+				9389B8B126C139A5006ACA66 /* libvtkIOXML-8.2.1.dylib in Frameworks */,
+				9389B8B226C139A5006ACA66 /* libvtkIOXMLParser-8.2.1.dylib in Frameworks */,
+				9389B8B326C139A5006ACA66 /* libvtkIOCore-8.2.1.dylib in Frameworks */,
+				9389B8B426C139A5006ACA66 /* libvtkdoubleconversion-8.2.1.dylib in Frameworks */,
+				9389B8B526C139A5006ACA66 /* libvtklz4-8.2.1.dylib in Frameworks */,
+				9389B8B626C139A5006ACA66 /* libvtklzma-8.2.1.dylib in Frameworks */,
+				9389B8B726C139A5006ACA66 /* libvtkImagingCore-8.2.1.dylib in Frameworks */,
+				9389B8B826C139A5006ACA66 /* libvtkRenderingContext2D-8.2.1.dylib in Frameworks */,
+				9389B8B926C139A5006ACA66 /* libvtkRenderingFreeType-8.2.1.dylib in Frameworks */,
+				9389B8BA26C139A5006ACA66 /* libvtkfreetype-8.2.1.dylib in Frameworks */,
+				9389B8BB26C139A5006ACA66 /* libvtkRenderingCore-8.2.1.dylib in Frameworks */,
+				9389B8BC26C139A5006ACA66 /* libvtkFiltersGeometry-8.2.1.dylib in Frameworks */,
+				9389B8BD26C139A5006ACA66 /* libvtkFiltersSources-8.2.1.dylib in Frameworks */,
+				9389B8BE26C139A5006ACA66 /* libvtkFiltersGeneral-8.2.1.dylib in Frameworks */,
+				9389B8BF26C139A5006ACA66 /* libvtkCommonComputationalGeometry-8.2.1.dylib in Frameworks */,
+				9389B8C026C139A5006ACA66 /* libvtkFiltersCore-8.2.1.dylib in Frameworks */,
+				9389B8C126C139A5006ACA66 /* libvtkCommonExecutionModel-8.2.1.dylib in Frameworks */,
+				936320E226C3E408009B134A /* GLUT.framework in Frameworks */,
+				9389B8C226C139A5006ACA66 /* libvtkCommonDataModel-8.2.1.dylib in Frameworks */,
+				9389B8C326C139A5006ACA66 /* libvtkCommonTransforms-8.2.1.dylib in Frameworks */,
+				9389B8C426C139A5006ACA66 /* libvtkCommonMath-8.2.1.dylib in Frameworks */,
+				9389B8C526C139A5006ACA66 /* libvtkCommonMisc-8.2.1.dylib in Frameworks */,
+				9389B8C626C139A5006ACA66 /* libvtkCommonSystem-8.2.1.dylib in Frameworks */,
+				9389B8C726C139A5006ACA66 /* libvtkCommonCore-8.2.1.dylib in Frameworks */,
+				9389B8C826C139A5006ACA66 /* libvtksys-8.2.1.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -761,6 +954,7 @@
 			isa = PBXGroup;
 			children = (
 				9300235A263F3E0800FA265E /* halepensis */,
+				9389B8CD26C139A5006ACA66 /* capture */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -770,6 +964,7 @@
 			children = (
 				9377E2BE26A62BD90075D421 /* processing */,
 				93002372263F3E5100FA265E /* main.cpp */,
+				9389B86726C137D5006ACA66 /* capture.cpp */,
 			);
 			path = halepensis;
 			sourceTree = "<group>";
@@ -804,6 +999,10 @@
 		93002386263F44DD00FA265E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				936320E026C3E408009B134A /* GLUT.framework */,
+				936320DF26C3E408009B134A /* OpenGL.framework */,
+				936320DD26C3E3D6009B134A /* libglut.dylib */,
+				9389B86926C1394B006ACA66 /* libfreenect.dylib */,
 				93002797263F4BAE00FA265E /* libflann_cpp.dylib */,
 				9300278A263F4AB300FA265E /* libqhull_p.dylib */,
 				93002788263F4A9800FA265E /* libboost_regex-mt.dylib */,
@@ -1347,6 +1546,8 @@
 				9372E36026B89D6700D0675E /* normals.hpp */,
 				9377E2BB26A613AE0075D421 /* visualization.cpp */,
 				9377E2BC26A613AE0075D421 /* visualization.hpp */,
+				939CE33A26B98F6700A93166 /* features.cpp */,
+				939CE33B26B98F6700A93166 /* features.hpp */,
 			);
 			path = processing;
 			sourceTree = "<group>";
@@ -1382,6 +1583,23 @@
 			productReference = 9300235A263F3E0800FA265E /* halepensis */;
 			productType = "com.apple.product-type.tool";
 		};
+		9389B86B26C139A5006ACA66 /* capture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9389B8CA26C139A5006ACA66 /* Build configuration list for PBXNativeTarget "capture" */;
+			buildPhases = (
+				9389B86C26C139A5006ACA66 /* Sources */,
+				9389B87826C139A5006ACA66 /* Frameworks */,
+				9389B8C926C139A5006ACA66 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = capture;
+			productName = halepensis;
+			productReference = 9389B8CD26C139A5006ACA66 /* capture */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1409,6 +1627,7 @@
 			projectRoot = "";
 			targets = (
 				93002359263F3E0800FA265E /* halepensis */,
+				9389B86B26C139A5006ACA66 /* capture */,
 			);
 		};
 /* End PBXProject section */
@@ -1418,6 +1637,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939CE33C26B98F6700A93166 /* features.cpp in Sources */,
 				9329396326B408C900AEF37A /* search.cpp in Sources */,
 				93002379263F3E5100FA265E /* main.cpp in Sources */,
 				9329396626B41E8600AEF37A /* filtering.cpp in Sources */,
@@ -1427,6 +1647,15 @@
 				9311008626A6F7870047F836 /* regions.cpp in Sources */,
 				9372E36126B89D6700D0675E /* normals.cpp in Sources */,
 				9377E2C126A62C0F0075D421 /* clusters.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9389B86C26C139A5006ACA66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				936320DC26C3DA48009B134A /* visualization.cpp in Sources */,
+				9389B8CE26C139BB006ACA66 /* capture.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1499,6 +1728,8 @@
 					/usr/local/Cellar/eigen/3.3.9/include/eigen3,
 					/usr/local/Cellar/boost/1.76.0/include,
 					"\"/usr/local/Cellar/vtk@8.2/8.2.0_7/include/vtk-8.2\"",
+					"/usr/local/Cellar/libusb/1.0.24/include/libusb-1.0",
+					/usr/local/Cellar/libfreenect/0.6.2/include/libfreenect,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/pcl/1.11.1_8/lib,
@@ -1506,6 +1737,8 @@
 					/usr/local/Cellar/flann/1.9.1_10/lib,
 					/usr/local/Cellar/boost/1.76.0/lib,
 					/usr/local/Cellar/netcdf/4.8.0_1/lib,
+					/usr/local/Cellar/libfreenect/0.6.2/lib,
+					/usr/local/Cellar/libusb/1.0.24/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -1578,6 +1811,8 @@
 					/usr/local/Cellar/eigen/3.3.9/include/eigen3,
 					/usr/local/Cellar/boost/1.76.0/include,
 					"\"/usr/local/Cellar/vtk@8.2/8.2.0_7/include/vtk-8.2\"",
+					"/usr/local/Cellar/libusb/1.0.24/include/libusb-1.0",
+					/usr/local/Cellar/libfreenect/0.6.2/include/libfreenect,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/pcl/1.11.1_8/lib,
@@ -1585,6 +1820,8 @@
 					/usr/local/Cellar/flann/1.9.1_10/lib,
 					/usr/local/Cellar/boost/1.76.0/lib,
 					/usr/local/Cellar/netcdf/4.8.0_1/lib,
+					/usr/local/Cellar/libfreenect/0.6.2/lib,
+					/usr/local/Cellar/libusb/1.0.24/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -1626,6 +1863,47 @@
 			};
 			name = Release;
 		};
+		9389B8CB26C139A5006ACA66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DISABLE_PCAP,
+					DISABLE_LIBUSB_1_0,
+					DISABLE_PNG,
+					qh_QHpointer,
+					"vtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\"",
+					"vtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\"",
+					"DEBUG=1",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/freeglut/3.2.1_1/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9389B8CC26C139A5006ACA66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DISABLE_PCAP,
+					DISABLE_LIBUSB_1_0,
+					DISABLE_PNG,
+					qh_QHpointer,
+					"vtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\"",
+					"vtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\"",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/freeglut/3.2.1_1/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1643,6 +1921,15 @@
 			buildConfigurations = (
 				93002362263F3E0800FA265E /* Debug */,
 				93002363263F3E0800FA265E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9389B8CA26C139A5006ACA66 /* Build configuration list for PBXNativeTarget "capture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9389B8CB26C139A5006ACA66 /* Debug */,
+				9389B8CC26C139A5006ACA66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

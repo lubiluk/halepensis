@@ -1,7 +1,6 @@
 #pragma once
 
 #include "pcl_types.hpp"
-
 #include <memory>
 
 auto extract_cloud(const std::shared_ptr<point_cloud>& input_cloud,

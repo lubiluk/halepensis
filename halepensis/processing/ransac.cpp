@@ -10,15 +10,14 @@
 #include <pcl/sample_consensus/model_types.h>
 #pragma clang diagnostic pop
 
-auto fit_model(const int model_type,
-               const std::shared_ptr<point_cloud>& input_cloud,
-               const std::shared_ptr<surface_normals>& input_normals)
+auto fit_circle(const std::shared_ptr<point_cloud>& input_cloud,
+                const std::shared_ptr<surface_normals>& input_normals)
 -> std::optional<std::tuple<std::shared_ptr<point_indices>, std::shared_ptr<model_coefficients>>>
 {
     pcl::SACSegmentationFromNormals<point, normal> seg;
     
     seg.setOptimizeCoefficients(true);
-    seg.setModelType(model_type);
+    seg.setModelType(pcl::SACMODEL_CYLINDER);
     seg.setMethodType(pcl::SAC_RANSAC);
     seg.setNormalDistanceWeight(0.1);
     seg.setMaxIterations(10000);
