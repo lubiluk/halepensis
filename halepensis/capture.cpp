@@ -158,8 +158,8 @@ void capture_pcd()
     device->getDepth(depth);
     
     pcl::PointCloud<pcl::PointXYZRGB> cloud;
-    cloud.width    = 640;
-    cloud.height   = 480;
+    cloud.width    = 640 * 480;
+    cloud.height   = 1;
     cloud.is_dense = false;
     cloud.resize (cloud.width * cloud.height);
     
@@ -172,6 +172,11 @@ void capture_pcd()
             point.r = rgb[3*i+0];
             point.g = rgb[3*i+1];
             point.b = rgb[3*i+2];
+        } else
+        {
+            point.r = 255;
+            point.g = 255;
+            point.b = 255;
         }
             
 
@@ -179,10 +184,10 @@ void capture_pcd()
         // Convert from image plane coordinates to world coordinates
         point.x = (i%640 - (640-1)/2.f) * depth[i] / f;
         point.y = (i/640 - (480-1)/2.f) * depth[i] / f;
-        point.z = depth[i];
+        point.z = depth[i] == 0 ? NAN : depth[i];
     }
     
-    pcl::io::savePCDFileASCII ("/Users/lubiluk/Code/halepensis/data/capture.pcd", cloud);
+    pcl::io::savePCDFile ("/Users/lubiluk/Code/halepensis/data/capture.pcd", cloud);
 }
 
 void keyPressed(unsigned char key, int x, int y)
