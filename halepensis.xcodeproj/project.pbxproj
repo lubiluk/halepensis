@@ -1201,6 +1201,17 @@
 		93D84FC626FB96C600896B1F /* libvtkImagingGeneral-9.0.9.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libvtkImagingGeneral-9.0.9.0.3.dylib"; path = "../../../../usr/local/Cellar/vtk/9.0.3/lib/libvtkImagingGeneral-9.0.9.0.3.dylib"; sourceTree = "<group>"; };
 		93D84FC726FB96C700896B1F /* libvtkFiltersAMR-9.0.9.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libvtkFiltersAMR-9.0.9.0.3.dylib"; path = "../../../../usr/local/Cellar/vtk/9.0.3/lib/libvtkFiltersAMR-9.0.9.0.3.dylib"; sourceTree = "<group>"; };
 		93D84FC826FB96C700896B1F /* libvtkFiltersProgrammable-9.0.9.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libvtkFiltersProgrammable-9.0.9.0.3.dylib"; path = "../../../../usr/local/Cellar/vtk/9.0.3/lib/libvtkFiltersProgrammable-9.0.9.0.3.dylib"; sourceTree = "<group>"; };
+		93D850BE26FBA6BD00896B1F /* scene_1.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_1.pcd; sourceTree = "<group>"; };
+		93D850BF26FBA6BD00896B1F /* scene_8.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_8.pcd; sourceTree = "<group>"; };
+		93D850C026FBA6BD00896B1F /* scene_4.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_4.pcd; sourceTree = "<group>"; };
+		93D850C126FBA6BE00896B1F /* scene_6.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_6.pcd; sourceTree = "<group>"; };
+		93D850C226FBA6BE00896B1F /* scene_10.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_10.pcd; sourceTree = "<group>"; };
+		93D850C326FBA6BE00896B1F /* scene_9.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_9.pcd; sourceTree = "<group>"; };
+		93D850C426FBA6BE00896B1F /* scene_11.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_11.pcd; sourceTree = "<group>"; };
+		93D850C526FBA6BE00896B1F /* scene_5.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_5.pcd; sourceTree = "<group>"; };
+		93D850C626FBA6BE00896B1F /* scene_3.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_3.pcd; sourceTree = "<group>"; };
+		93D850C726FBA6BE00896B1F /* scene_7.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_7.pcd; sourceTree = "<group>"; };
+		93D850C826FBA6BE00896B1F /* scene_2.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_2.pcd; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1430,6 +1441,17 @@
 		9300237A263F3E6600FA265E /* data */ = {
 			isa = PBXGroup;
 			children = (
+				93D850BE26FBA6BD00896B1F /* scene_1.pcd */,
+				93D850C826FBA6BE00896B1F /* scene_2.pcd */,
+				93D850C626FBA6BE00896B1F /* scene_3.pcd */,
+				93D850C026FBA6BD00896B1F /* scene_4.pcd */,
+				93D850C526FBA6BE00896B1F /* scene_5.pcd */,
+				93D850C126FBA6BE00896B1F /* scene_6.pcd */,
+				93D850C726FBA6BE00896B1F /* scene_7.pcd */,
+				93D850BF26FBA6BD00896B1F /* scene_8.pcd */,
+				93D850C326FBA6BE00896B1F /* scene_9.pcd */,
+				93D850C226FBA6BE00896B1F /* scene_10.pcd */,
+				93D850C426FBA6BE00896B1F /* scene_11.pcd */,
 				930A0FD026E55A9E007D4119 /* claws_scan */,
 				9338A12526E2BF2D002A236E /* mug_scan */,
 				9311008226A6E3500047F836 /* samples */,
@@ -2461,7 +2483,6 @@
 					"\"/usr/local/Cellar/vtk/9.0.3/lib\"",
 					/usr/local/Cellar/flann/1.9.1_10/lib,
 					/usr/local/Cellar/boost/1.76.0/lib,
-					/usr/local/Cellar/netcdf/4.8.0_1/lib,
 					/usr/local/Cellar/libfreenect/0.6.2/lib,
 					/usr/local/Cellar/libusb/1.0.24/lib,
 				);
@@ -2544,7 +2565,6 @@
 					"\"/usr/local/Cellar/vtk/9.0.3/lib\"",
 					/usr/local/Cellar/flann/1.9.1_10/lib,
 					/usr/local/Cellar/boost/1.76.0/lib,
-					/usr/local/Cellar/netcdf/4.8.0_1/lib,
 					/usr/local/Cellar/libfreenect/0.6.2/lib,
 					/usr/local/Cellar/libusb/1.0.24/lib,
 				);
