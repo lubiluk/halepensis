@@ -4,7 +4,8 @@
 #include <memory>
 
 auto extract_cloud(const std::shared_ptr<point_cloud>& input_cloud,
-                   const std::shared_ptr<point_indices>& indices) -> std::shared_ptr<point_cloud>;
+                   const std::shared_ptr<point_indices>& indices,
+                   const bool negative = false) -> std::shared_ptr<point_cloud>;
 
 auto extract_normals(const std::shared_ptr<surface_normals>& input_normals,
                      const std::shared_ptr<point_indices>& indices) -> std::shared_ptr<surface_normals>;

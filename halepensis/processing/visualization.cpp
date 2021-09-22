@@ -21,6 +21,7 @@ auto view(const std::shared_ptr<point_cloud>& cloud) -> void
     viz.setCameraPosition(0, 0, 0, 0, -1, 0);
     
     viz.addPointCloud<point>(cloud, "cloud");
+    viz.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "cloud");
     
     viz.spin();
     viz.close();

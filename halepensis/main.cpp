@@ -7,6 +7,9 @@
 #include "search.hpp"
 #include "features.hpp"
 #include "clusters.hpp"
+#include "scaling.hpp"
+#include "hole.hpp"
+#include "outliers.hpp"
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -18,28 +21,9 @@
 #include <pcl/common/centroid.h>
 #pragma clang diagnostic pop
 
-auto find_apertures(std::vector<std::shared_ptr<point_cloud>> clusters, std::vector<std::shared_ptr<surface_normals>> cluster_normals)
--> std::vector<std::shared_ptr<point_cloud>>
-{
-    std::vector<std::shared_ptr<point_cloud>> results;
-
-    for (int i = 0; i < clusters.size(); ++i)
-    {
-        const auto& cloud = clusters[i];
-        const auto& normals = cluster_normals[i];
-        
-        const auto inliers = estimate_boundaries(cloud, normals);
-        const auto bound_cloud = extract_cloud(cloud, inliers);
-
-        results.push_back(bound_cloud);
-    }
-
-    return results;
-}
-
 int main(int argc, const char *argv[])
 {
-    auto cloud = load_cloud("/Users/lubiluk/Code/halepensis/data/cutting_board_scan/cutting_board_scan_6.pcd");
+    auto cloud = load_cloud("/Users/lubiluk/Code/halepensis/data/hooks_scan/hooks_scan_2.pcd");
     
     if (!cloud)
     {
@@ -47,11 +31,20 @@ int main(int argc, const char *argv[])
         return -1;
     }
     
+    cloud = scale(cloud, 0.001f);
     cloud = downsample(cloud);
-    cloud = filter_depth(cloud);
-    const auto normals = compute_normals(cloud);
-    const auto indices = segment_regions(cloud, normals);
+    cloud = filter_depth(cloud, 1.0f);
     
+    view(cloud);
+    
+    const auto normals = compute_normals(cloud);
+    
+    const auto indics = fit_plane(cloud);
+    cloud = extract_cloud(cloud, std::get<0>(indics.value()), true);
+    view(cloud);
+    
+    const auto indices = extract_euclidean_clusters(cloud, 0.02, 10, 10000);
+
     std::vector<std::shared_ptr<point_cloud>> clusters;
     std::transform(indices.begin(), indices.end(), std::back_inserter(clusters), [&cloud](const auto& i) -> auto
     {
@@ -62,51 +55,11 @@ int main(int argc, const char *argv[])
     {
         return extract_normals(normals, i);
     });
-       
+
     view_clusters(cloud, clusters);
-    
-    const auto circles = find_apertures(clusters, cluster_normals);
-    view_clusters(cloud, circles);
-    
-    
-    //
-    
-    const auto inliers = estimate_boundaries(cloud, normals);
-    const auto bound_cloud = extract_cloud(cloud, inliers);
-    const auto bound_normals = extract_normals(normals, inliers);
-    const auto bound_cluster_indices = segment_regions(bound_cloud, bound_normals);
-    std::vector<std::shared_ptr<point_cloud>> bound_clusters;
-    std::transform(bound_cluster_indices.begin(), bound_cluster_indices.end(), std::back_inserter(bound_clusters), [&bound_cloud](const auto& i) -> auto
-    {
-        return extract_cloud(bound_cloud, i);
-    });
-    std::vector<std::shared_ptr<point_cloud>> holes;
-    for (const auto& c: bound_clusters)
-    {
-        float x { 0.0 };
-        float y { 0.0 };
-        float z { 0.0 };
-        
-        for (const auto& p: *c)
-        {
-            x += p.x;
-            y += p.y;
-            z += p.z;
-        }
-        
-        x = x / c->size();
-        y = y / c->size();
-        z = z / c->size();
-        
-        point center {x, y, z};
-        
-        if (count_nearby_points(cloud, center, 0.005) == 0)
-        {
-            holes.push_back(c);
-        }
-    }
-    
-    view_clusters(cloud, holes);
+//
+//    const auto holes = find_holes(cloud, normals);
+//    view_clusters(cloud, holes);
 
     return 0;
 }

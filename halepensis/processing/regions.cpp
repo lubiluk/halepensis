@@ -18,11 +18,11 @@ auto segment_regions(const std::shared_ptr<point_cloud>& input_cloud,
                      const std::shared_ptr<surface_normals>& input_normals)
 -> std::vector<std::shared_ptr<point_indices>>
 {
-    pcl::search::Search<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
+    pcl::search::Search<point>::Ptr tree (new pcl::search::KdTree<point>);
     pcl::IndicesPtr indices (new std::vector <int>);
     pcl::removeNaNFromPointCloud(*input_cloud, *indices);
     
-    pcl::RegionGrowing<pcl::PointXYZ, pcl::Normal> reg;
+    pcl::RegionGrowing<point, normal> reg;
     reg.setMinClusterSize (10);
     reg.setMaxClusterSize (1000000);
     reg.setSearchMethod (tree);

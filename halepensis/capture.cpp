@@ -3,6 +3,7 @@
 #include <vector>
 #include <mutex>
 #include <libfreenect.hpp>
+#include <limits>
 
 #if defined(__APPLE__)
 #include <GLUT/glut.h>
@@ -14,8 +15,6 @@
 #pragma clang diagnostic ignored "-Weverything"
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
-#pragma clang diagnostic pop
-
 
 class MyFreenectDevice : public Freenect::FreenectDevice
 {
@@ -182,9 +181,9 @@ void capture_pcd()
 
         float f = 595.f;
         // Convert from image plane coordinates to world coordinates
-        point.x = (i%640 - (640-1)/2.f) * depth[i] / f;
-        point.y = (i/640 - (480-1)/2.f) * depth[i] / f;
-        point.z = depth[i] == 0 ? NAN : depth[i];
+        point.x = (i%640 - (640-1)/2.f) * depth[i] / f / 1000.0f;
+        point.y = (i/640 - (480-1)/2.f) * depth[i] / f / 1000.0f;
+        point.z = depth[i] == 0 ? std::numeric_limits<float>::quiet_NaN() : depth[i] / 1000.0f;
     }
     
     pcl::io::savePCDFile ("/Users/lubiluk/Code/halepensis/data/capture.pcd", cloud);
@@ -317,3 +316,5 @@ int main(int argc, char **argv)
 
     return 0;
 }
+
+#pragma clang diagnostic pop

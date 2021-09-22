@@ -10,7 +10,8 @@
 
 
 auto extract_cloud(const std::shared_ptr<point_cloud>& input_cloud,
-                   const std::shared_ptr<point_indices>& indices) -> std::shared_ptr<point_cloud>
+                   const std::shared_ptr<point_indices>& indices,
+                   const bool negative) -> std::shared_ptr<point_cloud>
 {
     pcl::ExtractIndices<point> extract;
     extract.setInputCloud(input_cloud);
@@ -18,7 +19,7 @@ auto extract_cloud(const std::shared_ptr<point_cloud>& input_cloud,
     const auto result_cloud = std::make_shared<point_cloud>();
     
     extract.setIndices(indices);
-    extract.setNegative(false);
+    extract.setNegative(negative);
     extract.filter(*result_cloud);
     
     return result_cloud;
@@ -54,12 +55,11 @@ auto downsample(const std::shared_ptr<point_cloud>& input,
 auto filter_depth(const std::shared_ptr<point_cloud>& input,
                        const double threshold) -> std::shared_ptr<point_cloud>
 {
-    const float depth_limit = 1.0;
     pcl::PassThrough<point> pass;
     auto output = std::make_shared<point_cloud>();
     pass.setInputCloud(input);
     pass.setFilterFieldName("z");
-    pass.setFilterLimits(0, depth_limit);
+    pass.setFilterLimits(0, threshold);
     pass.filter(*output);
     
     return output;

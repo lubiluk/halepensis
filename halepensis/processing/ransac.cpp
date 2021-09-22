@@ -10,8 +10,8 @@
 #include <pcl/sample_consensus/model_types.h>
 #pragma clang diagnostic pop
 
-auto fit_circle(const std::shared_ptr<point_cloud>& input_cloud,
-                const std::shared_ptr<surface_normals>& input_normals)
+auto fit_cylinder(const std::shared_ptr<point_cloud>& input_cloud,
+                  const std::shared_ptr<surface_normals>& input_normals)
 -> std::optional<std::tuple<std::shared_ptr<point_indices>, std::shared_ptr<model_coefficients>>>
 {
     pcl::SACSegmentationFromNormals<point, normal> seg;
@@ -21,8 +21,8 @@ auto fit_circle(const std::shared_ptr<point_cloud>& input_cloud,
     seg.setMethodType(pcl::SAC_RANSAC);
     seg.setNormalDistanceWeight(0.1);
     seg.setMaxIterations(10000);
-    seg.setDistanceThreshold(0.005);
-    seg.setRadiusLimits(0, 1);
+    seg.setDistanceThreshold(0.05);
+    seg.setRadiusLimits(0, 0.5);
     
     auto coefficients = std::make_shared<model_coefficients>();
     auto inliers = std::make_shared<point_indices>();
@@ -36,3 +36,49 @@ auto fit_circle(const std::shared_ptr<point_cloud>& input_cloud,
     
     return std::optional(std::make_tuple(inliers, coefficients));
 }
+
+auto fit_plane(const std::shared_ptr<point_cloud>& input_cloud)
+-> std::optional<std::tuple<std::shared_ptr<point_indices>, std::shared_ptr<model_coefficients>>>
+{
+    pcl::SACSegmentation<point> seg;
+    
+    seg.setOptimizeCoefficients(true);
+    seg.setModelType(pcl::SACMODEL_PLANE);
+    seg.setMethodType(pcl::SAC_RANSAC);
+    seg.setDistanceThreshold(0.01);
+    
+    auto coefficients = std::make_shared<model_coefficients>();
+    auto inliers = std::make_shared<point_indices>();
+    
+    seg.setInputCloud(input_cloud);
+    seg.segment(*inliers, *coefficients);
+    
+    // Finish early if can't find any more inliners.
+    if (inliers->indices.size() == 0) return std::nullopt;
+    
+    return std::optional(std::make_tuple(inliers, coefficients));
+}
+
+auto fit_line(const std::shared_ptr<point_cloud>& input_cloud)
+-> std::optional<std::tuple<std::shared_ptr<point_indices>, std::shared_ptr<model_coefficients>>>
+{
+    pcl::SACSegmentation<point> seg;
+    
+    seg.setOptimizeCoefficients(true);
+    seg.setModelType(pcl::SACMODEL_LINE);
+    seg.setMethodType(pcl::SAC_RANSAC);
+    seg.setDistanceThreshold(0.01);
+    
+    auto coefficients = std::make_shared<model_coefficients>();
+    auto inliers = std::make_shared<point_indices>();
+    
+    seg.setInputCloud(input_cloud);
+    seg.segment(*inliers, *coefficients);
+    
+    // Finish early if can't find any more inliners.
+    if (inliers->indices.size() == 0) return std::nullopt;
+    
+    return std::optional(std::make_tuple(inliers, coefficients));
+}
+
+
