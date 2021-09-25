@@ -1212,6 +1212,7 @@
 		93D850C626FBA6BE00896B1F /* scene_3.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_3.pcd; sourceTree = "<group>"; };
 		93D850C726FBA6BE00896B1F /* scene_7.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_7.pcd; sourceTree = "<group>"; };
 		93D850C826FBA6BE00896B1F /* scene_2.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_2.pcd; sourceTree = "<group>"; };
+		93D850C926FBB0D100896B1F /* scene_12.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_12.pcd; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1441,6 +1442,7 @@
 		9300237A263F3E6600FA265E /* data */ = {
 			isa = PBXGroup;
 			children = (
+				93D850C926FBB0D100896B1F /* scene_12.pcd */,
 				93D850BE26FBA6BD00896B1F /* scene_1.pcd */,
 				93D850C826FBA6BE00896B1F /* scene_2.pcd */,
 				93D850C626FBA6BE00896B1F /* scene_3.pcd */,

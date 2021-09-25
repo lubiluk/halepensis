@@ -2,7 +2,6 @@
 #include <iostream>
 #include <vector>
 #include <mutex>
-#include <libfreenect.hpp>
 #include <limits>
 
 #if defined(__APPLE__)
@@ -13,6 +12,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Weverything"
+#include <libfreenect.hpp>
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
 
