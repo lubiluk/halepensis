@@ -2352,7 +2352,7 @@
 		93002352263F3E0800FA265E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					93002359263F3E0800FA265E = {
 						CreatedOnToolsVersion = 12.5;
@@ -2580,6 +2580,7 @@
 		93002362263F3E0800FA265E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DISABLE_PCAP,
@@ -2601,6 +2602,7 @@
 		93002363263F3E0800FA265E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DISABLE_PCAP,
@@ -2621,6 +2623,7 @@
 		9389B8CB26C139A5006ACA66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DISABLE_PCAP,
@@ -2642,6 +2645,7 @@
 		9389B8CC26C139A5006ACA66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DISABLE_PCAP,
