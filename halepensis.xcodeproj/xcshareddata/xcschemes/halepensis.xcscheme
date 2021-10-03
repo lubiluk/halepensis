@@ -50,6 +50,16 @@
             ReferencedContainer = "container:halepensis.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "/Users/lubiluk/Code/halepensis/data/scenes/scene_12.pcd"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/lubiluk/Code/halepensis/data/scenes/scene_1.pcd"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

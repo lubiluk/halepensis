@@ -12,7 +12,7 @@
 
 auto fit_cylinder(const std::shared_ptr<point_cloud>& input_cloud,
                   const std::shared_ptr<surface_normals>& input_normals)
--> std::optional<std::tuple<std::shared_ptr<point_indices>, std::shared_ptr<model_coefficients>>>
+-> boost::optional<std::tuple<std::shared_ptr<point_indices>, std::shared_ptr<model_coefficients>>>
 {
     pcl::SACSegmentationFromNormals<point, normal> seg;
     
@@ -32,13 +32,13 @@ auto fit_cylinder(const std::shared_ptr<point_cloud>& input_cloud,
     seg.segment(*inliers, *coefficients);
     
     // Finish early if can't find any more inliners.
-    if (inliers->indices.size() == 0) return std::nullopt;
+    if (inliers->indices.size() == 0) return boost::none;
     
-    return std::optional(std::make_tuple(inliers, coefficients));
+    return std::make_tuple(inliers, coefficients);
 }
 
 auto fit_plane(const std::shared_ptr<point_cloud>& input_cloud)
--> std::optional<std::tuple<std::shared_ptr<point_indices>, std::shared_ptr<model_coefficients>>>
+-> boost::optional<std::tuple<std::shared_ptr<point_indices>, std::shared_ptr<model_coefficients>>>
 {
     pcl::SACSegmentation<point> seg;
     
@@ -54,13 +54,13 @@ auto fit_plane(const std::shared_ptr<point_cloud>& input_cloud)
     seg.segment(*inliers, *coefficients);
     
     // Finish early if can't find any more inliners.
-    if (inliers->indices.size() == 0) return std::nullopt;
+    if (inliers->indices.size() == 0) return boost::none;
     
-    return std::optional(std::make_tuple(inliers, coefficients));
+    return std::make_tuple(inliers, coefficients);
 }
 
 auto fit_line(const std::shared_ptr<point_cloud>& input_cloud)
--> std::optional<std::tuple<std::shared_ptr<point_indices>, std::shared_ptr<model_coefficients>>>
+-> boost::optional<std::tuple<std::shared_ptr<point_indices>, std::shared_ptr<model_coefficients>>>
 {
     pcl::SACSegmentation<point> seg;
     
@@ -76,9 +76,9 @@ auto fit_line(const std::shared_ptr<point_cloud>& input_cloud)
     seg.segment(*inliers, *coefficients);
     
     // Finish early if can't find any more inliners.
-    if (inliers->indices.size() == 0) return std::nullopt;
+    if (inliers->indices.size() == 0) return boost::none;
     
-    return std::optional(std::make_tuple(inliers, coefficients));
+    return std::make_tuple(inliers, coefficients);
 }
 
 

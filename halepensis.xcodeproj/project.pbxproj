@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93002379263F3E5100FA265E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93002372263F3E5100FA265E /* main.cpp */; };
 		9309500A26E91655006ECDA4 /* outliers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9309500826E91655006ECDA4 /* outliers.cpp */; };
 		930A0FCE26E55205007D4119 /* scaling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930A0FCC26E55205007D4119 /* scaling.cpp */; };
 		930A0FD526E56362007D4119 /* hole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930A0FD326E56362007D4119 /* hole.cpp */; };
 		9311008626A6F7870047F836 /* regions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9311008426A6F7870047F836 /* regions.cpp */; };
 		9329396326B408C900AEF37A /* search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9329396126B408C900AEF37A /* search.cpp */; };
 		9329396626B41E8600AEF37A /* filtering.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9329396426B41E8600AEF37A /* filtering.cpp */; };
+		93351CE0270A360700F4FDCF /* alignment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93351CDE270A360700F4FDCF /* alignment.cpp */; };
+		9339683A27037F7D003A8809 /* object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9339683827037F7D003A8809 /* object.cpp */; };
+		9339683D2703A4A9003A8809 /* recognition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9339683B2703A4A9003A8809 /* recognition.cpp */; };
 		936320DC26C3DA48009B134A /* visualization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9377E2BB26A613AE0075D421 /* visualization.cpp */; };
 		936320E126C3E408009B134A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936320DF26C3E408009B134A /* OpenGL.framework */; };
 		936A43BB26B2A2140053C3A8 /* ransac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936A43B926B2A2140053C3A8 /* ransac.cpp */; };
@@ -161,6 +163,7 @@
 		9388081626FFC8440090709B /* libvtkViewsInfovis-9.0.9.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84FAE26FB96C500896B1F /* libvtkViewsInfovis-9.0.9.0.3.dylib */; };
 		9388081826FFC8440090709B /* libvtkViewsQt-9.0.9.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84F8A26FB96C300896B1F /* libvtkViewsQt-9.0.9.0.3.dylib */; };
 		9388081A26FFC89E0090709B /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936320E026C3E408009B134A /* GLUT.framework */; };
+		9388081F26FFCA920090709B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93002372263F3E5100FA265E /* main.cpp */; };
 		9389B87926C139A5006ACA66 /* libfreenect.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9389B86926C1394B006ACA66 /* libfreenect.dylib */; };
 		9389B88126C139A5006ACA66 /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002780263F4A5D00FA265E /* libboost_system-mt.dylib */; };
 		9389B88226C139A5006ACA66 /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002782263F4A6A00FA265E /* libboost_filesystem-mt.dylib */; };
@@ -870,6 +873,8 @@
 		9329396226B408C900AEF37A /* search.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = search.hpp; sourceTree = "<group>"; };
 		9329396426B41E8600AEF37A /* filtering.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = filtering.cpp; sourceTree = "<group>"; };
 		9329396526B41E8600AEF37A /* filtering.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = filtering.hpp; sourceTree = "<group>"; };
+		93351CDE270A360700F4FDCF /* alignment.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = alignment.cpp; sourceTree = "<group>"; };
+		93351CDF270A360700F4FDCF /* alignment.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = alignment.hpp; sourceTree = "<group>"; };
 		9338A11226E2BF2D002A236E /* hooks_scan_2.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = hooks_scan_2.pcd; sourceTree = "<group>"; };
 		9338A11326E2BF2D002A236E /* hooks_scan_1.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = hooks_scan_1.pcd; sourceTree = "<group>"; };
 		9338A11526E2BF2D002A236E /* hanger_2_scan_2.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = hanger_2_scan_2.pcd; sourceTree = "<group>"; };
@@ -895,6 +900,10 @@
 		9338A13026E2BF2D002A236E /* cutting_board_scan_1.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = cutting_board_scan_1.pcd; sourceTree = "<group>"; };
 		9338A13126E2BF2D002A236E /* cutting_board_scan_3.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = cutting_board_scan_3.pcd; sourceTree = "<group>"; };
 		9338A13226E2BF2D002A236E /* cutting_board_scan_2.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = cutting_board_scan_2.pcd; sourceTree = "<group>"; };
+		9339683827037F7D003A8809 /* object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = object.cpp; sourceTree = "<group>"; };
+		9339683927037F7D003A8809 /* object.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = object.hpp; sourceTree = "<group>"; };
+		9339683B2703A4A9003A8809 /* recognition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = recognition.cpp; sourceTree = "<group>"; };
+		9339683C2703A4A9003A8809 /* recognition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = recognition.hpp; sourceTree = "<group>"; };
 		936320DD26C3E3D6009B134A /* libglut.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglut.dylib; path = ../../../../usr/local/Cellar/freeglut/3.2.1_1/lib/libglut.dylib; sourceTree = "<group>"; };
 		936320DF26C3E408009B134A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		936320E026C3E408009B134A /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -1420,18 +1429,7 @@
 		9300237A263F3E6600FA265E /* data */ = {
 			isa = PBXGroup;
 			children = (
-				93D850C926FBB0D100896B1F /* scene_12.pcd */,
-				93D850BE26FBA6BD00896B1F /* scene_1.pcd */,
-				93D850C826FBA6BE00896B1F /* scene_2.pcd */,
-				93D850C626FBA6BE00896B1F /* scene_3.pcd */,
-				93D850C026FBA6BD00896B1F /* scene_4.pcd */,
-				93D850C526FBA6BE00896B1F /* scene_5.pcd */,
-				93D850C126FBA6BE00896B1F /* scene_6.pcd */,
-				93D850C726FBA6BE00896B1F /* scene_7.pcd */,
-				93D850BF26FBA6BD00896B1F /* scene_8.pcd */,
-				93D850C326FBA6BE00896B1F /* scene_9.pcd */,
-				93D850C226FBA6BE00896B1F /* scene_10.pcd */,
-				93D850C426FBA6BE00896B1F /* scene_11.pcd */,
+				9388081D26FFC9E70090709B /* scenes */,
 				930A0FD026E55A9E007D4119 /* claws_scan */,
 				9338A12526E2BF2D002A236E /* mug_scan */,
 				9311008226A6E3500047F836 /* samples */,
@@ -2154,6 +2152,8 @@
 			children = (
 				930A0FD326E56362007D4119 /* hole.cpp */,
 				930A0FD426E56362007D4119 /* hole.hpp */,
+				9339683827037F7D003A8809 /* object.cpp */,
+				9339683927037F7D003A8809 /* object.hpp */,
 			);
 			path = detection;
 			sourceTree = "<group>";
@@ -2271,8 +2271,31 @@
 				930A0FCD26E55205007D4119 /* scaling.hpp */,
 				9309500826E91655006ECDA4 /* outliers.cpp */,
 				9309500926E91655006ECDA4 /* outliers.hpp */,
+				9339683B2703A4A9003A8809 /* recognition.cpp */,
+				9339683C2703A4A9003A8809 /* recognition.hpp */,
+				93351CDE270A360700F4FDCF /* alignment.cpp */,
+				93351CDF270A360700F4FDCF /* alignment.hpp */,
 			);
 			path = processing;
+			sourceTree = "<group>";
+		};
+		9388081D26FFC9E70090709B /* scenes */ = {
+			isa = PBXGroup;
+			children = (
+				93D850C926FBB0D100896B1F /* scene_12.pcd */,
+				93D850BE26FBA6BD00896B1F /* scene_1.pcd */,
+				93D850C826FBA6BE00896B1F /* scene_2.pcd */,
+				93D850C626FBA6BE00896B1F /* scene_3.pcd */,
+				93D850C026FBA6BD00896B1F /* scene_4.pcd */,
+				93D850C526FBA6BE00896B1F /* scene_5.pcd */,
+				93D850C126FBA6BE00896B1F /* scene_6.pcd */,
+				93D850C726FBA6BE00896B1F /* scene_7.pcd */,
+				93D850BF26FBA6BD00896B1F /* scene_8.pcd */,
+				93D850C326FBA6BE00896B1F /* scene_9.pcd */,
+				93D850C226FBA6BE00896B1F /* scene_10.pcd */,
+				93D850C426FBA6BE00896B1F /* scene_11.pcd */,
+			);
+			path = scenes;
 			sourceTree = "<group>";
 		};
 		938BBEF02642A65D004E3B5C /* hook_scan */ = {
@@ -2360,10 +2383,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93351CE0270A360700F4FDCF /* alignment.cpp in Sources */,
+				9339683A27037F7D003A8809 /* object.cpp in Sources */,
 				939CE33C26B98F6700A93166 /* features.cpp in Sources */,
 				930A0FCE26E55205007D4119 /* scaling.cpp in Sources */,
 				9329396326B408C900AEF37A /* search.cpp in Sources */,
-				93002379263F3E5100FA265E /* main.cpp in Sources */,
 				9329396626B41E8600AEF37A /* filtering.cpp in Sources */,
 				930A0FD526E56362007D4119 /* hole.cpp in Sources */,
 				9372E35E26B89C4200D0675E /* io.cpp in Sources */,
@@ -2371,7 +2395,9 @@
 				936A43BB26B2A2140053C3A8 /* ransac.cpp in Sources */,
 				9311008626A6F7870047F836 /* regions.cpp in Sources */,
 				9372E36126B89D6700D0675E /* normals.cpp in Sources */,
+				9388081F26FFCA920090709B /* main.cpp in Sources */,
 				9377E2C126A62C0F0075D421 /* clusters.cpp in Sources */,
+				9339683D2703A4A9003A8809 /* recognition.cpp in Sources */,
 				9309500A26E91655006ECDA4 /* outliers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2394,7 +2420,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -2479,7 +2505,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;

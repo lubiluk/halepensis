@@ -52,14 +52,17 @@ auto downsample(const std::shared_ptr<point_cloud>& input,
     return output;
 }
 
-auto filter_depth(const std::shared_ptr<point_cloud>& input,
-                       const double threshold) -> std::shared_ptr<point_cloud>
+auto filter_field(const std::shared_ptr<point_cloud>& input,
+                  const std::string& field_name,
+                  const double threshold,
+                  const bool negative) -> std::shared_ptr<point_cloud>
 {
     pcl::PassThrough<point> pass;
     auto output = std::make_shared<point_cloud>();
     pass.setInputCloud(input);
-    pass.setFilterFieldName("z");
+    pass.setFilterFieldName(field_name);
     pass.setFilterLimits(0, threshold);
+    pass.setNegative(negative);
     pass.filter(*output);
     
     return output;

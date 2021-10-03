@@ -3,7 +3,7 @@
 
 namespace pcl
 {
-struct PointXYZ;
+struct PointNormal;
 struct Normal;
 struct FPFHSignature33;
 template<class T>
@@ -18,7 +18,7 @@ struct ModelCoefficients;
 struct PointIndices;
 }
 
-using point = pcl::PointXYZ;
+using point = pcl::PointNormal;
 using point_cloud = pcl::PointCloud<point>;
 using normal = pcl::Normal;
 using surface_normals = pcl::PointCloud<normal>;
