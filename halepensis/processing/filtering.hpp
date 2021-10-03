@@ -15,6 +15,7 @@ auto downsample(const std::shared_ptr<point_cloud>& input,
                 const float voxel_grid_size = 0.005f) -> std::shared_ptr<point_cloud>;
 
 auto filter_field(const std::shared_ptr<point_cloud>& input,
-                  const std::string& field_name = "z",
-                  const double threshold = 1.0,
+                  const std::string& field_name,
+                  const double low,
+                  const double high,
                   const bool negative = false) -> std::shared_ptr<point_cloud>;

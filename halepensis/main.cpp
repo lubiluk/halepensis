@@ -55,7 +55,8 @@ int main(int argc, const char *argv[])
     view_clusters(cloud_before, objects);
     
     auto hanger = objects.front();
-    hanger = filter_field(hanger, "x", 0.4, false);
+    // Remove hand
+    hanger = filter_field(hanger, "x", -0.1, 0.5);
     
     view(hanger);
 

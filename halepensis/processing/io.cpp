@@ -5,6 +5,7 @@
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_cloud.h>
 #include <pcl/point_types.h>
+#include <pcl/filters/filter.h>
 #pragma clang diagnostic pop
 
 auto load_cloud(const std::string& pcd_file) -> std::shared_ptr<point_cloud>
@@ -16,8 +17,9 @@ auto load_cloud(const std::string& pcd_file) -> std::shared_ptr<point_cloud>
         return nullptr;
     }
     
+    std::vector<int> indices;
+    pcl::removeNaNFromPointCloud(*cloud, *cloud, indices);
     const auto result = std::make_shared<point_cloud>();
-    
     pcl::copyPointCloud(*cloud, *result);
     
     return result;
