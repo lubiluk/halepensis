@@ -904,6 +904,12 @@
 		9339683927037F7D003A8809 /* object.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = object.hpp; sourceTree = "<group>"; };
 		9339683B2703A4A9003A8809 /* recognition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = recognition.cpp; sourceTree = "<group>"; };
 		9339683C2703A4A9003A8809 /* recognition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = recognition.hpp; sourceTree = "<group>"; };
+		935A45FC270B963A00E62C0E /* 2_hanger_on_hooks.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2_hanger_on_hooks.pcd; sourceTree = "<group>"; };
+		935A45FD270B963A00E62C0E /* far_1.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = far_1.pcd; sourceTree = "<group>"; };
+		935A45FE270B963A00E62C0E /* far_3.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = far_3.pcd; sourceTree = "<group>"; };
+		935A45FF270B963A00E62C0E /* 1_hooks_only.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = 1_hooks_only.pcd; sourceTree = "<group>"; };
+		935A4600270B963B00E62C0E /* far_2.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = far_2.pcd; sourceTree = "<group>"; };
+		935A4601270B963B00E62C0E /* 3_hanger_next_to_hooks.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = 3_hanger_next_to_hooks.pcd; sourceTree = "<group>"; };
 		936320DD26C3E3D6009B134A /* libglut.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglut.dylib; path = ../../../../usr/local/Cellar/freeglut/3.2.1_1/lib/libglut.dylib; sourceTree = "<group>"; };
 		936320DF26C3E408009B134A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		936320E026C3E408009B134A /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -1429,6 +1435,12 @@
 		9300237A263F3E6600FA265E /* data */ = {
 			isa = PBXGroup;
 			children = (
+				935A45FF270B963A00E62C0E /* 1_hooks_only.pcd */,
+				935A45FC270B963A00E62C0E /* 2_hanger_on_hooks.pcd */,
+				935A4601270B963B00E62C0E /* 3_hanger_next_to_hooks.pcd */,
+				935A45FD270B963A00E62C0E /* far_1.pcd */,
+				935A4600270B963B00E62C0E /* far_2.pcd */,
+				935A45FE270B963A00E62C0E /* far_3.pcd */,
 				9388081D26FFC9E70090709B /* scenes */,
 				930A0FD026E55A9E007D4119 /* claws_scan */,
 				9338A12526E2BF2D002A236E /* mug_scan */,

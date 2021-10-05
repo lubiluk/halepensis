@@ -5,12 +5,16 @@
 #include <pcl/point_types.h>
 #include <pcl/features/boundary.h>
 #include <pcl/search/kdtree.h>
+#include <pcl/common/io.h>
 #pragma clang diagnostic pop
 
 
-auto estimate_boundaries(const std::shared_ptr<point_cloud>& cloud, const std::shared_ptr<surface_normals>& normals)
+auto estimate_boundaries(const std::shared_ptr<point_cloud>& cloud)
 -> std::shared_ptr<point_indices>
 {
+    const auto normals = std::make_shared<surface_normals>();
+    pcl::copyPointCloud(*cloud, *normals);
+    
     pcl::PointCloud<pcl::Boundary> boundaries;
     pcl::BoundaryEstimation<point, normal, pcl::Boundary> est;
     est.setInputCloud(cloud);

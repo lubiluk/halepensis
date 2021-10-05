@@ -14,10 +14,12 @@
 #include <pcl/filters/extract_indices.h>
 #pragma clang diagnostic pop
 
-auto segment_regions(const std::shared_ptr<point_cloud>& input_cloud,
-                     const std::shared_ptr<surface_normals>& input_normals)
+auto segment_regions(const std::shared_ptr<point_cloud>& input_cloud)
 -> std::vector<std::shared_ptr<point_indices>>
 {
+    const auto input_normals = std::make_shared<surface_normals>();
+    pcl::copyPointCloud(*input_cloud, *input_normals);
+    
     pcl::search::Search<point>::Ptr tree (new pcl::search::KdTree<point>);
     pcl::IndicesPtr indices (new std::vector <int>);
     pcl::removeNaNFromPointCloud(*input_cloud, *indices);
@@ -30,7 +32,7 @@ auto segment_regions(const std::shared_ptr<point_cloud>& input_cloud,
     reg.setInputCloud (input_cloud);
     reg.setIndices (indices);
     reg.setInputNormals (input_normals);
-    reg.setSmoothnessThreshold (1.0 / 180.0 * M_PI);
+    reg.setSmoothnessThreshold (4.0 / 180.0 * M_PI);
     reg.setCurvatureThreshold (1.0);
     
     std::vector<point_indices> clusters;

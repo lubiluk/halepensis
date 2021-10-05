@@ -3,6 +3,7 @@
 #include <vector>
 #include <mutex>
 #include <limits>
+#include <boost/interprocess/sync/scoped_lock.hpp>
 
 #if defined(__APPLE__)
 #include <GLUT/glut.h>
@@ -31,7 +32,7 @@ public:
     // Do not call directly, even in child
     void VideoCallback(void *_rgb, uint32_t timestamp)
     {
-        std::scoped_lock lock(m_rgb_mutex);
+        boost::interprocess::scoped_lock<std::mutex> lock(m_rgb_mutex);
         uint8_t* rgb = static_cast<uint8_t*>(_rgb);
         copy(rgb, rgb+getVideoBufferSize(), m_buffer_video.begin());
         m_new_rgb_frame = true;
@@ -40,7 +41,7 @@ public:
     // Do not call directly, even in child
     void DepthCallback(void *_depth, uint32_t timestamp)
     {
-        std::scoped_lock lock(m_depth_mutex);
+        boost::interprocess::scoped_lock<std::mutex> lock(m_depth_mutex);
         uint16_t* depth = static_cast<uint16_t*>(_depth);
         copy(depth, depth+getDepthBufferSize()/2, m_buffer_depth.begin());
         m_new_depth_frame = true;
@@ -48,7 +49,7 @@ public:
 
     bool getRGB(std::vector<uint8_t> &buffer)
     {
-        std::scoped_lock lock(m_rgb_mutex);
+        boost::interprocess::scoped_lock<std::mutex> lock(m_rgb_mutex);
         
         if (!m_new_rgb_frame)
             return false;
@@ -61,7 +62,7 @@ public:
 
     bool getDepth(std::vector<uint16_t> &buffer)
     {
-        std::scoped_lock lock(m_depth_mutex);
+        boost::interprocess::scoped_lock<std::mutex> lock(m_depth_mutex);
         
         if (!m_new_depth_frame)
             return false;

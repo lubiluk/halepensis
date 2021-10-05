@@ -10,13 +10,12 @@
 #include <pcl/point_cloud.h>
 #pragma clang diagnostic pop
 
-auto find_holes(const std::shared_ptr<point_cloud> &cloud, const std::shared_ptr<surface_normals> &normals)
+auto find_holes(const std::shared_ptr<point_cloud> &cloud)
 -> std::vector<std::shared_ptr<point_cloud>>
 {
-    const auto inliers = estimate_boundaries(cloud, normals);
+    const auto inliers = estimate_boundaries(cloud);
     const auto bound_cloud = extract_cloud(cloud, inliers);
-    const auto bound_normals = extract_normals(normals, inliers);
-    const auto bound_cluster_indices = segment_regions(bound_cloud, bound_normals);
+    const auto bound_cluster_indices = segment_regions(bound_cloud);
     std::vector<std::shared_ptr<point_cloud>> bound_clusters;
     std::transform(bound_cluster_indices.begin(),
                    bound_cluster_indices.end(),
