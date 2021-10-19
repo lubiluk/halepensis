@@ -173,6 +173,8 @@
 		9389B89126C139A5006ACA66 /* libflann_cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002797263F4BAE00FA265E /* libflann_cpp.dylib */; };
 		9389B8A226C139A5006ACA66 /* libpcl_common.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002700263F453200FA265E /* libpcl_common.dylib */; };
 		9389B8CE26C139BB006ACA66 /* capture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9389B86726C137D5006ACA66 /* capture.cpp */; };
+		939B8A9B271DCAF2004B29AD /* scene_graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 939B8A99271DCAF2004B29AD /* scene_graph.cpp */; };
+		939B8A9F271F5D8C004B29AD /* graph_visualization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 939B8A9D271F5D8C004B29AD /* graph_visualization.cpp */; };
 		939CE33C26B98F6700A93166 /* features.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 939CE33A26B98F6700A93166 /* features.cpp */; };
 		93D84F3A26FB92A400896B1F /* libpcl_common.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84F0526FB928000896B1F /* libpcl_common.dylib */; };
 		93D84F3B26FB92A400896B1F /* libpcl_features.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84F0126FB928000896B1F /* libpcl_features.dylib */; };
@@ -930,6 +932,11 @@
 		938BC1852642A73A004E3B5C /* hook_scan_1.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_1.pcd; sourceTree = "<group>"; };
 		938BC1862642A76B004E3B5C /* hook_scan_2.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_2.pcd; sourceTree = "<group>"; };
 		938BC1872642A7A9004E3B5C /* hook_scan_3.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; path = hook_scan_3.pcd; sourceTree = "<group>"; };
+		939B8A99271DCAF2004B29AD /* scene_graph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = scene_graph.cpp; sourceTree = "<group>"; };
+		939B8A9A271DCAF2004B29AD /* scene_graph.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = scene_graph.hpp; sourceTree = "<group>"; };
+		939B8A9C271E1065004B29AD /* geometry.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = geometry.hpp; sourceTree = "<group>"; };
+		939B8A9D271F5D8C004B29AD /* graph_visualization.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = graph_visualization.cpp; sourceTree = "<group>"; };
+		939B8A9E271F5D8C004B29AD /* graph_visualization.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = graph_visualization.hpp; sourceTree = "<group>"; };
 		939CE33A26B98F6700A93166 /* features.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = features.cpp; sourceTree = "<group>"; };
 		939CE33B26B98F6700A93166 /* features.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = features.hpp; sourceTree = "<group>"; };
 		93D84EF526FB927F00896B1F /* libpcl_cc_tool_sanitize_cloud.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcl_cc_tool_sanitize_cloud.dylib; path = ../../../../usr/local/Cellar/pcl/1.12.0/lib/libpcl_cc_tool_sanitize_cloud.dylib; sourceTree = "<group>"; };
@@ -1424,10 +1431,12 @@
 		9300235C263F3E0800FA265E /* halepensis */ = {
 			isa = PBXGroup;
 			children = (
+				939B8A98271DC822004B29AD /* understanding */,
 				930A0FD226E55FE6007D4119 /* detection */,
 				9377E2BE26A62BD90075D421 /* processing */,
 				93002372263F3E5100FA265E /* main.cpp */,
 				9389B86726C137D5006ACA66 /* capture.cpp */,
+				939B8A9C271E1065004B29AD /* geometry.hpp */,
 			);
 			path = halepensis;
 			sourceTree = "<group>";
@@ -2321,6 +2330,17 @@
 			path = hook_scan;
 			sourceTree = "<group>";
 		};
+		939B8A98271DC822004B29AD /* understanding */ = {
+			isa = PBXGroup;
+			children = (
+				939B8A99271DCAF2004B29AD /* scene_graph.cpp */,
+				939B8A9A271DCAF2004B29AD /* scene_graph.hpp */,
+				939B8A9D271F5D8C004B29AD /* graph_visualization.cpp */,
+				939B8A9E271F5D8C004B29AD /* graph_visualization.hpp */,
+			);
+			path = understanding;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2396,6 +2416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93351CE0270A360700F4FDCF /* alignment.cpp in Sources */,
+				939B8A9F271F5D8C004B29AD /* graph_visualization.cpp in Sources */,
 				9339683A27037F7D003A8809 /* object.cpp in Sources */,
 				939CE33C26B98F6700A93166 /* features.cpp in Sources */,
 				930A0FCE26E55205007D4119 /* scaling.cpp in Sources */,
@@ -2408,6 +2429,7 @@
 				9311008626A6F7870047F836 /* regions.cpp in Sources */,
 				9372E36126B89D6700D0675E /* normals.cpp in Sources */,
 				9388081F26FFCA920090709B /* main.cpp in Sources */,
+				939B8A9B271DCAF2004B29AD /* scene_graph.cpp in Sources */,
 				9377E2C126A62C0F0075D421 /* clusters.cpp in Sources */,
 				9339683D2703A4A9003A8809 /* recognition.cpp in Sources */,
 				9309500A26E91655006ECDA4 /* outliers.cpp in Sources */,

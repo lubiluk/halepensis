@@ -6,11 +6,15 @@
 #include "clusters.hpp"
 #include "alignment.hpp"
 #include "hole.hpp"
+#include "scene_graph.hpp"
+#include "graph_visualization.hpp"
 
 #include <iostream>
 #include <algorithm>
 #include <vector>
 
+/*  */
+/*  */
 
 int main(int argc, const char *argv[])
 {
@@ -64,6 +68,15 @@ int main(int argc, const char *argv[])
     // Find holes
     const auto holes = find_holes(hanger);
     view_clusters(hanger, holes);
-
+    
+    
+    SceneGraph graph;
+    Object hanger_obj { "hanger" };
+    Hole hole;
+    hanger_obj.features.push_back(hole);
+    graph.objects.push_back(hanger_obj);
+    
+    view(graph);
+    
     return 0;
 }
