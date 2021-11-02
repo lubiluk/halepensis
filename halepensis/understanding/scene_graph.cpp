@@ -1,8 +1,12 @@
 #include "scene_graph.hpp"
-#include "id_provider.hpp"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything"
+#include <pcl/common/io.h>
+#include <pcl/common/transforms.h>
+#pragma clang diagnostic pop
 
-SceneEntity::SceneEntity(std::string id, const Vector position, const Quaternion orientation):
+SceneEntity::SceneEntity(std::string id, Vector position, Quaternion orientation):
 id(id),
 position(position),
 orientation(orientation)
@@ -15,14 +19,28 @@ SceneEntity::~SceneEntity()
     
 }
 
-CloudEntity::CloudEntity(const std::string id,
-                         const std::shared_ptr<PointCloud> cloud,
-                         const Vector position,
-                         const Quaternion orientation):
+auto SceneEntity::transform(const Transform& transform) -> void
+{
+    Eigen::Affine3f t{transform};
+    position = t * position;
+    orientation = t.rotate(orientation).rotation();
+}
+
+CloudEntity::CloudEntity(std::string id,
+                         std::shared_ptr<PointCloud> cloud,
+                         Vector position,
+                         Quaternion orientation):
 SceneEntity(id, position, orientation),
 cloud(cloud)
 {
     
+}
+
+CloudEntity::CloudEntity(const CloudEntity& original):
+SceneEntity(original),
+cloud(std::make_shared<PointCloud>())
+{
+    pcl::copyPointCloud(*(original.cloud), *cloud);
 }
 
 CloudEntity::~CloudEntity()
@@ -30,26 +48,61 @@ CloudEntity::~CloudEntity()
     
 }
 
-HoleFeature::HoleFeature(const std::shared_ptr<PointCloud> cloud,
-                         const Vector position,
-                         const Quaternion orientation):
-CloudEntity(IdProvider::instance().next_id("hole"), cloud, position, orientation)
+auto CloudEntity::transform(const Transform& transform) -> void
+{
+    SceneEntity::transform(transform);
+    pcl::transformPointCloud(*cloud, *cloud, transform);
+}
+
+HoleFeature::HoleFeature(std::string id,
+                         std::shared_ptr<PointCloud> cloud,
+                         Vector position,
+                         Quaternion orientation):
+CloudEntity(id, cloud, position, orientation)
 {
     
 }
 
-MassCenter::MassCenter(const Vector position):
-SceneEntity(IdProvider::instance().next_id("mass_center"), position)
+HoleFeature::HoleFeature(const HoleFeature& original):
+CloudEntity(original)
 {
     
 }
 
-SceneObject::SceneObject(const std::shared_ptr<PointCloud> cloud,
-               const Vector position,
-               const Quaternion orientation):
-CloudEntity(IdProvider::instance().next_id("object"), cloud, position, orientation)
+auto HoleFeature::clone() -> std::shared_ptr<SceneEntity> const
+{
+    return std::make_shared<HoleFeature>(*this);
+}
+
+MassCenter::MassCenter(std::string id, Vector position):
+SceneEntity(id, position)
 {
     
+}
+
+auto MassCenter::clone() -> std::shared_ptr<SceneEntity> const
+{
+    return std::make_shared<MassCenter>(*this);
+}
+
+SceneObject::SceneObject(std::string id,
+                         std::shared_ptr<PointCloud> cloud,
+                         Vector position,
+                         Quaternion orientation):
+CloudEntity(id, cloud, position, orientation)
+{
+    
+}
+
+SceneObject::SceneObject(const SceneObject& original):
+CloudEntity(original)
+{
+    
+}
+
+auto SceneObject::clone() -> std::shared_ptr<SceneEntity> const
+{
+    return std::make_shared<SceneObject>(*this);
 }
 
 SceneUnderstanding::SceneUnderstanding(const std::shared_ptr<PointCloud> cloud):

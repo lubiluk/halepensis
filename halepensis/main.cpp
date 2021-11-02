@@ -57,7 +57,7 @@ int main(int argc, const char *argv[])
     for (const auto& i : task.focus_indices)
     {
         detect_features(task.before_scene.objects[i]);
-//        copy_features(task.before_scene.objects[i], task.after_scene.objects[i]);
+        copy_features(task.before_scene.objects[i], task.after_scene.objects[i], task.object_transforms[i]);
     }
     
     view_scenes(task);

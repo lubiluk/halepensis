@@ -1,5 +1,7 @@
 #pragma once
 
+#include "geometry.hpp"
+
 class TaskUnderstanding;
 class SceneUnderstanding;
 class SceneObject;
@@ -11,4 +13,4 @@ auto detect_features(SceneObject& object) -> void;
 auto describe_relations(const SceneUnderstanding& scene) -> void;
 auto form_hypotheses(const TaskUnderstanding& task) -> void;
 
-auto copy_features(const SceneObject& src, SceneObject& dst) -> void;
+auto copy_features(const SceneObject& src, SceneObject& dst, Transform& transform) -> void;

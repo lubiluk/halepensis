@@ -316,7 +316,6 @@
 		93D850B926FB96E900896B1F /* libvtkFiltersAMR-9.0.9.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84FC726FB96C700896B1F /* libvtkFiltersAMR-9.0.9.0.3.dylib */; };
 		93D850BB26FB96E900896B1F /* libvtkFiltersProgrammable-9.0.9.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84FC826FB96C700896B1F /* libvtkFiltersProgrammable-9.0.9.0.3.dylib */; };
 		93D8675F272899DC0004B332 /* properties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93D8675D272899DC0004B332 /* properties.cpp */; };
-		93D86762272952A90004B332 /* id_provider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93D86760272952A90004B332 /* id_provider.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1113,8 +1112,6 @@
 		93D850C926FBB0D100896B1F /* scene_12.pcd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scene_12.pcd; sourceTree = "<group>"; };
 		93D8675D272899DC0004B332 /* properties.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = properties.cpp; sourceTree = "<group>"; };
 		93D8675E272899DC0004B332 /* properties.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = properties.hpp; sourceTree = "<group>"; };
-		93D86760272952A90004B332 /* id_provider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = id_provider.cpp; sourceTree = "<group>"; };
-		93D86761272952A90004B332 /* id_provider.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = id_provider.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2353,8 +2350,6 @@
 				939B8A9E271F5D8C004B29AD /* graph_visualization.hpp */,
 				9378FCB22726012D007451E6 /* pipeline.cpp */,
 				9378FCB32726012D007451E6 /* pipeline.hpp */,
-				93D86760272952A90004B332 /* id_provider.cpp */,
-				93D86761272952A90004B332 /* id_provider.hpp */,
 				93B6DDB3272C59AF002B7A64 /* scene_visualization.cpp */,
 				93B6DDB4272C59AF002B7A64 /* scene_visualization.hpp */,
 			);
@@ -2443,7 +2438,6 @@
 				9329396326B408C900AEF37A /* search.cpp in Sources */,
 				9329396626B41E8600AEF37A /* filtering.cpp in Sources */,
 				93B6DDB5272C59AF002B7A64 /* scene_visualization.cpp in Sources */,
-				93D86762272952A90004B332 /* id_provider.cpp in Sources */,
 				930A0FD526E56362007D4119 /* hole.cpp in Sources */,
 				9372E35E26B89C4200D0675E /* io.cpp in Sources */,
 				9378FCB42726012D007451E6 /* pipeline.cpp in Sources */,

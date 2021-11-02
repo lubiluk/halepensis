@@ -9,47 +9,58 @@
 // Entity exists, hence must have a position. Orientation might be meaningless though.
 class SceneEntity {
 public:
-    const std::string id;
-    const Vector position;
-    const Quaternion orientation;
+    std::string id;
+    Vector position;
+    Quaternion orientation;
     virtual ~SceneEntity() = 0;
+    virtual auto transform(const Transform& transform) -> void;
+    virtual auto clone() -> std::shared_ptr<SceneEntity> const = 0;
     
 protected:
-    SceneEntity(const std::string id,
-                const Vector position,
-                const Quaternion orientation = Quaternion{});
+    SceneEntity(std::string id,
+                Vector position,
+                Quaternion orientation = Quaternion{});
 };
 
 class CloudEntity: public SceneEntity {
 public:
-    const std::shared_ptr<PointCloud> cloud;
+    std::shared_ptr<PointCloud> cloud;
     virtual ~CloudEntity() = 0;
+    virtual auto transform(const Transform& transform) -> void override;
 protected:
-    CloudEntity(const std::string id,
-                const std::shared_ptr<PointCloud> cloud,
-                const Vector position,
-                const Quaternion orientation);
+    CloudEntity(std::string id,
+                std::shared_ptr<PointCloud> cloud,
+                Vector position,
+                Quaternion orientation);
+    CloudEntity(const CloudEntity& original);
 };
 
 class HoleFeature: public CloudEntity {
 public:
-    HoleFeature(const std::shared_ptr<PointCloud> cloud,
-                const Vector position,
-                const Quaternion orientation);
+    HoleFeature(std::string id,
+                std::shared_ptr<PointCloud> cloud,
+                Vector position,
+                Quaternion orientation);
+    HoleFeature(const HoleFeature& original);
+    virtual auto clone() -> std::shared_ptr<SceneEntity> const override;
 };
 
 class MassCenter: public SceneEntity {
 public:
-    MassCenter(const Vector position);
+    MassCenter(std::string id, Vector position);
+    virtual auto clone() -> std::shared_ptr<SceneEntity> const override;
 };
 
 class SceneObject: public CloudEntity {
 public:
     std::vector<std::shared_ptr<SceneEntity>> features;
     
-    SceneObject(const std::shared_ptr<PointCloud> cloud,
-           const Vector position,
-           const Quaternion orientation);
+    SceneObject(std::string id,
+                std::shared_ptr<PointCloud> cloud,
+                Vector position,
+                Quaternion orientation);
+    SceneObject(const SceneObject& original);
+    virtual auto clone() -> std::shared_ptr<SceneEntity> const override;
 };
 
 class EntityRelation {
@@ -64,7 +75,7 @@ public:
     std::vector<SceneObject> objects;
     std::vector<EntityRelation> relations;
     
-    SceneUnderstanding(const std::shared_ptr<PointCloud> cloud);
+    SceneUnderstanding(std::shared_ptr<PointCloud> cloud);
     auto object_clouds() -> std::vector<std::shared_ptr<PointCloud>>;
 };
 
@@ -73,6 +84,7 @@ public:
     SceneUnderstanding before_scene;
     SceneUnderstanding after_scene;
     std::vector<std::vector<SceneObject>::size_type> focus_indices;
+    std::vector<Transform> object_transforms;
     
-    TaskUnderstanding(const std::shared_ptr<PointCloud> before_cloud, const std::shared_ptr<PointCloud> after_cloud);
+    TaskUnderstanding(std::shared_ptr<PointCloud> before_cloud, const std::shared_ptr<PointCloud> after_cloud);
 };

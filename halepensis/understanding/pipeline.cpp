@@ -13,19 +13,22 @@ auto detect_objects(TaskUnderstanding& task) -> void
     const auto clouds = find_objects(task.before_scene.cloud);
     
     /* Segment out objects on before_scene */
-    transform(clouds.begin(), clouds.end(), back_inserter(task.before_scene.objects),
-              [](const auto& c) -> SceneObject {
-        const auto props = detect_properties(c);
-        return {c, props.position, props.rotation};
-    });
+    for (int i = 0; i < clouds.size(); ++i) {
+        auto& c = clouds[i];
+        auto props = detect_properties(c);
+        auto oid = "object_" + to_string(i);
+        task.before_scene.objects.emplace_back(oid, c, props.position, props.rotation);
+    }
     
     /* Find the same objects in after_scene */
     for (const auto& o : task.before_scene.objects)
     {
-        const auto aligned_cloud = align(o.cloud, task.after_scene.cloud).second;
-        const auto props = detect_properties(aligned_cloud);
-        const auto ao = SceneObject{aligned_cloud, props.position, props.rotation};
+        auto alignment = align(o.cloud, task.after_scene.cloud);
+        auto aligned_cloud = alignment.second;
+        auto props = detect_properties(aligned_cloud);
+        auto ao = SceneObject{o.id, aligned_cloud, props.position, props.rotation};
         task.after_scene.objects.push_back(ao);
+        task.object_transforms.push_back(alignment.first);
     }
 }
 
@@ -41,20 +44,26 @@ auto detect_features(SceneObject& object) -> void
     
     /* Mass center */
     const auto props = detect_properties(object.cloud);
-    object.features.push_back(make_shared<MassCenter>(props.mass_center));
+    object.features.push_back(make_shared<MassCenter>("mass_center", props.mass_center));
     
     /* Find holes */
     const auto holes = find_holes(object.cloud);
     
-    for (const auto& h : holes) {
+    for (int i = 0; i < holes.size(); ++i) {
+        auto& h = holes[i];
         const auto props = detect_properties(h);
-        object.features.push_back(make_shared<HoleFeature>(h, props.position, props.rotation));
+        auto hid = "hole_" + to_string(i);
+        object.features.push_back(make_shared<HoleFeature>(hid, h, props.position, props.rotation));
     }
 }
 
-auto copy_features(const SceneObject& src, SceneObject& dst) -> void
+
+auto copy_features(const SceneObject& src, SceneObject& dst, Transform& transform) -> void
 {
-//    using namespace std;
-//    transform(src.features.begin(), src.features.end(), back_inserter(dst.features),
-//              [](const auto& f) -> auto { return f; });
+    std::transform(src.features.begin(), src.features.end(), back_inserter(dst.features),
+              [&transform](const auto& f) -> auto {
+        auto copy = f->clone();
+        copy->transform(transform);
+        return copy;
+    });
 }
