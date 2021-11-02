@@ -3,10 +3,10 @@
 #include "ransac.hpp"
 #include "filtering.hpp"
 
-auto find_objects(const std::shared_ptr<point_cloud> &cloud, const std::shared_ptr<surface_normals> &normals, const int n)
+auto find_objects(const std::shared_ptr<point_cloud> &cloud, const int n)
 -> std::vector<std::shared_ptr<point_cloud>>
 {
-    const auto indices = extract_euclidean_clusters(cloud, 0.02, 100, 10000);
+    const auto indices = extract_euclidean_clusters(cloud, 0.05, 100, 10000);
 
     std::vector<std::shared_ptr<point_cloud>> clusters;
     std::transform(indices.begin(), indices.end(), std::back_inserter(clusters), [&cloud](const auto& i) -> auto
@@ -18,10 +18,3 @@ auto find_objects(const std::shared_ptr<point_cloud> &cloud, const std::shared_p
     
     return objects;
 }
-
-
-//auto find_object(const std::shared_ptr<point_cloud> &cloud, const std::shared_ptr<point_cloud> &scene)
-//-> std::vector<std::shared_ptr<point_cloud>>
-//{
-//    
-//}

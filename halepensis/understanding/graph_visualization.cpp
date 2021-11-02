@@ -3,6 +3,7 @@
 #include "scene_graph.hpp"
 
 #include <vtkCircularLayoutStrategy.h>
+#include <vtkForceDirectedLayoutStrategy.h>
 #include <vtkDataSetAttributes.h>
 #include <vtkDoubleArray.h>
 #include <vtkGraphLayoutView.h>
@@ -16,24 +17,24 @@
 #include <vtkRenderer.h>
 #include <vtkTextProperty.h>
 
-auto vtkGraphFromSceneGraph(const SceneGraph& graph) -> vtkNew<vtkMutableUndirectedGraph>
+auto vtkGraphFromSceneGraph(const SceneUnderstanding& graph) -> vtkNew<vtkMutableUndirectedGraph>
 {
     vtkNew<vtkMutableUndirectedGraph> g;
     vtkNew<vtkStringArray> vertex_labels;
     vertex_labels->SetNumberOfComponents(1);
-    vertex_labels->SetName("vertex-labels");
+    vertex_labels->SetName("VertexLabels");
     vtkNew<vtkStringArray> edge_labels;
     edge_labels->SetNumberOfComponents(1);
-    edge_labels->SetName("edge-labels");
+    edge_labels->SetName("EdgeLabels");
     
-    for (const auto o : graph.objects)
+    for (const auto& o : graph.objects)
     {
         const auto gv = g->AddVertex();
-        vertex_labels->InsertNextValue(o.get().description);
+        vertex_labels->InsertNextValue(o.id);
         
-        for (const auto& f : o.get().features) {
+        for (const auto& f : o.features) {
             const auto fv = g->AddVertex();
-            vertex_labels->InsertNextValue(f.description);
+            vertex_labels->InsertNextValue(f->id);
             
             g->AddEdge(gv, fv);
         }
@@ -45,7 +46,7 @@ auto vtkGraphFromSceneGraph(const SceneGraph& graph) -> vtkNew<vtkMutableUndirec
     return g;
 }
 
-auto view(const SceneGraph& graph) -> void
+auto view(const SceneUnderstanding& graph) -> void
 {
     vtkNew<vtkNamedColors> colors;
     
@@ -59,16 +60,19 @@ auto view(const SceneGraph& graph) -> void
     graphLayoutView->SetLayoutStrategy(circularLayoutStrategy);
     graphLayoutView->SetVertexLabelVisibility(true);
 //    graphLayoutView->SetEdgeLabelVisibility(true);
-//    graphLayoutView->SetEdgeLabelArrayName("edge-labels");     // default is "labels"
-    graphLayoutView->SetVertexLabelArrayName("vertex-labels"); // default is "labels"
-    dynamic_cast<vtkRenderedGraphRepresentation*>(
-                                                  graphLayoutView->GetRepresentation())
-    ->GetVertexLabelTextProperty()
-    ->SetColor(colors->GetColor3d("Yellow").GetData());
-    dynamic_cast<vtkRenderedGraphRepresentation*>(
-                                                  graphLayoutView->GetRepresentation())
-    ->GetEdgeLabelTextProperty()
-    ->SetColor(colors->GetColor3d("Lime").GetData());
+    graphLayoutView->SetEdgeLabelArrayName("EdgeLabels");     // default is "labels"
+    graphLayoutView->SetVertexLabelArrayName("VertexLabels"); // default is "labels"
+    
+    const auto graph_repr = dynamic_cast<vtkRenderedGraphRepresentation*>(graphLayoutView->GetRepresentation());
+    const auto vertex_property = graph_repr->GetVertexLabelTextProperty();
+    vertex_property->SetColor(colors->GetColor3d("Yellow").GetData());
+    vertex_property->SetFontSize(24);
+    graph_repr->SetVertexLabelTextProperty(vertex_property);
+    const auto edge_property = graph_repr->GetEdgeLabelTextProperty();
+    edge_property->SetColor(colors->GetColor3d("Lime").GetData());
+    edge_property->SetFontSize(24);
+    graph_repr->SetEdgeLabelTextProperty(edge_property);
+
     graphLayoutView->GetRenderer()->SetBackground(
                                                   colors->GetColor3d("Navy").GetData());
     graphLayoutView->GetRenderer()->SetBackground2(
@@ -77,4 +81,95 @@ auto view(const SceneGraph& graph) -> void
     graphLayoutView->ResetCamera();
     graphLayoutView->Render();
     graphLayoutView->GetInteractor()->Start();
+}
+
+auto view(const SceneUnderstanding& scene1, const SceneUnderstanding& scene2) -> void
+{
+    vtkNew<vtkNamedColors> colors;
+    
+    const auto g0 = vtkGraphFromSceneGraph(scene1);
+    const auto g1 = vtkGraphFromSceneGraph(scene2);
+    
+    
+    // There will be one render window
+    vtkNew<vtkRenderWindow> renderWindow;
+//    renderWindow->SetSize(600, 300);
+    renderWindow->SetWindowName("SideBySideGraphs");
+    
+    vtkNew<vtkRenderWindowInteractor> renderWindowInteractor;
+    
+    // Define viewport ranges
+    // (xmin, ymin, xmax, ymax)
+    double leftViewport[4] = {0.0, 0.0, 0.5, 1.0};
+    double rightViewport[4] = {0.5, 0.0, 1.0, 1.0};
+    
+//    vtkNew<vtkForceDirectedLayoutStrategy> forceDirected;
+//    vtkNew<vtkCircularLayoutStrategy> circularLayoutStrategy;
+    
+    vtkNew<vtkGraphLayoutView> graphLayoutView0;
+    // If we create a layout object directly, just set the pointer to this method.
+    // graphLayoutView0->SetLayoutStrategy(forceDirected);
+    graphLayoutView0->SetLayoutStrategyToCircular();
+    graphLayoutView0->SetVertexLabelVisibility(true);
+    //    graphLayoutView->SetEdgeLabelVisibility(true);
+    graphLayoutView0->SetEdgeLabelArrayName("EdgeLabels");     // default is "labels"
+    graphLayoutView0->SetVertexLabelArrayName("VertexLabels"); // default is "labels"
+    graphLayoutView0->SetRenderWindow(renderWindow);
+    graphLayoutView0->SetInteractor(renderWindowInteractor);
+    graphLayoutView0->GetRenderer()->SetViewport(leftViewport);
+    graphLayoutView0->AddRepresentationFromInput(g0);
+    
+    {
+        const auto graph_repr = dynamic_cast<vtkRenderedGraphRepresentation*>(graphLayoutView0->GetRepresentation());
+        const auto vertex_property = graph_repr->GetVertexLabelTextProperty();
+        vertex_property->SetColor(colors->GetColor3d("Yellow").GetData());
+        vertex_property->SetFontSize(24);
+        graph_repr->SetVertexLabelTextProperty(vertex_property);
+        const auto edge_property = graph_repr->GetEdgeLabelTextProperty();
+        edge_property->SetColor(colors->GetColor3d("Lime").GetData());
+        edge_property->SetFontSize(24);
+        graph_repr->SetEdgeLabelTextProperty(edge_property);
+    }
+    
+    graphLayoutView0->GetRenderer()->SetBackground(
+                                                   colors->GetColor3d("Navy").GetData());
+    graphLayoutView0->GetRenderer()->SetBackground2(
+                                                    colors->GetColor3d("MidnightBlue").GetData());
+    graphLayoutView0->Render();
+    graphLayoutView0->ResetCamera();
+    
+    vtkNew<vtkGraphLayoutView> graphLayoutView1;
+    // If we create a layout object directly, just set the pointer to this method.
+    // graphLayoutView1->SetLayoutStrategy(forceDirected);
+    graphLayoutView1->SetLayoutStrategyToCircular();
+    graphLayoutView1->SetVertexLabelVisibility(true);
+    //    graphLayoutView->SetEdgeLabelVisibility(true);
+    graphLayoutView1->SetEdgeLabelArrayName("EdgeLabels");     // default is "labels"
+    graphLayoutView1->SetVertexLabelArrayName("VertexLabels"); // default is "labels"
+    graphLayoutView1->SetRenderWindow(renderWindow);
+    graphLayoutView1->SetInteractor(renderWindowInteractor);
+    graphLayoutView1->GetRenderer()->SetViewport(rightViewport);
+    graphLayoutView1->AddRepresentationFromInput(g1);
+    
+    {
+        const auto graph_repr = dynamic_cast<vtkRenderedGraphRepresentation*>(graphLayoutView1->GetRepresentation());
+        const auto vertex_property = graph_repr->GetVertexLabelTextProperty();
+        vertex_property->SetColor(colors->GetColor3d("Yellow").GetData());
+        vertex_property->SetFontSize(24);
+        graph_repr->SetVertexLabelTextProperty(vertex_property);
+        const auto edge_property = graph_repr->GetEdgeLabelTextProperty();
+        edge_property->SetColor(colors->GetColor3d("Lime").GetData());
+        edge_property->SetFontSize(24);
+        graph_repr->SetEdgeLabelTextProperty(edge_property);
+    }
+    
+    graphLayoutView1->GetRenderer()->SetBackground(
+                                                   colors->GetColor3d("DarkGreen").GetData());
+    graphLayoutView1->GetRenderer()->SetBackground2(
+                                                    colors->GetColor3d("ForestGreen").GetData());
+    graphLayoutView1->Render();
+    graphLayoutView1->ResetCamera();
+    
+    // graphLayoutView0->GetInteractor()->Start();
+    renderWindowInteractor->Start();
 }

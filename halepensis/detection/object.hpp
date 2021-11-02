@@ -6,6 +6,3 @@
 
 auto find_objects(const std::shared_ptr<point_cloud> &cloud, const int n = 2)
 -> std::vector<std::shared_ptr<point_cloud>>;
-
-//auto find_object(const std::shared_ptr<point_cloud> &cloud, const std::shared_ptr<point_cloud> &scene)
-//-> std::vector<std::shared_ptr<point_cloud>>;

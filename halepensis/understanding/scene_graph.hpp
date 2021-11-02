@@ -4,44 +4,75 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <map>
 
-class Entity {
+// Entity exists, hence must have a position. Orientation might be meaningless though.
+class SceneEntity {
+public:
+    const std::string id;
+    const Vector position;
+    const Quaternion orientation;
+    virtual ~SceneEntity() = 0;
+    
+protected:
+    SceneEntity(const std::string id,
+                const Vector position,
+                const Quaternion orientation = Quaternion{});
+};
+
+class CloudEntity: public SceneEntity {
 public:
     const std::shared_ptr<PointCloud> cloud;
-    const std::string description;
-    
-    virtual ~Entity() = 0;
-    
+    virtual ~CloudEntity() = 0;
 protected:
-    Entity(std::string description) : description(description) { }
+    CloudEntity(const std::string id,
+                const std::shared_ptr<PointCloud> cloud,
+                const Vector position,
+                const Quaternion orientation);
 };
 
-class Feature: public Entity {
-protected:
-    Feature(std::string description) : Entity(description) { }
-};
-
-class Hole: public Feature {
+class HoleFeature: public CloudEntity {
 public:
-    Hole(): Feature("Hole") {};
+    HoleFeature(const std::shared_ptr<PointCloud> cloud,
+                const Vector position,
+                const Quaternion orientation);
 };
 
-
-class Object: public Entity {
+class MassCenter: public SceneEntity {
 public:
-    std::vector<Feature> features;
+    MassCenter(const Vector position);
+};
+
+class SceneObject: public CloudEntity {
+public:
+    std::vector<std::shared_ptr<SceneEntity>> features;
     
-    Object(std::string description) : Entity(description) { }
+    SceneObject(const std::shared_ptr<PointCloud> cloud,
+           const Vector position,
+           const Quaternion orientation);
 };
 
-class Relationship {
+class EntityRelation {
 public:
-    Entity& entity1;
-    Entity& entity2;
+    SceneEntity& entity1;
+    SceneEntity& entity2;
 };
 
-class SceneGraph {
+class SceneUnderstanding {
 public:
-    std::vector<std::reference_wrapper<Object>> objects;
-    std::vector<Relationship> relationships;
+    const std::shared_ptr<PointCloud> cloud;
+    std::vector<SceneObject> objects;
+    std::vector<EntityRelation> relations;
+    
+    SceneUnderstanding(const std::shared_ptr<PointCloud> cloud);
+    auto object_clouds() -> std::vector<std::shared_ptr<PointCloud>>;
+};
+
+class TaskUnderstanding {
+public:
+    SceneUnderstanding before_scene;
+    SceneUnderstanding after_scene;
+    std::vector<std::vector<SceneObject>::size_type> focus_indices;
+    
+    TaskUnderstanding(const std::shared_ptr<PointCloud> before_cloud, const std::shared_ptr<PointCloud> after_cloud);
 };
