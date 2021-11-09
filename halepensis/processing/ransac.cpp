@@ -59,15 +59,16 @@ auto fit_plane(const std::shared_ptr<point_cloud>& input_cloud)
     return std::make_tuple(inliers, coefficients);
 }
 
-auto fit_line(const std::shared_ptr<point_cloud>& input_cloud)
+auto fit_sphere(const std::shared_ptr<point_cloud>& input_cloud)
 -> boost::optional<std::tuple<std::shared_ptr<point_indices>, std::shared_ptr<model_coefficients>>>
 {
     pcl::SACSegmentation<point> seg;
     
     seg.setOptimizeCoefficients(true);
-    seg.setModelType(pcl::SACMODEL_LINE);
+    seg.setModelType(pcl::SACMODEL_SPHERE);
     seg.setMethodType(pcl::SAC_RANSAC);
     seg.setDistanceThreshold(0.01);
+    seg.setMaxIterations(10000);
     
     auto coefficients = std::make_shared<model_coefficients>();
     auto inliers = std::make_shared<point_indices>();

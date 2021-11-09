@@ -1,6 +1,8 @@
 #include "scene_visualization.hpp"
-#include "scene_graph.hpp"
 #include "geometry.hpp"
+#include "task_understanding.hpp"
+#include "scene_understanding.hpp"
+#include "scene_object.hpp"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Weverything"
@@ -35,7 +37,7 @@ auto translated(const pcl::PointXYZ& point, float x_offset) -> pcl::PointXYZ
 auto view_entity(const SceneEntity& entity,
                  pcl::visualization::PointCloudColorHandlerCustom<Point> color,
                  pcl::visualization::PCLVisualizer& viz,
-                 int viewport) -> void
+                 int viewport, std::string prefix = "") -> void
 {
     using namespace pcl::visualization;
     
@@ -49,8 +51,8 @@ auto view_entity(const SceneEntity& entity,
     
     auto pos = vector_to_point(entity.position);
     auto txt_pos = translated(pos, 0.01);
-    auto sid = vid + "_sphere_" + entity.id;
-    auto tid = vid + "_text_" + entity.id;
+    auto sid = vid + "_sphere_" + prefix + entity.id;
+    auto tid = vid + "_text_" + prefix + entity.id;
     viz.addSphere(pos, 0.005, 1.0, 1.0, 1.0, sid, viewport);
     viz.addText3D(entity.id, txt_pos, 0.01, 1.0, 1.0, 1.0, tid, viewport);
 }
@@ -71,11 +73,12 @@ auto view_scene(const SceneUnderstanding& scene,
         PointCloudColorHandlerCustom<Point> color{obj.cloud,
             object_color[0], object_color[1], object_color[2]};
         view_entity(obj, color, viz, viewport);
+        std::string prefix = obj.id + "_";
         
         for (auto feat : obj.features) {
             PointCloudColorHandlerCustom<Point> color{obj.cloud,
                 feature_color[0], feature_color[1], feature_color[2]};
-            view_entity(*feat, color, viz, viewport);
+            view_entity(*feat, color, viz, viewport, prefix);
         }
     }
 }

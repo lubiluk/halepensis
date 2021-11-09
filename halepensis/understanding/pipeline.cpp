@@ -1,10 +1,14 @@
 #include "pipeline.hpp"
 
-#include "scene_graph.hpp"
+#include "task_understanding.hpp"
 #include "object.hpp"
 #include "alignment.hpp"
 #include "hole.hpp"
+#include "peg.hpp"
 #include "properties.hpp"
+#include "mass_center.hpp"
+#include "hole_feature.hpp"
+#include "peg_feature.hpp"
 
 auto detect_objects(TaskUnderstanding& task) -> void
 {
@@ -46,14 +50,22 @@ auto detect_features(SceneObject& object) -> void
     const auto props = detect_properties(object.cloud);
     object.features.push_back(make_shared<MassCenter>("mass_center", props.mass_center));
     
-    /* Find holes */
+    /* Holes */
     const auto holes = find_holes(object.cloud);
-    
     for (int i = 0; i < holes.size(); ++i) {
         auto& h = holes[i];
-        const auto props = detect_properties(h);
+        auto props = detect_properties(h);
         auto hid = "hole_" + to_string(i);
         object.features.push_back(make_shared<HoleFeature>(hid, h, props.position, props.rotation));
+    }
+    
+    /* Pegs */
+    const auto pegs = detect_pegs(object.cloud);
+    for (int i = 0; i < pegs.size(); ++i) {
+        auto& p = pegs[i];
+        auto props = detect_properties(p);
+        auto pid = "peg_" + to_string(i);
+        object.features.push_back(make_shared<PegFeature>(pid, p, props.position, props.rotation));
     }
 }
 

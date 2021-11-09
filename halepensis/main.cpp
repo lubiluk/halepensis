@@ -3,11 +3,9 @@
 #include "normals.hpp"
 #include "ransac.hpp"
 #include "visualization.hpp"
-#include "clusters.hpp"
-#include "alignment.hpp"
-#include "hole.hpp"
-#include "scene_graph.hpp"
+#include "task_understanding.hpp"
 #include "scene_visualization.hpp"
+#include "understanding_visualization.hpp"
 #include "pipeline.hpp"
 
 #include <iostream>
@@ -44,6 +42,8 @@ int main(int argc, const char *argv[])
     cloud_before = extract_cloud(cloud_before, std::get<0>(indics.value()), true);
     indics = fit_plane(cloud_after);
     cloud_after = extract_cloud(cloud_after, std::get<0>(indics.value()), true);
+    
+    /* Graph */
 
     view(cloud_before, cloud_after);
     
@@ -61,30 +61,28 @@ int main(int argc, const char *argv[])
     }
     
     view_scenes(task);
+    // There is a bug that prevents us to show graphs side by side...
+    view(task.before_scene);
+    view(task.after_scene);
     
 
-    /* segment out objects */
-    auto indices = extract_euclidean_clusters(cloud_before, 0.05, 100, 10000);
-
-    std::vector<std::shared_ptr<point_cloud>> objects;
-    std::transform(indices.begin(), indices.end(), std::back_inserter(objects), [&cloud_before](const auto& i) -> auto
-    {
-        return extract_cloud(cloud_before, i);
-    });
-
-    view_clusters(cloud_before, objects);
-
-    auto hanger = objects.front();
-    const auto hanger_alignment = align(hanger, cloud_after);
-    view_clusters(cloud_after, std::vector<std::shared_ptr<point_cloud>> { hanger_alignment.second });
-
-    auto hooks = objects[1];
-    view(hooks);
-
-    /* Find holes */
-    const auto holes = find_holes(hanger);
-    view_clusters(hanger, holes);
-
+    /* Tests */
+    
+    
+//    /* segment out objects */
+//    auto indices = extract_euclidean_clusters(cloud_before, 0.05, 100, 10000);
+//
+//    std::vector<std::shared_ptr<point_cloud>> objects;
+//    std::transform(indices.begin(), indices.end(), std::back_inserter(objects), [&cloud_before](const auto& i) -> auto
+//    {
+//        return extract_cloud(cloud_before, i);
+//    });
+//
+//    auto hooks = objects[1];
+//    view(hooks);
+//
+//    auto pegs = detect_pegs(hooks);
+//    view_clusters(hooks, pegs);
     
     return 0;
 }

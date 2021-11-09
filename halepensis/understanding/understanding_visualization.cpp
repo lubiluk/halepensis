@@ -1,6 +1,6 @@
-#include "graph_visualization.hpp"
+#include "understanding_visualization.hpp"
 
-#include "scene_graph.hpp"
+#include "scene_understanding.hpp"
 
 #include <vtkCircularLayoutStrategy.h>
 #include <vtkForceDirectedLayoutStrategy.h>
@@ -52,12 +52,10 @@ auto view(const SceneUnderstanding& graph) -> void
     
     const auto g = vtkGraphFromSceneGraph(graph);
     
-    vtkNew<vtkCircularLayoutStrategy> circularLayoutStrategy;
-    
     vtkNew<vtkGraphLayoutView> graphLayoutView;
     graphLayoutView->AddRepresentationFromInput(g);
     
-    graphLayoutView->SetLayoutStrategy(circularLayoutStrategy);
+    graphLayoutView->SetLayoutStrategyToForceDirected();
     graphLayoutView->SetVertexLabelVisibility(true);
 //    graphLayoutView->SetEdgeLabelVisibility(true);
     graphLayoutView->SetEdgeLabelArrayName("EdgeLabels");     // default is "labels"
@@ -103,13 +101,8 @@ auto view(const SceneUnderstanding& scene1, const SceneUnderstanding& scene2) ->
     double leftViewport[4] = {0.0, 0.0, 0.5, 1.0};
     double rightViewport[4] = {0.5, 0.0, 1.0, 1.0};
     
-//    vtkNew<vtkForceDirectedLayoutStrategy> forceDirected;
-//    vtkNew<vtkCircularLayoutStrategy> circularLayoutStrategy;
-    
     vtkNew<vtkGraphLayoutView> graphLayoutView0;
-    // If we create a layout object directly, just set the pointer to this method.
-    // graphLayoutView0->SetLayoutStrategy(forceDirected);
-    graphLayoutView0->SetLayoutStrategyToCircular();
+    graphLayoutView0->SetLayoutStrategyToForceDirected();
     graphLayoutView0->SetVertexLabelVisibility(true);
     //    graphLayoutView->SetEdgeLabelVisibility(true);
     graphLayoutView0->SetEdgeLabelArrayName("EdgeLabels");     // default is "labels"
@@ -139,9 +132,7 @@ auto view(const SceneUnderstanding& scene1, const SceneUnderstanding& scene2) ->
     graphLayoutView0->ResetCamera();
     
     vtkNew<vtkGraphLayoutView> graphLayoutView1;
-    // If we create a layout object directly, just set the pointer to this method.
-    // graphLayoutView1->SetLayoutStrategy(forceDirected);
-    graphLayoutView1->SetLayoutStrategyToCircular();
+    graphLayoutView1->SetLayoutStrategyToForceDirected();
     graphLayoutView1->SetVertexLabelVisibility(true);
     //    graphLayoutView->SetEdgeLabelVisibility(true);
     graphLayoutView1->SetEdgeLabelArrayName("EdgeLabels");     // default is "labels"
