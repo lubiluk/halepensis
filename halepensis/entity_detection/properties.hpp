@@ -5,11 +5,11 @@
 class Properties {
 public:
     Vector position;
-    Quaternion rotation;
+    Rotation rotation;
     Vector mass_center;
     
     Properties(Vector position,
-               Quaternion rotation,
+               Rotation rotation,
                Vector mass_center);
 };
 

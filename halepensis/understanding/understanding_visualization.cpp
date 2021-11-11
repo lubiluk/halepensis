@@ -8,7 +8,7 @@
 #include <vtkDoubleArray.h>
 #include <vtkGraphLayoutView.h>
 #include <vtkIntArray.h>
-#include <vtkMutableUndirectedGraph.h>
+#include <vtkMutableDirectedGraph.h>
 #include <vtkNamedColors.h>
 #include <vtkNew.h>
 #include <vtkRenderWindow.h>
@@ -16,10 +16,18 @@
 #include <vtkRenderedGraphRepresentation.h>
 #include <vtkRenderer.h>
 #include <vtkTextProperty.h>
+#include <map>
 
-auto vtkGraphFromSceneGraph(const SceneUnderstanding& graph) -> vtkNew<vtkMutableUndirectedGraph>
+using std::map;
+using boost::vertices;
+using boost::tie;
+using boost::edges;
+using boost::source;
+using boost::target;
+
+auto vtkGraphFromSceneGraph(const SceneGraph& graph) -> vtkNew<vtkMutableDirectedGraph>
 {
-    vtkNew<vtkMutableUndirectedGraph> g;
+    vtkNew<vtkMutableDirectedGraph> g;
     vtkNew<vtkStringArray> vertex_labels;
     vertex_labels->SetNumberOfComponents(1);
     vertex_labels->SetName("VertexLabels");
@@ -27,16 +35,26 @@ auto vtkGraphFromSceneGraph(const SceneUnderstanding& graph) -> vtkNew<vtkMutabl
     edge_labels->SetNumberOfComponents(1);
     edge_labels->SetName("EdgeLabels");
     
-    for (const auto& o : graph.objects)
+    map<VertexDesc, vtkIdType> id_map;
+    
     {
-        const auto gv = g->AddVertex();
-        vertex_labels->InsertNextValue(o.id);
-        
-        for (const auto& f : o.features) {
-            const auto fv = g->AddVertex();
-            vertex_labels->InsertNextValue(f->id);
-            
-            g->AddEdge(gv, fv);
+        VertexIter i, end;
+        for (tie(i, end) = vertices(graph); i != end; ++i) {
+            auto& o = graph[*i];
+            auto gv = g->AddVertex();
+            vertex_labels->InsertNextValue(o.id);
+            id_map[gv] = *i;
+        }
+    }
+    
+    {
+        EdgeIter i, end;
+        for (tie(i, end) = edges(graph); i != end; ++i) {
+            auto& r = graph[*i];
+            auto src = source(*i, graph);
+            auto trg = target(*i, graph);
+            g->AddEdge(id_map[src], id_map[trg]);
+            edge_labels->InsertNextValue("relation");
         }
     }
     
@@ -46,11 +64,11 @@ auto vtkGraphFromSceneGraph(const SceneUnderstanding& graph) -> vtkNew<vtkMutabl
     return g;
 }
 
-auto view(const SceneUnderstanding& graph) -> void
+auto view(const SceneUnderstanding& scene) -> void
 {
     vtkNew<vtkNamedColors> colors;
     
-    const auto g = vtkGraphFromSceneGraph(graph);
+    const auto g = vtkGraphFromSceneGraph(scene.graph);
     
     vtkNew<vtkGraphLayoutView> graphLayoutView;
     graphLayoutView->AddRepresentationFromInput(g);
@@ -85,8 +103,8 @@ auto view(const SceneUnderstanding& scene1, const SceneUnderstanding& scene2) ->
 {
     vtkNew<vtkNamedColors> colors;
     
-    const auto g0 = vtkGraphFromSceneGraph(scene1);
-    const auto g1 = vtkGraphFromSceneGraph(scene2);
+    const auto g0 = vtkGraphFromSceneGraph(scene1.graph);
+    const auto g1 = vtkGraphFromSceneGraph(scene2.graph);
     
     
     // There will be one render window

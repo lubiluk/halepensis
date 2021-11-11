@@ -3,7 +3,7 @@
 #include "ransac.hpp"
 #include "filtering.hpp"
 
-auto find_objects(const std::shared_ptr<point_cloud> &cloud, const int n)
+auto detect_objects(const std::shared_ptr<point_cloud> &cloud, const int n)
 -> std::vector<std::shared_ptr<point_cloud>>
 {
     const auto indices = extract_euclidean_clusters(cloud, 0.05, 100, 10000);

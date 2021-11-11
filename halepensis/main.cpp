@@ -50,15 +50,10 @@ int main(int argc, const char *argv[])
     /* Task Reasoning Part */
     
     TaskUnderstanding task { cloud_before, cloud_after };
-    detect_objects(task);
+    task.detect_objects();
     view_clusters(task.before_scene.cloud, task.before_scene.object_clouds());
-    detect_change(task);
-    
-    for (const auto& i : task.focus_indices)
-    {
-        detect_features(task.before_scene.objects[i]);
-        copy_features(task.before_scene.objects[i], task.after_scene.objects[i], task.object_transforms[i]);
-    }
+    task.detect_change();
+    task.detect_features();
     
     view_scenes(task);
     // There is a bug that prevents us to show graphs side by side...

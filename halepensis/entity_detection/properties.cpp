@@ -8,7 +8,7 @@
 #pragma clang diagnostic pop
 
 Properties::Properties(Vector position,
-                       Quaternion rotation,
+                       Rotation rotation,
                        Vector mass_center):
 position(position),
 rotation(rotation),
@@ -44,7 +44,7 @@ auto detect_properties(const std::shared_ptr<PointCloud>& cloud) -> Properties
     feature_extractor.getMassCenter (mass_center);
     
     Eigen::Vector3f position (position_OBB.x, position_OBB.y, position_OBB.z);
-    Eigen::Quaternionf quat (rotational_matrix_OBB);
+    Rotation rot (rotational_matrix_OBB);
     
-    return Properties(position, quat, mass_center);
+    return Properties(position, rot, mass_center);
 }

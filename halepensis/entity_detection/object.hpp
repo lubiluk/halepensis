@@ -4,5 +4,5 @@
 #include <memory>
 #include <vector>
 
-auto find_objects(const std::shared_ptr<point_cloud> &cloud, const int n = 2)
+auto detect_objects(const std::shared_ptr<point_cloud> &cloud, const int n = 2)
 -> std::vector<std::shared_ptr<point_cloud>>;

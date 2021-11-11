@@ -1,20 +1,23 @@
 #include "scene_graph.hpp"
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Weverything"
-#include <pcl/common/io.h>
-#include <pcl/common/transforms.h>
-#pragma clang diagnostic pop
+using namespace std;
+using boost::optional;
+using boost::tie;
+using boost::vertices;
+using boost::none;
 
-
-
-
-
-
-
-TaskUnderstanding::TaskUnderstanding(const std::shared_ptr<PointCloud> before_cloud, const std::shared_ptr<PointCloud> after_cloud):
-before_scene(before_cloud),
-after_scene(after_cloud)
+auto find_vertex(const std::string& id, const SceneGraph& g) -> optional<VertexDesc>
 {
+    VertexIter start, end;
+    tie(start, end) = vertices(g);
     
+    auto vertex = find_if(start, end, [&g, &id](auto vd) {
+        return g[vd].id == id;
+    });
+    
+    if (vertex == end) {
+        return none;
+    }
+    
+    return *vertex;
 }

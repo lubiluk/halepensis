@@ -1,25 +1,20 @@
 #pragma once
 
 #include "geometry.hpp"
-#include "scene_object.hpp"
+#include "entity.hpp"
+#include "relation.hpp"
 #include <string>
 #include <vector>
-
-class SceneObject;
-class SceneEntity;
-
-class EntityRelation {
-public:
-    SceneEntity& entity1;
-    SceneEntity& entity2;
-};
+#include <memory>
+#include "scene_graph.hpp"
 
 class SceneUnderstanding {
 public:
     const std::shared_ptr<PointCloud> cloud;
-    std::vector<SceneObject> objects;
-    std::vector<EntityRelation> relations;
+    SceneGraph graph;
     
     SceneUnderstanding(std::shared_ptr<PointCloud> cloud);
-    auto object_clouds() -> std::vector<std::shared_ptr<PointCloud>>;
+    auto object_clouds() const -> std::vector<std::shared_ptr<PointCloud>> ;
+    auto objects() const -> std::vector<Entity>;
+    auto features(const Entity& object) const -> std::vector<Entity>;
 };

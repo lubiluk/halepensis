@@ -34,18 +34,18 @@ auto translated(const pcl::PointXYZ& point, float x_offset) -> pcl::PointXYZ
     return out;
 }
 
-auto view_entity(const SceneEntity& entity,
-                 pcl::visualization::PointCloudColorHandlerCustom<Point> color,
+auto view_entity(const Entity& entity,
+                 const pcl::visualization::PointCloudColorHandlerCustom<Point>& color,
                  pcl::visualization::PCLVisualizer& viz,
-                 int viewport, std::string prefix = "") -> void
+                 int viewport, const std::string& prefix = "") -> void
 {
     using namespace pcl::visualization;
     
     auto vid = std::to_string(viewport);
     
-    if (auto cloud_entity = dynamic_cast<const CloudEntity*>(&entity)) {
-        auto cid = vid + "_cloud_" + cloud_entity->id;
-        viz.addPointCloud<Point>(cloud_entity->cloud, color, cid, viewport);
+    if (entity.cloud) {
+        auto cid = vid + "_cloud_" + prefix + entity.id;
+        viz.addPointCloud<Point>(entity.cloud, color, cid, viewport);
         viz.setPointCloudRenderingProperties(PCL_VISUALIZER_POINT_SIZE, 3, cid, viewport);
     }
     
@@ -69,16 +69,16 @@ auto view_scene(const SceneUnderstanding& scene,
     viz.addPointCloud<Point>(scene.cloud, sid, viewport);
     viz.setPointCloudRenderingProperties(PCL_VISUALIZER_POINT_SIZE, 2, sid, viewport);
     
-    for (const auto& obj : scene.objects) {
+    for (auto& obj : scene.objects()) {
         PointCloudColorHandlerCustom<Point> color{obj.cloud,
             object_color[0], object_color[1], object_color[2]};
         view_entity(obj, color, viz, viewport);
         std::string prefix = obj.id + "_";
         
-        for (auto feat : obj.features) {
+        for (auto& feat : scene.features(obj)) {
             PointCloudColorHandlerCustom<Point> color{obj.cloud,
                 feature_color[0], feature_color[1], feature_color[2]};
-            view_entity(*feat, color, viz, viewport, prefix);
+            view_entity(feat, color, viz, viewport, prefix);
         }
     }
 }

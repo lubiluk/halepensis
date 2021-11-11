@@ -26,4 +26,5 @@ using Transform = Eigen::Matrix<float, 4, 4>;
 using Point = pcl::PointNormal;
 using PointCloud = pcl::PointCloud<Point>;
 using Vector = Eigen::Vector3f;
+using Rotation = Eigen::Matrix3f;
 using Quaternion = Eigen::Quaternionf;
