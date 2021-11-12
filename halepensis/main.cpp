@@ -6,7 +6,6 @@
 #include "task_understanding.hpp"
 #include "scene_visualization.hpp"
 #include "understanding_visualization.hpp"
-#include "pipeline.hpp"
 
 #include <iostream>
 #include <algorithm>

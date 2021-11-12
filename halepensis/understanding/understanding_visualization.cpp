@@ -54,7 +54,7 @@ auto vtkGraphFromSceneGraph(const SceneGraph& graph) -> vtkNew<vtkMutableDirecte
             auto src = source(*i, graph);
             auto trg = target(*i, graph);
             g->AddEdge(id_map[src], id_map[trg]);
-            edge_labels->InsertNextValue("relation");
+            edge_labels->InsertNextValue(r.description());
         }
     }
     

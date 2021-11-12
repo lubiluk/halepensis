@@ -2,7 +2,6 @@
 #include "geometry.hpp"
 #include "task_understanding.hpp"
 #include "scene_understanding.hpp"
-#include "scene_object.hpp"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Weverything"

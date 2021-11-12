@@ -13,7 +13,7 @@ using pcl::copyPointCloud;
 using Eigen::Affine3f;
 
 Entity::Entity(Type type,
-               std::string id,
+               EntityId id,
                Vector position,
                Rotation orientation,
                std::shared_ptr<PointCloud> cloud):
@@ -35,16 +35,6 @@ cloud(nullptr)
 {
     
 }
-
-//Entity::Entity(const Entity& original):
-//type(original.type),
-//id(original.id),
-//position(original.position),
-//orientation(original.orientation),
-//cloud(make_shared<PointCloud>())
-//{
-//    copyPointCloud(*(original.cloud), *cloud);
-//}
 
 auto Entity::transformed(const Transform& transform) -> Entity
 {

@@ -4,6 +4,8 @@
 #include <string>
 #include <memory>
 
+using EntityId = std::string;
+
 class Entity {
 public:
     enum class Type {
@@ -14,13 +16,13 @@ public:
     };
     
     Type type;
-    std::string id;
+    EntityId id;
     Vector position;
     Rotation orientation;
     std::shared_ptr<PointCloud> cloud;
     
     Entity(Type type,
-           std::string id,
+           EntityId id,
            Vector position,
            Rotation orientation = Rotation{},
            std::shared_ptr<PointCloud> cloud = nullptr);
