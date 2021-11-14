@@ -4,6 +4,7 @@
 #include "scene_understanding.hpp"
 #include <memory>
 #include <vector>
+#include <boost/optional.hpp>
 
 class TaskUnderstanding {
 public:
@@ -20,8 +21,16 @@ public:
     auto detect_change() -> void;
     /// Detects features in focused entities
     auto detect_features() -> void;
-//    auto describe_relations() -> void;
+    auto describe_relations() -> void;
 //    auto form_hypotheses() -> void;
-//private:
-//    auto copy_features() -> void;
+private:
+    auto add_features(const std::vector<std::shared_ptr<PointCloud>>& clouds,
+                      const std::string& prefix, const Entity::Type& type,
+                      const VertexDesc& vertex,
+                      const boost::optional<VertexDesc>& vertex_cpy,
+                      const Transform& cpy_transform) -> void;
+    auto add_feature(const Entity& entity,
+                     const VertexDesc& vertex,
+                     const boost::optional<VertexDesc>& vertex_cpy,
+                     const Transform& cpy_transform) -> void;
 };

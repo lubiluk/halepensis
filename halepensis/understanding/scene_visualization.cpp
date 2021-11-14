@@ -74,10 +74,10 @@ auto view_scene(const SceneUnderstanding& scene,
         view_entity(obj, color, viz, viewport);
         std::string prefix = obj.id + "_";
         
-        for (auto& feat : scene.features(obj)) {
+        for (auto feat : scene.features(obj.id)) {
             PointCloudColorHandlerCustom<Point> color{obj.cloud,
                 feature_color[0], feature_color[1], feature_color[2]};
-            view_entity(feat, color, viz, viewport, prefix);
+            view_entity(scene.graph[feat], color, viz, viewport, prefix);
         }
     }
 }

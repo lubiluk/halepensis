@@ -16,5 +16,7 @@ public:
     SceneUnderstanding(std::shared_ptr<PointCloud> cloud);
     auto object_clouds() const -> std::vector<std::shared_ptr<PointCloud>> ;
     auto objects() const -> std::vector<Entity>;
-    auto features(const Entity& object) const -> std::vector<Entity>;
+    auto features(const std::string& object_id) const -> std::vector<VertexDesc>;
+    auto features(const std::vector<std::string>& object_ids) const -> std::vector<VertexDesc>;
+    auto describe_relations(const std::vector<std::string>& object_ids) -> void;
 };

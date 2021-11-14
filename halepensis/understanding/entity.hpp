@@ -30,5 +30,5 @@ public:
     Entity();
     Entity(const Entity& original) = default;
     
-    auto transformed(const Transform& transform) -> Entity;
+    auto transformed(const Transform& transform) const -> Entity;
 };

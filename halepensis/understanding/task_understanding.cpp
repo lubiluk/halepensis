@@ -12,6 +12,7 @@ using boost::add_vertex;
 using boost::vertices;
 using boost::tie;
 using boost::add_edge;
+using boost::optional;
 
 
 TaskUnderstanding::TaskUnderstanding(const shared_ptr<PointCloud> before_cloud,
@@ -84,51 +85,60 @@ auto TaskUnderstanding::detect_features() -> void
         /* Mass center */
         const auto props = detect_properties(object.cloud);
         Entity mass_center_entity {Entity::Type::mass_center, "mass_center", props.mass_center};
-        auto mass_center_desc = add_vertex(mass_center_entity, graph);
-        add_edge(*object_desc, mass_center_desc, graph);
-        
-        /* Copy featur to after_scene */
-        if (object_cpy) {
-            auto cpy_entity = mass_center_entity.transformed(cpy_transform);
-            auto cpy_desc = add_vertex(cpy_entity, after_graph);
-            add_edge(*object_cpy, cpy_desc, after_graph);
-        }
+        add_feature(mass_center_entity, *object_desc, object_cpy, cpy_transform);
         
         
         /* Holes */
         auto holes = find_holes(object.cloud);
-        for (int i = 0; i < holes.size(); ++i) {
-            auto& h = holes[i];
-            auto props = detect_properties(h);
-            auto hid = "hole_" + to_string(i);
-            Entity hole_entity{Entity::Type::hole, hid, props.position, props.rotation, h};
-            auto hole_desc = add_vertex(hole_entity, graph);
-            add_edge(*object_desc, hole_desc, graph);
-            
-            /* Copy featur to after_scene */
-            if (object_cpy) {
-                auto cpy_entity = hole_entity.transformed(cpy_transform);
-                auto cpy_desc = add_vertex(cpy_entity, after_graph);
-                add_edge(*object_cpy, cpy_desc, after_graph);
-            }
-        }
+        add_features(holes, "hole_", Entity::Type::hole,
+                     *object_desc,
+                     object_cpy, cpy_transform);
         
         /* Pegs */
         const auto pegs = detect_pegs(object.cloud);
-        for (int i = 0; i < pegs.size(); ++i) {
-            auto& p = pegs[i];
-            auto props = detect_properties(p);
-            auto pid = "peg_" + to_string(i);
-            Entity peg_entity{Entity::Type::peg, pid, props.position, props.rotation, p};
-            auto peg_desc = add_vertex(peg_entity, graph);
-            add_edge(*object_desc, peg_desc, graph);
-            
-            /* Copy featur to after_scene */
-            if (object_cpy) {
-                auto cpy_entity = peg_entity.transformed(cpy_transform);
-                auto cpy_desc = add_vertex(cpy_entity, after_graph);
-                add_edge(*object_cpy, cpy_desc, after_graph);
-            }
-        }
+        add_features(pegs, "peg_", Entity::Type::peg,
+                     *object_desc,
+                     object_cpy, cpy_transform);
     }
+}
+
+
+auto TaskUnderstanding::add_features(const vector<shared_ptr<PointCloud>>& clouds,
+                                     const string& prefix, const Entity::Type& type,
+                                     const VertexDesc& vertex,
+                                     const optional<VertexDesc>& vertex_cpy,
+                                     const Transform& cpy_transform) -> void
+{
+    for (int i = 0; i < clouds.size(); ++i) {
+        auto& c = clouds[i];
+        auto props = detect_properties(c);
+        auto pid = prefix + to_string(i);
+        Entity entity{type, pid, props.position, props.rotation, c};
+        add_feature(entity, vertex, vertex_cpy, cpy_transform);
+    }
+}
+
+auto TaskUnderstanding::add_feature(const Entity& entity,
+                                    const VertexDesc& vertex,
+                                    const optional<VertexDesc>& vertex_cpy,
+                                    const Transform& cpy_transform) -> void
+{
+    auto& graph = before_scene.graph;
+    auto& after_graph = after_scene.graph;
+    
+    auto desc = add_vertex(entity, graph);
+    add_edge(vertex, desc, graph);
+    
+    /* Copy featur to after_scene */
+    if (vertex_cpy) {
+        auto cpy_entity = entity.transformed(cpy_transform);
+        auto cpy_desc = add_vertex(cpy_entity, after_graph);
+        add_edge(*vertex_cpy, cpy_desc, after_graph);
+    }
+}
+
+auto TaskUnderstanding::describe_relations() -> void
+{
+    before_scene.describe_relations(focus_ids);
+    after_scene.describe_relations(focus_ids);
 }

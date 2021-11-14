@@ -53,6 +53,7 @@ int main(int argc, const char *argv[])
     view_clusters(task.before_scene.cloud, task.before_scene.object_clouds());
     task.detect_change();
     task.detect_features();
+    task.describe_relations();
     
     view_scenes(task);
     // There is a bug that prevents us to show graphs side by side...

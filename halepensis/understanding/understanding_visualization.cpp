@@ -75,7 +75,7 @@ auto view(const SceneUnderstanding& scene) -> void
     
     graphLayoutView->SetLayoutStrategyToForceDirected();
     graphLayoutView->SetVertexLabelVisibility(true);
-//    graphLayoutView->SetEdgeLabelVisibility(true);
+    graphLayoutView->SetEdgeLabelVisibility(true);
     graphLayoutView->SetEdgeLabelArrayName("EdgeLabels");     // default is "labels"
     graphLayoutView->SetVertexLabelArrayName("VertexLabels"); // default is "labels"
     
@@ -88,7 +88,7 @@ auto view(const SceneUnderstanding& scene) -> void
     edge_property->SetColor(colors->GetColor3d("Lime").GetData());
     edge_property->SetFontSize(24);
     graph_repr->SetEdgeLabelTextProperty(edge_property);
-
+    
     graphLayoutView->GetRenderer()->SetBackground(
                                                   colors->GetColor3d("Navy").GetData());
     graphLayoutView->GetRenderer()->SetBackground2(
@@ -109,7 +109,7 @@ auto view(const SceneUnderstanding& scene1, const SceneUnderstanding& scene2) ->
     
     // There will be one render window
     vtkNew<vtkRenderWindow> renderWindow;
-//    renderWindow->SetSize(600, 300);
+    //    renderWindow->SetSize(600, 300);
     renderWindow->SetWindowName("SideBySideGraphs");
     
     vtkNew<vtkRenderWindowInteractor> renderWindowInteractor;
@@ -122,7 +122,7 @@ auto view(const SceneUnderstanding& scene1, const SceneUnderstanding& scene2) ->
     vtkNew<vtkGraphLayoutView> graphLayoutView0;
     graphLayoutView0->SetLayoutStrategyToForceDirected();
     graphLayoutView0->SetVertexLabelVisibility(true);
-    //    graphLayoutView->SetEdgeLabelVisibility(true);
+    graphLayoutView0->SetEdgeLabelVisibility(true);
     graphLayoutView0->SetEdgeLabelArrayName("EdgeLabels");     // default is "labels"
     graphLayoutView0->SetVertexLabelArrayName("VertexLabels"); // default is "labels"
     graphLayoutView0->SetRenderWindow(renderWindow);
@@ -152,7 +152,7 @@ auto view(const SceneUnderstanding& scene1, const SceneUnderstanding& scene2) ->
     vtkNew<vtkGraphLayoutView> graphLayoutView1;
     graphLayoutView1->SetLayoutStrategyToForceDirected();
     graphLayoutView1->SetVertexLabelVisibility(true);
-    //    graphLayoutView->SetEdgeLabelVisibility(true);
+    graphLayoutView1->SetEdgeLabelVisibility(true);
     graphLayoutView1->SetEdgeLabelArrayName("EdgeLabels");     // default is "labels"
     graphLayoutView1->SetVertexLabelArrayName("VertexLabels"); // default is "labels"
     graphLayoutView1->SetRenderWindow(renderWindow);

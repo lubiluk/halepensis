@@ -36,7 +36,7 @@ cloud(nullptr)
     
 }
 
-auto Entity::transformed(const Transform& transform) -> Entity
+auto Entity::transformed(const Transform& transform) const -> Entity
 {
     Affine3f t{transform};
     auto t_position = t * position;
