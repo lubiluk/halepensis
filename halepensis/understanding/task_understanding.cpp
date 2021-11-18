@@ -33,7 +33,8 @@ auto TaskUnderstanding::detect_objects() -> void
         auto& c = clouds[i];
         auto props = detect_properties(c);
         auto oid = "object_" + to_string(i);
-        Entity entity{Entity::Type::object, oid, props.position, props.rotation, c};
+        Entity entity{Entity::Type::object, oid, props.position, props.rotation,
+            c, props.min_corner, props.max_corner};
         add_vertex(entity, before_scene.graph);
     }
     
@@ -53,7 +54,8 @@ auto TaskUnderstanding::detect_objects() -> void
         Transform transform;
         tie(transform, aligned_cloud) = align(e.cloud, after_cloud);
         auto props = detect_properties(aligned_cloud);
-        Entity entity{Entity::Type::object, e.id, props.position, props.rotation, aligned_cloud};
+        Entity entity{Entity::Type::object, e.id, props.position, props.rotation,
+            aligned_cloud, props.min_corner, props.max_corner};
         add_vertex(entity, after_scene.graph);
         object_transforms.push_back(transform);
     }
@@ -80,7 +82,18 @@ auto TaskUnderstanding::detect_features() -> void
             continue;
         }
         
-        auto& object = graph[*object_desc];
+        // TODO: Why this cannot be a reference?
+        // Could be because vertex iterators invalidate when we add
+        // elements while iterating...
+        // Perhaps this will be fixed when we add features outside this loop
+        // https://www.boost.org/doc/libs/1_77_0/libs/graph/doc/adjacency_list.html
+        // Alternatively we could use find_vertex after each graph modification
+        // Or just let it be a copy, why not?
+        // Or use listS instead of vecS
+        // No, actually I think the reference may be poiniting to a memory that was
+        // changed when vector resized itself...
+        // https://stackoverflow.com/questions/50867703/keeping-a-reference-to-a-vector-element-valid-after-resizing
+        auto object = graph[*object_desc];
         
         /* Mass center */
         const auto props = detect_properties(object.cloud);
@@ -112,8 +125,16 @@ auto TaskUnderstanding::add_features(const vector<shared_ptr<PointCloud>>& cloud
     for (int i = 0; i < clouds.size(); ++i) {
         auto& c = clouds[i];
         auto props = detect_properties(c);
+        
+        
+        // TODO: Somehow move this somewhere else
+        if (type == Entity::Type::peg) {
+            props.position.z() += 0.02;
+            props.max_corner.z += 0.04;
+        }
+        
         auto pid = prefix + to_string(i);
-        Entity entity{type, pid, props.position, props.rotation, c};
+        Entity entity{type, pid, props.position, props.rotation, c, props.min_corner, props.max_corner};
         add_feature(entity, vertex, vertex_cpy, cpy_transform);
     }
 }

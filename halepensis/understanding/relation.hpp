@@ -9,7 +9,8 @@ public:
         below,
         above,
         apart,
-        touching
+        touching,
+        inside
     };
     
     Type type;

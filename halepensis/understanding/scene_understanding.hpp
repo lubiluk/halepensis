@@ -10,7 +10,7 @@
 
 class SceneUnderstanding {
 public:
-    const std::shared_ptr<PointCloud> cloud;
+    std::shared_ptr<PointCloud> cloud;
     SceneGraph graph;
     
     SceneUnderstanding(std::shared_ptr<PointCloud> cloud);

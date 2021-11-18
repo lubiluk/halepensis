@@ -52,11 +52,11 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/lubiluk/Code/halepensis/data/close_2.pcd"
+            argument = "/Users/lubiluk/Code/halepensis/data/hanger_scene/capture_3.pcd"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/lubiluk/Code/halepensis/data/close_3.pcd"
+            argument = "/Users/lubiluk/Code/halepensis/data/hanger_scene/capture_5.pcd"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

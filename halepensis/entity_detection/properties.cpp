@@ -7,12 +7,17 @@
 #include <pcl/features/moment_of_inertia_estimation.h>
 #pragma clang diagnostic pop
 
+
 Properties::Properties(Vector position,
                        Rotation rotation,
-                       Vector mass_center):
+                       Vector mass_center,
+                       Point min_corner,
+                       Point max_corner):
 position(position),
 rotation(rotation),
-mass_center(mass_center)
+mass_center(mass_center),
+min_corner(min_corner),
+max_corner(max_corner)
 {
     
 }
@@ -46,5 +51,5 @@ auto detect_properties(const std::shared_ptr<PointCloud>& cloud) -> Properties
     Eigen::Vector3f position (position_OBB.x, position_OBB.y, position_OBB.z);
     Rotation rot (rotational_matrix_OBB);
     
-    return Properties(position, rot, mass_center);
+    return Properties(position, rot, mass_center, min_point_AABB, max_point_AABB);
 }

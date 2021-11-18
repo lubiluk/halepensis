@@ -1,5 +1,5 @@
 #include "scene_understanding.hpp"
-#include "below.hpp"
+#include "relation_detection.hpp"
 
 using std::string;
 using std::shared_ptr;
@@ -8,7 +8,7 @@ using std::back_inserter;
 using boost::tie;
 using boost::adjacent_vertices;
 
-SceneUnderstanding::SceneUnderstanding(const shared_ptr<PointCloud> cloud):
+SceneUnderstanding::SceneUnderstanding(shared_ptr<PointCloud> cloud):
 cloud(cloud)
 {
     
@@ -94,6 +94,14 @@ auto SceneUnderstanding::describe_relations(const vector<string> &object_ids) ->
             }
             if (is_below(e2, e1)) {
                 add_edge(v2, v1, Relation::Type::below, graph);
+            }
+            
+            /* Inside */
+            if (is_inside(e1, e2)) {
+                add_edge(v1, v2, Relation::Type::inside, graph);
+            }
+            if (is_inside(e2, e1)) {
+                add_edge(v2, v1, Relation::Type::inside, graph);
             }
         }
     }

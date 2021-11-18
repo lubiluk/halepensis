@@ -3,7 +3,7 @@
 #include "clusters.hpp"
 #include "filtering.hpp"
 
-auto detect_pegs(const std::shared_ptr<PointCloud> &cloud)
+auto detect_pegs(const std::shared_ptr<PointCloud>& cloud)
 -> std::vector<std::shared_ptr<PointCloud>>
 {
     auto sphere = fit_sphere(cloud);

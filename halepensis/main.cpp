@@ -44,13 +44,13 @@ int main(int argc, const char *argv[])
     
     /* Graph */
 
-    view(cloud_before, cloud_after);
+//    view(cloud_before, cloud_after);
     
     /* Task Reasoning Part */
     
     TaskUnderstanding task { cloud_before, cloud_after };
     task.detect_objects();
-    view_clusters(task.before_scene.cloud, task.before_scene.object_clouds());
+//    view_clusters(task.before_scene.cloud, task.before_scene.object_clouds());
     task.detect_change();
     task.detect_features();
     task.describe_relations();

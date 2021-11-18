@@ -27,7 +27,9 @@ auto Relation::description() const -> string
             return "apart";
         case Type::touching:
             return "touching";
+        case Type::inside:
+            return "inside";
         default:
-            return "";
+            return "unknown_relation";
     }
 }

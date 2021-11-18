@@ -3,6 +3,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Weverything"
 #include <Eigen/Geometry>
+#include <pcl/point_types.h>
 #pragma clang diagnostic pop
 
 namespace pcl

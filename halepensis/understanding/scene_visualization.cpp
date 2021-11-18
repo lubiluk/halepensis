@@ -46,6 +46,14 @@ auto view_entity(const Entity& entity,
         auto cid = vid + "_cloud_" + prefix + entity.id;
         viz.addPointCloud<Point>(entity.cloud, color, cid, viewport);
         viz.setPointCloudRenderingProperties(PCL_VISUALIZER_POINT_SIZE, 3, cid, viewport);
+        
+//        if (entity.type != Entity::Type::object) {
+//            auto bid = vid + "_box_" + prefix + entity.id;
+//            viz.addCube(entity.min_corner.x, entity.max_corner.x,
+//                        entity.min_corner.y, entity.max_corner.y,
+//                        entity.min_corner.z, entity.max_corner.z,
+//                        1.0, 1.0, 1.0, bid, viewport);
+//        }
     }
     
     auto pos = vector_to_point(entity.position);

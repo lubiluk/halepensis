@@ -12,7 +12,7 @@ auto align(const std::shared_ptr<point_cloud> &cloud1, const std::shared_ptr<poi
     pcl::IterativeClosestPoint<point, point> icp;
     icp.setInputSource(cloud1);
     icp.setInputTarget(cloud2);
-    icp.setMaxCorrespondenceDistance (0.09);
+    icp.setMaxCorrespondenceDistance (0.5);
     icp.setMaximumIterations (5000);
     icp.setTransformationEpsilon (1e-8);
     icp.setEuclideanFitnessEpsilon (0.01);

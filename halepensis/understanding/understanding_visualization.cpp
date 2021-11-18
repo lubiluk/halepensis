@@ -16,6 +16,12 @@
 #include <vtkRenderedGraphRepresentation.h>
 #include <vtkRenderer.h>
 #include <vtkTextProperty.h>
+#include <vtkSimple2DLayoutStrategy.h>
+#include <vtkGraphLayout.h>
+#include <vtkGraphToPolyData.h>
+#include <vtkGlyphSource2D.h>
+#include <vtkGlyph3D.h>
+#include <vtkPolyDataMapper.h>
 #include <map>
 
 using std::map;
@@ -71,9 +77,35 @@ auto view(const SceneUnderstanding& scene) -> void
     const auto g = vtkGraphFromSceneGraph(scene.graph);
     
     vtkNew<vtkGraphLayoutView> graphLayoutView;
-    graphLayoutView->AddRepresentationFromInput(g);
     
-    graphLayoutView->SetLayoutStrategyToForceDirected();
+    vtkNew<vtkGraphLayout> layout;
+    vtkNew<vtkSimple2DLayoutStrategy> strategy;
+    layout->SetInputData(g);
+    layout->SetLayoutStrategy(strategy);
+    graphLayoutView->SetLayoutStrategyToPassThrough();
+    graphLayoutView->SetEdgeLayoutStrategyToPassThrough();
+    graphLayoutView->AddRepresentationFromInputConnection(
+          layout->GetOutputPort());
+    vtkNew<vtkGraphToPolyData> graphToPoly;
+    graphToPoly->SetInputConnection(layout->GetOutputPort());
+    graphToPoly->EdgeGlyphOutputOn();
+    graphToPoly->SetEdgeGlyphPosition(0.98);
+    vtkNew<vtkGlyphSource2D> arrowSource;
+    arrowSource->SetGlyphTypeToEdgeArrow();
+    arrowSource->SetScale(0.1);
+    arrowSource->Update();
+    vtkNew<vtkGlyph3D> arrowGlyph;
+    arrowGlyph->SetInputConnection(0, graphToPoly->GetOutputPort(1));
+    arrowGlyph->SetInputConnection(1, arrowSource->GetOutputPort());
+    vtkNew<vtkPolyDataMapper> arrowMapper;
+    arrowMapper->SetInputConnection(arrowGlyph->GetOutputPort());
+    vtkNew<vtkActor> arrowActor;
+    arrowActor->SetMapper(arrowMapper);
+    graphLayoutView->GetRenderer()->AddActor(arrowActor);
+    
+//    graphLayoutView->AddRepresentationFromInput(g);
+//    graphLayoutView->SetLayoutStrategyToFast2D();
+    
     graphLayoutView->SetVertexLabelVisibility(true);
     graphLayoutView->SetEdgeLabelVisibility(true);
     graphLayoutView->SetEdgeLabelArrayName("EdgeLabels");     // default is "labels"
