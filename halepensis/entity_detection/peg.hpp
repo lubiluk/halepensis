@@ -4,5 +4,5 @@
 #include <memory>
 #include <vector>
 
-auto detect_pegs(const std::shared_ptr<PointCloud> &cloud)
--> std::vector<std::shared_ptr<PointCloud>>;
+auto detect_pegs(const std::shared_ptr<point_cloud> &cloud)
+-> std::vector<std::shared_ptr<point_cloud>>;

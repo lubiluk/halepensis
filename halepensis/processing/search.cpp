@@ -22,5 +22,5 @@ auto count_nearby_points(const std::shared_ptr<point_cloud>& input_cloud,
 
 auto point_from_coefficients(std::shared_ptr<model_coefficients> coefficients) -> point
 {
-    return  point{ coefficients->values[0], coefficients->values[1], coefficients->values[2] };
+    return { coefficients->values[0], coefficients->values[1], coefficients->values[2] };
 }

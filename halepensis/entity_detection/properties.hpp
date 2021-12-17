@@ -5,17 +5,17 @@
 
 class Properties {
 public:
-    Vector position;
-    Rotation rotation;
-    Vector mass_center;
-    Point min_corner;
-    Point max_corner;
+    vec3 position;
+    rot_mat rotation;
+    vec3 mass_center;
+    point min_corner;
+    point max_corner;
     
-    Properties(Vector position,
-               Rotation rotation,
-               Vector mass_center,
-               Point min_corner,
-               Point max_corner);
+    Properties(vec3 position,
+               rot_mat rotation,
+               vec3 mass_center,
+               point min_corner,
+               point max_corner);
 };
 
-auto detect_properties(const std::shared_ptr<PointCloud>& cloud) -> Properties;
+auto detect_properties(const std::shared_ptr<point_cloud>& cloud) -> Properties;

@@ -13,7 +13,7 @@ using model::box;
 const float epsilon_vertical = 0.01;
 const float epsilon_horizontal = 0.025;
 
-auto is_below(const Entity& entity1, const Entity& entity2) -> bool
+auto is_below(const scene_entity& entity1, const scene_entity& entity2) -> bool
 {
     return entity1.position.y() < entity2.position.y() - epsilon_vertical
     && entity1.position.x() < entity2.position.x() + epsilon_horizontal
@@ -22,7 +22,7 @@ auto is_below(const Entity& entity1, const Entity& entity2) -> bool
     && entity1.position.z() > entity2.position.z() - epsilon_horizontal;
 }
 
-auto is_inside(const Entity& entity1, const Entity& entity2) -> bool
+auto is_inside(const scene_entity& entity1, const scene_entity& entity2) -> bool
 {
     box<point_xyz<float>> box1{{entity1.min_corner.x, entity1.min_corner.y, entity1.min_corner.z},
         {entity1.max_corner.x, entity1.max_corner.y, entity1.max_corner.z}};

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "entity.hpp"
-#include "relation.hpp"
+#include "scene_entity.hpp"
+#include "entity_relation.hpp"
 #include <string>
 
 
@@ -11,12 +11,21 @@
 #include <boost/optional.hpp>
 #pragma clang diagnostic pop
 
-using SceneGraph = boost::adjacency_list
-<boost::vecS, boost::vecS, boost::bidirectionalS, Entity, Relation>;
-using VertexDesc = SceneGraph::vertex_descriptor;
-using VertexIter = SceneGraph::vertex_iterator;
-using EdgeIter = SceneGraph::edge_iterator;
-using EdgeDesc = SceneGraph::edge_descriptor;
-using AdjacencyIter = SceneGraph::adjacency_iterator;
+using scene_graph = boost::adjacency_list
+<boost::vecS, boost::vecS, boost::bidirectionalS, scene_entity, entity_relation>;
 
-auto find_vertex(const std::string& id, const SceneGraph& g) -> boost::optional<VertexDesc>;
+auto find_object(const entity_id& id, const scene_graph& g)
+-> boost::optional<scene_graph::vertex_descriptor>;
+auto find_feature(const entity_id& obj_id, const entity_id& feature_id, const scene_graph& g)
+-> boost::optional<scene_graph::vertex_descriptor>;
+
+auto find_feature(scene_graph::vertex_descriptor obj_v, const entity_id& feature_id, const scene_graph& g)
+-> boost::optional<scene_graph::vertex_descriptor>;
+
+auto object(scene_graph::vertex_descriptor feature_vertex, const scene_graph& g) -> scene_graph::vertex_descriptor;
+
+auto objects(const scene_graph& g) -> std::vector<scene_entity>;
+
+auto features(const std::string& object_id, const scene_graph& g) -> std::vector<scene_graph::vertex_descriptor>;
+
+auto features(const std::vector<std::string>& object_ids, const scene_graph& g) -> std::vector<scene_graph::vertex_descriptor>;

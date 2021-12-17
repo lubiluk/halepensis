@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		936320E126C3E408009B134A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936320DF26C3E408009B134A /* OpenGL.framework */; };
-		9388070326FFC81F0090709B /* libflann_cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002797263F4BAE00FA265E /* libflann_cpp.dylib */; };
 		9388070626FFC8260090709B /* libpcl_common.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84F0526FB928000896B1F /* libpcl_common.dylib */; };
 		9388070826FFC8260090709B /* libpcl_features.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84F0126FB928000896B1F /* libpcl_features.dylib */; };
 		9388070A26FFC8260090709B /* libpcl_filters.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84F0426FB928000896B1F /* libpcl_filters.dylib */; };
@@ -156,6 +155,8 @@
 		9389B88526C139A5006ACA66 /* libboost_regex-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002788263F4A9800FA265E /* libboost_regex-mt.dylib */; };
 		9389B89126C139A5006ACA66 /* libflann_cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002797263F4BAE00FA265E /* libflann_cpp.dylib */; };
 		9389B8A226C139A5006ACA66 /* libpcl_common.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002700263F453200FA265E /* libpcl_common.dylib */; };
+		93C6439F2763BC70000E8E76 /* libflann_cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C6439E2763BC70000E8E76 /* libflann_cpp.dylib */; };
+		93C643A2276522B5000E8E76 /* task_rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93C643A0276522B5000E8E76 /* task_rule.cpp */; };
 		93D84F3A26FB92A400896B1F /* libpcl_common.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84F0526FB928000896B1F /* libpcl_common.dylib */; };
 		93D84F3B26FB92A400896B1F /* libpcl_features.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84F0126FB928000896B1F /* libpcl_features.dylib */; };
 		93D84F3C26FB92A400896B1F /* libpcl_filters.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84F0426FB928000896B1F /* libpcl_filters.dylib */; };
@@ -308,12 +309,12 @@
 		93EFE16C2745B53D00072D5F /* filtering.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1412745B53D00072D5F /* filtering.cpp */; };
 		93EFE16D2745B53D00072D5F /* normals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1432745B53D00072D5F /* normals.cpp */; };
 		93EFE16E2745B53D00072D5F /* scene_understanding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1472745B53D00072D5F /* scene_understanding.cpp */; };
-		93EFE16F2745B53D00072D5F /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1482745B53D00072D5F /* entity.cpp */; };
+		93EFE16F2745B53D00072D5F /* scene_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1482745B53D00072D5F /* scene_entity.cpp */; };
 		93EFE1702745B53D00072D5F /* scene_graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1492745B53D00072D5F /* scene_graph.cpp */; };
 		93EFE1712745B53D00072D5F /* scene_visualization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE14B2745B53D00072D5F /* scene_visualization.cpp */; };
-		93EFE1722745B53D00072D5F /* understanding_visualization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE14C2745B53D00072D5F /* understanding_visualization.cpp */; };
+		93EFE1722745B53D00072D5F /* graph_visualization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE14C2745B53D00072D5F /* graph_visualization.cpp */; };
 		93EFE1732745B53D00072D5F /* task_understanding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE14E2745B53D00072D5F /* task_understanding.cpp */; };
-		93EFE1742745B53D00072D5F /* relation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1512745B53D00072D5F /* relation.cpp */; };
+		93EFE1742745B53D00072D5F /* entity_relation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1512745B53D00072D5F /* entity_relation.cpp */; };
 		93EFE1752745B53D00072D5F /* peg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1562745B53D00072D5F /* peg.cpp */; };
 		93EFE1762745B53D00072D5F /* object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1582745B53D00072D5F /* object.cpp */; };
 		93EFE1772745B53D00072D5F /* hole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE15A2745B53D00072D5F /* hole.cpp */; };
@@ -862,6 +863,9 @@
 		936320E026C3E408009B134A /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		9389B86926C1394B006ACA66 /* libfreenect.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreenect.dylib; path = ../../../../usr/local/Cellar/libfreenect/0.6.2/lib/libfreenect.dylib; sourceTree = "<group>"; };
 		9389B8CD26C139A5006ACA66 /* capture */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capture; sourceTree = BUILT_PRODUCTS_DIR; };
+		93C6439E2763BC70000E8E76 /* libflann_cpp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libflann_cpp.dylib; path = ../../../../usr/local/Cellar/flann/1.9.1_11/lib/libflann_cpp.dylib; sourceTree = "<group>"; };
+		93C643A0276522B5000E8E76 /* task_rule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = task_rule.cpp; sourceTree = "<group>"; };
+		93C643A1276522B5000E8E76 /* task_rule.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = task_rule.hpp; sourceTree = "<group>"; };
 		93D84EF526FB927F00896B1F /* libpcl_cc_tool_sanitize_cloud.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcl_cc_tool_sanitize_cloud.dylib; path = ../../../../usr/local/Cellar/pcl/1.12.0/lib/libpcl_cc_tool_sanitize_cloud.dylib; sourceTree = "<group>"; };
 		93D84EF626FB927F00896B1F /* libpcl_cc_tool_normal_estimation.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcl_cc_tool_normal_estimation.dylib; path = ../../../../usr/local/Cellar/pcl/1.12.0/lib/libpcl_cc_tool_normal_estimation.dylib; sourceTree = "<group>"; };
 		93D84EF726FB927F00896B1F /* libpcl_kdtree.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcl_kdtree.dylib; path = ../../../../usr/local/Cellar/pcl/1.12.0/lib/libpcl_kdtree.dylib; sourceTree = "<group>"; };
@@ -1026,7 +1030,6 @@
 		93EFE1302745B53D00072D5F /* normals.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = normals.hpp; sourceTree = "<group>"; };
 		93EFE1312745B53D00072D5F /* recognition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = recognition.cpp; sourceTree = "<group>"; };
 		93EFE1322745B53D00072D5F /* ransac.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ransac.hpp; sourceTree = "<group>"; };
-		93EFE1332745B53D00072D5F /* pcl_types.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pcl_types.hpp; sourceTree = "<group>"; };
 		93EFE1342745B53D00072D5F /* io.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = io.hpp; sourceTree = "<group>"; };
 		93EFE1352745B53D00072D5F /* clusters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clusters.cpp; sourceTree = "<group>"; };
 		93EFE1362745B53D00072D5F /* scaling.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scaling.cpp; sourceTree = "<group>"; };
@@ -1044,20 +1047,20 @@
 		93EFE1422745B53D00072D5F /* regions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = regions.hpp; sourceTree = "<group>"; };
 		93EFE1432745B53D00072D5F /* normals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = normals.cpp; sourceTree = "<group>"; };
 		93EFE1442745B53D00072D5F /* recognition.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = recognition.hpp; sourceTree = "<group>"; };
-		93EFE1462745B53D00072D5F /* relation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = relation.hpp; sourceTree = "<group>"; };
+		93EFE1462745B53D00072D5F /* entity_relation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = entity_relation.hpp; sourceTree = "<group>"; };
 		93EFE1472745B53D00072D5F /* scene_understanding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene_understanding.cpp; sourceTree = "<group>"; };
-		93EFE1482745B53D00072D5F /* entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entity.cpp; sourceTree = "<group>"; };
+		93EFE1482745B53D00072D5F /* scene_entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene_entity.cpp; sourceTree = "<group>"; };
 		93EFE1492745B53D00072D5F /* scene_graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene_graph.cpp; sourceTree = "<group>"; };
 		93EFE14A2745B53D00072D5F /* task_understanding.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = task_understanding.hpp; sourceTree = "<group>"; };
 		93EFE14B2745B53D00072D5F /* scene_visualization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene_visualization.cpp; sourceTree = "<group>"; };
-		93EFE14C2745B53D00072D5F /* understanding_visualization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = understanding_visualization.cpp; sourceTree = "<group>"; };
+		93EFE14C2745B53D00072D5F /* graph_visualization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = graph_visualization.cpp; sourceTree = "<group>"; };
 		93EFE14D2745B53D00072D5F /* scene_graph.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = scene_graph.hpp; sourceTree = "<group>"; };
 		93EFE14E2745B53D00072D5F /* task_understanding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = task_understanding.cpp; sourceTree = "<group>"; };
 		93EFE14F2745B53D00072D5F /* scene_visualization.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = scene_visualization.hpp; sourceTree = "<group>"; };
-		93EFE1502745B53D00072D5F /* understanding_visualization.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = understanding_visualization.hpp; sourceTree = "<group>"; };
-		93EFE1512745B53D00072D5F /* relation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = relation.cpp; sourceTree = "<group>"; };
+		93EFE1502745B53D00072D5F /* graph_visualization.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = graph_visualization.hpp; sourceTree = "<group>"; };
+		93EFE1512745B53D00072D5F /* entity_relation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entity_relation.cpp; sourceTree = "<group>"; };
 		93EFE1522745B53D00072D5F /* scene_understanding.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = scene_understanding.hpp; sourceTree = "<group>"; };
-		93EFE1532745B53D00072D5F /* entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = entity.hpp; sourceTree = "<group>"; };
+		93EFE1532745B53D00072D5F /* scene_entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = scene_entity.hpp; sourceTree = "<group>"; };
 		93EFE1542745B53D00072D5F /* geometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = geometry.hpp; sourceTree = "<group>"; };
 		93EFE1562745B53D00072D5F /* peg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = peg.cpp; sourceTree = "<group>"; };
 		93EFE1572745B53D00072D5F /* hole.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hole.hpp; sourceTree = "<group>"; };
@@ -1191,7 +1194,7 @@
 				938807CA26FFC8390090709B /* libvtkIOParallel-9.0.9.0.3.dylib in Frameworks */,
 				9388077226FFC8320090709B /* libvtkFiltersStatistics-9.0.9.0.3.dylib in Frameworks */,
 				9388072626FFC8270090709B /* libpcl_simulation.dylib in Frameworks */,
-				9388070326FFC81F0090709B /* libflann_cpp.dylib in Frameworks */,
+				93C6439F2763BC70000E8E76 /* libflann_cpp.dylib in Frameworks */,
 				9388072826FFC8270090709B /* libpcl_stereo.dylib in Frameworks */,
 				9388075426FFC8300090709B /* libvtkFiltersFlowPaths-9.0.9.0.3.dylib in Frameworks */,
 				9388070626FFC8260090709B /* libpcl_common.dylib in Frameworks */,
@@ -1395,6 +1398,7 @@
 		93002386263F44DD00FA265E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				93C6439E2763BC70000E8E76 /* libflann_cpp.dylib */,
 				93D84F9126FB96C400896B1F /* libvtkChartsCore-9.0.9.0.3.dylib */,
 				93D84FB126FB96C500896B1F /* libvtkCommonColor-9.0.9.0.3.dylib */,
 				93D84F9826FB96C400896B1F /* libvtkCommonComputationalGeometry-9.0.9.0.3.dylib */,
@@ -2084,8 +2088,8 @@
 		93EFE1262745B53D00072D5F /* relation_detection */ = {
 			isa = PBXGroup;
 			children = (
-				93EFE1272745B53D00072D5F /* relation_detection.hpp */,
 				93EFE1282745B53D00072D5F /* relation_detection.cpp */,
+				93EFE1272745B53D00072D5F /* relation_detection.hpp */,
 			);
 			path = relation_detection;
 			sourceTree = "<group>";
@@ -2102,7 +2106,6 @@
 				93EFE1302745B53D00072D5F /* normals.hpp */,
 				93EFE1312745B53D00072D5F /* recognition.cpp */,
 				93EFE1322745B53D00072D5F /* ransac.hpp */,
-				93EFE1332745B53D00072D5F /* pcl_types.hpp */,
 				93EFE1342745B53D00072D5F /* io.hpp */,
 				93EFE1352745B53D00072D5F /* clusters.cpp */,
 				93EFE1362745B53D00072D5F /* scaling.cpp */,
@@ -2127,20 +2130,22 @@
 		93EFE1452745B53D00072D5F /* understanding */ = {
 			isa = PBXGroup;
 			children = (
-				93EFE1462745B53D00072D5F /* relation.hpp */,
+				93EFE1512745B53D00072D5F /* entity_relation.cpp */,
+				93EFE1462745B53D00072D5F /* entity_relation.hpp */,
 				93EFE1472745B53D00072D5F /* scene_understanding.cpp */,
-				93EFE1482745B53D00072D5F /* entity.cpp */,
-				93EFE1492745B53D00072D5F /* scene_graph.cpp */,
-				93EFE14A2745B53D00072D5F /* task_understanding.hpp */,
+				93EFE1522745B53D00072D5F /* scene_understanding.hpp */,
 				93EFE14B2745B53D00072D5F /* scene_visualization.cpp */,
-				93EFE14C2745B53D00072D5F /* understanding_visualization.cpp */,
+				93EFE14F2745B53D00072D5F /* scene_visualization.hpp */,
+				93EFE14C2745B53D00072D5F /* graph_visualization.cpp */,
+				93EFE1502745B53D00072D5F /* graph_visualization.hpp */,
+				93EFE1492745B53D00072D5F /* scene_graph.cpp */,
 				93EFE14D2745B53D00072D5F /* scene_graph.hpp */,
 				93EFE14E2745B53D00072D5F /* task_understanding.cpp */,
-				93EFE14F2745B53D00072D5F /* scene_visualization.hpp */,
-				93EFE1502745B53D00072D5F /* understanding_visualization.hpp */,
-				93EFE1512745B53D00072D5F /* relation.cpp */,
-				93EFE1522745B53D00072D5F /* scene_understanding.hpp */,
-				93EFE1532745B53D00072D5F /* entity.hpp */,
+				93EFE14A2745B53D00072D5F /* task_understanding.hpp */,
+				93EFE1482745B53D00072D5F /* scene_entity.cpp */,
+				93EFE1532745B53D00072D5F /* scene_entity.hpp */,
+				93C643A0276522B5000E8E76 /* task_rule.cpp */,
+				93C643A1276522B5000E8E76 /* task_rule.hpp */,
 			);
 			path = understanding;
 			sourceTree = "<group>";
@@ -2149,13 +2154,13 @@
 			isa = PBXGroup;
 			children = (
 				93EFE1562745B53D00072D5F /* peg.cpp */,
+				93EFE15D2745B53D00072D5F /* peg.hpp */,
+				93EFE15A2745B53D00072D5F /* hole.cpp */,
 				93EFE1572745B53D00072D5F /* hole.hpp */,
 				93EFE1582745B53D00072D5F /* object.cpp */,
-				93EFE1592745B53D00072D5F /* properties.hpp */,
-				93EFE15A2745B53D00072D5F /* hole.cpp */,
 				93EFE15B2745B53D00072D5F /* object.hpp */,
 				93EFE15C2745B53D00072D5F /* properties.cpp */,
-				93EFE15D2745B53D00072D5F /* peg.hpp */,
+				93EFE1592745B53D00072D5F /* properties.hpp */,
 			);
 			path = entity_detection;
 			sourceTree = "<group>";
@@ -2235,6 +2240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93EFE1632745B53D00072D5F /* regions.cpp in Sources */,
+				93C643A2276522B5000E8E76 /* task_rule.cpp in Sources */,
 				93EFE16A2745B53D00072D5F /* alignment.cpp in Sources */,
 				93EFE1792745B53D00072D5F /* main.cpp in Sources */,
 				93EFE16C2745B53D00072D5F /* filtering.cpp in Sources */,
@@ -2248,14 +2254,14 @@
 				93EFE1762745B53D00072D5F /* object.cpp in Sources */,
 				93EFE1662745B53D00072D5F /* scaling.cpp in Sources */,
 				93EFE16E2745B53D00072D5F /* scene_understanding.cpp in Sources */,
-				93EFE16F2745B53D00072D5F /* entity.cpp in Sources */,
+				93EFE16F2745B53D00072D5F /* scene_entity.cpp in Sources */,
 				93EFE1702745B53D00072D5F /* scene_graph.cpp in Sources */,
-				93EFE1742745B53D00072D5F /* relation.cpp in Sources */,
+				93EFE1742745B53D00072D5F /* entity_relation.cpp in Sources */,
 				93EFE16D2745B53D00072D5F /* normals.cpp in Sources */,
 				93EFE1612745B53D00072D5F /* outliers.cpp in Sources */,
 				93EFE1602745B53D00072D5F /* relation_detection.cpp in Sources */,
 				93EFE1692745B53D00072D5F /* search.cpp in Sources */,
-				93EFE1722745B53D00072D5F /* understanding_visualization.cpp in Sources */,
+				93EFE1722745B53D00072D5F /* graph_visualization.cpp in Sources */,
 				93EFE1782745B53D00072D5F /* properties.cpp in Sources */,
 				93EFE1732745B53D00072D5F /* task_understanding.cpp in Sources */,
 				93EFE1772745B53D00072D5F /* hole.cpp in Sources */,
@@ -2335,7 +2341,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/flann/1.9.1_10/include/**",
+					"/usr/local/Cellar/flann/1.9.1_11/include/**",
 					"\"/usr/local/Cellar/pcl/1.12.0/include/pcl-1.12\"",
 					/usr/local/Cellar/eigen/3.3.9/include/eigen3,
 					/usr/local/Cellar/boost/1.76.0/include,
@@ -2346,7 +2352,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/pcl/1.12.0/lib,
 					"\"/usr/local/Cellar/vtk/9.0.3/lib\"",
-					/usr/local/Cellar/flann/1.9.1_10/lib,
+					/usr/local/Cellar/flann/1.9.1_11/lib,
 					/usr/local/Cellar/boost/1.76.0/lib,
 					/usr/local/Cellar/libfreenect/0.6.2/lib,
 					/usr/local/Cellar/libusb/1.0.24/lib,
@@ -2417,7 +2423,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/flann/1.9.1_10/include/**",
+					"/usr/local/Cellar/flann/1.9.1_11/include/**",
 					"\"/usr/local/Cellar/pcl/1.12.0/include/pcl-1.12\"",
 					/usr/local/Cellar/eigen/3.3.9/include/eigen3,
 					/usr/local/Cellar/boost/1.76.0/include,
@@ -2428,7 +2434,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/pcl/1.12.0/lib,
 					"\"/usr/local/Cellar/vtk/9.0.3/lib\"",
-					/usr/local/Cellar/flann/1.9.1_10/lib,
+					/usr/local/Cellar/flann/1.9.1_11/lib,
 					/usr/local/Cellar/boost/1.76.0/lib,
 					/usr/local/Cellar/libfreenect/0.6.2/lib,
 					/usr/local/Cellar/libusb/1.0.24/lib,
@@ -2454,6 +2460,10 @@
 					"vtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\"",
 					"DEBUG=1",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/flann/1.9.1_11/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2470,6 +2480,10 @@
 					qh_QHpointer,
 					"vtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\"",
 					"vtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\"",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/flann/1.9.1_11/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

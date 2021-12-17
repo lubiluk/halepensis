@@ -1,6 +1,6 @@
 #pragma once
 
-#include "pcl_types.hpp"
+#include "geometry.hpp"
 #include <vector>
 #include <memory>
 

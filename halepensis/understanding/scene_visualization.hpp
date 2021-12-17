@@ -1,5 +1,5 @@
 #pragma once
 
-class TaskUnderstanding;
+class task_understanding;
 
-auto view_scenes(const TaskUnderstanding& task) -> void;
+auto view_scenes(const task_understanding& task) -> void;

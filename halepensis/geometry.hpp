@@ -23,9 +23,13 @@ struct ModelCoefficients;
 struct PointIndices;
 }
 
-using Transform = Eigen::Matrix<float, 4, 4>;
-using Point = pcl::PointNormal;
-using PointCloud = pcl::PointCloud<Point>;
-using Vector = Eigen::Vector3f;
-using Rotation = Eigen::Matrix3f;
-using Quaternion = Eigen::Quaternionf;
+using mat44 = Eigen::Matrix<float, 4, 4>;
+using point = pcl::PointNormal;
+using point_cloud = pcl::PointCloud<point>;
+using point_indices = pcl::PointIndices;
+using normal = pcl::Normal;
+using surface_normals = pcl::PointCloud<normal>;
+using vec3 = Eigen::Vector3f;
+using rot_mat = Eigen::Matrix3f;
+using quat = Eigen::Quaternionf;
+using model_coefficients = pcl::ModelCoefficients;

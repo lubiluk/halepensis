@@ -1,6 +1,4 @@
-#include "understanding_visualization.hpp"
-
-#include "scene_understanding.hpp"
+#include "graph_visualization.hpp"
 
 #include <vtkCircularLayoutStrategy.h>
 #include <vtkForceDirectedLayoutStrategy.h>
@@ -31,7 +29,7 @@ using boost::edges;
 using boost::source;
 using boost::target;
 
-auto vtkGraphFromSceneGraph(const SceneGraph& graph) -> vtkNew<vtkMutableDirectedGraph>
+auto vtkGraphFromSceneGraph(const scene_graph& graph) -> vtkNew<vtkMutableDirectedGraph>
 {
     vtkNew<vtkMutableDirectedGraph> g;
     vtkNew<vtkStringArray> vertex_labels;
@@ -41,10 +39,10 @@ auto vtkGraphFromSceneGraph(const SceneGraph& graph) -> vtkNew<vtkMutableDirecte
     edge_labels->SetNumberOfComponents(1);
     edge_labels->SetName("EdgeLabels");
     
-    map<VertexDesc, vtkIdType> id_map;
+    map<scene_graph::vertex_descriptor, vtkIdType> id_map;
     
     {
-        VertexIter i, end;
+        scene_graph::vertex_iterator i, end;
         for (tie(i, end) = vertices(graph); i != end; ++i) {
             auto& o = graph[*i];
             auto gv = g->AddVertex();
@@ -54,7 +52,7 @@ auto vtkGraphFromSceneGraph(const SceneGraph& graph) -> vtkNew<vtkMutableDirecte
     }
     
     {
-        EdgeIter i, end;
+        scene_graph::edge_iterator i, end;
         for (tie(i, end) = edges(graph); i != end; ++i) {
             auto& r = graph[*i];
             auto src = source(*i, graph);
@@ -70,11 +68,11 @@ auto vtkGraphFromSceneGraph(const SceneGraph& graph) -> vtkNew<vtkMutableDirecte
     return g;
 }
 
-auto view(const SceneUnderstanding& scene) -> void
+auto view(const scene_graph& graph) -> void
 {
     vtkNew<vtkNamedColors> colors;
     
-    const auto g = vtkGraphFromSceneGraph(scene.graph);
+    const auto g = vtkGraphFromSceneGraph(graph);
     
     vtkNew<vtkGraphLayoutView> graphLayoutView;
     
@@ -131,12 +129,12 @@ auto view(const SceneUnderstanding& scene) -> void
     graphLayoutView->GetInteractor()->Start();
 }
 
-auto view(const SceneUnderstanding& scene1, const SceneUnderstanding& scene2) -> void
+auto view(const scene_graph& graph1, const scene_graph& graph2) -> void
 {
     vtkNew<vtkNamedColors> colors;
     
-    const auto g0 = vtkGraphFromSceneGraph(scene1.graph);
-    const auto g1 = vtkGraphFromSceneGraph(scene2.graph);
+    const auto g0 = vtkGraphFromSceneGraph(graph1);
+    const auto g1 = vtkGraphFromSceneGraph(graph2);
     
     
     // There will be one render window

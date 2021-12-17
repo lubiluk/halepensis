@@ -5,7 +5,7 @@
 #include "visualization.hpp"
 #include "task_understanding.hpp"
 #include "scene_visualization.hpp"
-#include "understanding_visualization.hpp"
+#include "graph_visualization.hpp"
 
 #include <iostream>
 #include <algorithm>
@@ -48,19 +48,20 @@ int main(int argc, const char *argv[])
     
     /* Task Reasoning Part */
     
-    TaskUnderstanding task { cloud_before, cloud_after };
+    task_understanding task { cloud_before, cloud_after };
     task.detect_objects();
 //    view_clusters(task.before_scene.cloud, task.before_scene.object_clouds());
     task.detect_change();
     task.detect_features();
     task.describe_relations();
     
-    view_scenes(task);
+//    view_scenes(task);
     // There is a bug that prevents us to show graphs side by side...
-    view(task.before_scene);
-    view(task.after_scene);
+    view(task.before_scene.graph);
+    view(task.after_scene.graph);
     
-
+    task.describe_task();
+    view(task.task_description);
     /* Tests */
     
     

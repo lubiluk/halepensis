@@ -1,6 +1,6 @@
 #pragma once
 
-#include "pcl_types.hpp"
+#include "geometry.hpp"
 #include <vector>
 
 auto view(const std::shared_ptr<point_cloud>& cloud) -> void;
