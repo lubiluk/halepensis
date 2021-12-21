@@ -50,13 +50,13 @@ int main(int argc, const char *argv[])
     
     task_understanding task { cloud_before, cloud_after };
     task.detect_objects();
-//    view_clusters(task.before_scene.cloud, task.before_scene.object_clouds());
+    view_clusters(task.before_scene.cloud, task.before_scene.object_clouds());
     task.detect_change();
     task.detect_features();
     task.describe_relations();
     
-//    view_scenes(task);
-    // There is a bug that prevents us to show graphs side by side...
+    view_scenes(task);
+    // There is a bug that prevents us from showing graphs side by side...
     view(task.before_scene.graph);
     view(task.after_scene.graph);
     

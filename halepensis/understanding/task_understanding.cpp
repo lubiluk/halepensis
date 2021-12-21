@@ -67,8 +67,36 @@ auto task_understanding::detect_objects() -> void
 
 auto task_understanding::detect_change() -> void
 {
-    focus_ids.push_back("object_0");
-    focus_ids.push_back("object_1");
+    // Displaced objects
+    for (auto& be : objects(before_scene.graph)) {
+        if (auto aov = find_object(be.id, after_scene.graph)) {
+            auto &ae = after_scene.graph[*aov];
+            
+            if ((ae.position - be.position).norm() > 0.02 ) {
+                focus_ids.push_back(be.id);
+            }
+        }
+    }
+    
+    // Objects that are close to displaced objects
+    for (auto& fid : focus_ids) {
+        auto fov = find_object(fid, after_scene.graph);
+        auto &fe = after_scene.graph[*fov];
+        
+        for (auto& ae : objects(after_scene.graph)) {
+            if (fe.id == ae.id) {
+                continue;
+            }
+            
+            auto fe_rad = (point_to_vec3(fe.max_corner) - point_to_vec3(fe.min_corner)).norm() / 2.0;
+            auto ae_rad = (point_to_vec3(ae.max_corner) - point_to_vec3(ae.min_corner)).norm() / 2.0;
+            
+            if ((fe.position - ae.position).norm() <= (fe_rad + ae_rad)) {
+                focus_ids.push_back(ae.id);
+            }
+        }
+        
+    }
 }
 
 auto task_understanding::detect_features() -> void

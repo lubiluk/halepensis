@@ -33,3 +33,8 @@ using vec3 = Eigen::Vector3f;
 using rot_mat = Eigen::Matrix3f;
 using quat = Eigen::Quaternionf;
 using model_coefficients = pcl::ModelCoefficients;
+
+inline auto point_to_vec3(const point& p) -> vec3
+{
+    return {p.x, p.y, p.z};
+}
