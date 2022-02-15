@@ -125,7 +125,7 @@ auto task_understanding::detect_features() -> void
         
         
         /* Holes */
-        auto holes = find_holes(object.cloud);
+        auto holes = detect_holes(object.cloud);
         add_features(holes, "hole_", entity_type::hole,
                      *object_desc,
                      object_cpy, cpy_transform);

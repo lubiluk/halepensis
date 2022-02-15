@@ -19,9 +19,9 @@ auto estimate_boundaries(const std::shared_ptr<point_cloud>& cloud)
     pcl::BoundaryEstimation<point, normal, pcl::Boundary> est;
     est.setInputCloud(cloud);
     est.setInputNormals(normals);
-//    est.setRadiusSearch(0.002);   // 2cm radius
+    est.setRadiusSearch(0.01);   // 2cm radius
     est.setAngleThreshold(M_PI_2);
-    est.setKSearch(20);
+//    est.setKSearch(20);
     est.setSearchMethod(typename pcl::search::KdTree<point>::Ptr (new pcl::search::KdTree<point>));
     est.compute(boundaries);
     

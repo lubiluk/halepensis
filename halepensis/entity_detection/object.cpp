@@ -6,7 +6,7 @@
 auto detect_objects(const std::shared_ptr<point_cloud> &cloud, const int n)
 -> std::vector<std::shared_ptr<point_cloud>>
 {
-    const auto indices = extract_euclidean_clusters(cloud, 0.05, 100, 10000);
+    const auto indices = extract_euclidean_clusters(cloud, 0.03, 100, 10000);
 
     std::vector<std::shared_ptr<point_cloud>> clusters;
     std::transform(indices.begin(), indices.end(), std::back_inserter(clusters), [&cloud](const auto& i) -> auto

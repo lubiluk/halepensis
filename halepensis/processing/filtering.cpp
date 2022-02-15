@@ -6,6 +6,7 @@
 #include <pcl/filters/extract_indices.h>
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/filters/passthrough.h>
+#include <pcl/filters/statistical_outlier_removal.h>
 #pragma clang diagnostic pop
 
 
@@ -65,6 +66,18 @@ auto filter_field(const std::shared_ptr<point_cloud>& input,
     pass.setFilterLimits(low, high);
     pass.setNegative(negative);
     pass.filter(*output);
+    
+    return output;
+}
+
+auto remove_outliers(const std::shared_ptr<point_cloud>& input) -> std::shared_ptr<point_cloud>
+{
+    auto output = std::make_shared<point_cloud>();
+    pcl::StatisticalOutlierRemoval<point> sor;
+    sor.setInputCloud(input);
+    sor.setMeanK(50);
+    sor.setStddevMulThresh(1.0);
+    sor.filter(*output);
     
     return output;
 }

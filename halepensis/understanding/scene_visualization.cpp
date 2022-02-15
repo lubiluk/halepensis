@@ -97,7 +97,7 @@ auto view_scenes(const task_understanding& task) -> void
     PCLVisualizer viz("3D Viewer");
     viz.setBackgroundColor(0, 0, 0);
     viz.initCameraParameters();
-    viz.setCameraPosition(0, 0, 0, 0, -1, 0);
+    viz.setCameraPosition(0, 0, 0, 0, 0, -1, 0, 1, 0);
     
     int v1{0};
     viz.createViewPort(0.0, 0.0, 0.5, 1.0, v1);

@@ -26,14 +26,16 @@ auto segment_regions(const std::shared_ptr<point_cloud>& input_cloud)
     
     pcl::RegionGrowing<point, normal> reg;
     reg.setMinClusterSize (10);
-    reg.setMaxClusterSize (1000000);
+    reg.setMaxClusterSize (1000);
     reg.setSearchMethod (tree);
     reg.setNumberOfNeighbours (10);
     reg.setInputCloud (input_cloud);
     reg.setIndices (indices);
     reg.setInputNormals (input_normals);
-    reg.setSmoothnessThreshold (4.0 / 180.0 * M_PI);
+    reg.setSmoothnessThreshold (8 / 180.0 * M_PI);
     reg.setCurvatureThreshold (1.0);
+    reg.setSmoothModeFlag(true);
+    reg.setCurvatureTestFlag(false);
     
     std::vector<point_indices> clusters;
     reg.extract(clusters);

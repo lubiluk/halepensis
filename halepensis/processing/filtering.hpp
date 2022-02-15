@@ -19,3 +19,5 @@ auto filter_field(const std::shared_ptr<point_cloud>& input,
                   const double low,
                   const double high,
                   const bool negative = false) -> std::shared_ptr<point_cloud>;
+
+auto remove_outliers(const std::shared_ptr<point_cloud>& input) -> std::shared_ptr<point_cloud>;

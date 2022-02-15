@@ -10,10 +10,12 @@
 #include <pcl/sample_consensus/model_types.h>
 #pragma clang diagnostic pop
 
-auto fit_cylinder(const std::shared_ptr<point_cloud>& input_cloud,
-                  const std::shared_ptr<surface_normals>& input_normals)
+auto fit_cylinder(const std::shared_ptr<point_cloud>& input_cloud)
 -> boost::optional<std::tuple<std::shared_ptr<point_indices>, std::shared_ptr<model_coefficients>>>
 {
+    const auto input_normals = std::make_shared<surface_normals>();
+    pcl::copyPointCloud(*input_cloud, *input_normals);
+    
     pcl::SACSegmentationFromNormals<point, normal> seg;
     
     seg.setOptimizeCoefficients(true);
@@ -21,8 +23,10 @@ auto fit_cylinder(const std::shared_ptr<point_cloud>& input_cloud,
     seg.setMethodType(pcl::SAC_RANSAC);
     seg.setNormalDistanceWeight(0.1);
     seg.setMaxIterations(10000);
-    seg.setDistanceThreshold(0.05);
-    seg.setRadiusLimits(0, 0.5);
+    seg.setDistanceThreshold(0.002);
+    seg.setRadiusLimits(0.01, 0.05);
+    seg.setNumberOfThreads(0);
+    seg.setAxis({0,0,1});
     
     auto coefficients = std::make_shared<model_coefficients>();
     auto inliers = std::make_shared<point_indices>();
@@ -82,4 +86,30 @@ auto fit_sphere(const std::shared_ptr<point_cloud>& input_cloud)
     return std::make_tuple(inliers, coefficients);
 }
 
+auto fit_circle(const std::shared_ptr<point_cloud>& input_cloud)
+-> boost::optional<std::tuple<std::shared_ptr<point_indices>, std::shared_ptr<model_coefficients>>>
+{
+    pcl::SACSegmentation<point> seg;
+    
+    seg.setOptimizeCoefficients(true);
+    seg.setModelType(pcl::SACMODEL_CIRCLE3D);
+    seg.setMethodType(pcl::SAC_RANSAC);
+    seg.setDistanceThreshold(0.002);
+    seg.setMaxIterations(10000);
+    seg.setNumberOfThreads(0);
+    seg.setNumberOfThreads(0);
+    seg.setAxis({0,1,0});
+    seg.setRadiusLimits(0.01, 0.05);
+    
+    auto coefficients = std::make_shared<model_coefficients>();
+    auto inliers = std::make_shared<point_indices>();
+    
+    seg.setInputCloud(input_cloud);
+    seg.segment(*inliers, *coefficients);
+    
+    // Finish early if can't find any more inliners.
+    if (inliers->indices.size() == 0) return boost::none;
+    
+    return std::make_tuple(inliers, coefficients);
+}
 

@@ -18,10 +18,12 @@ auto view(const std::shared_ptr<point_cloud>& cloud) -> void
     pcl::visualization::PCLVisualizer viz("3D Viewer");
     viz.setBackgroundColor(0, 0, 0);
     viz.initCameraParameters();
-    viz.setCameraPosition(0, 0, 0, 0, -1, 0);
+//    viz.setCameraPosition(0, 0, 0, 0, -1, 0);
+    viz.setCameraPosition(0, 0, 0, 0, 0, -1, 0, 1, 0);
     
     viz.addPointCloud<point>(cloud, "cloud");
     viz.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "cloud");
+    viz.resetCameraViewpoint("cloud");
     
     viz.spin();
     viz.close();
@@ -32,7 +34,8 @@ auto view(const std::shared_ptr<point_cloud>& cloud1, const std::shared_ptr<poin
     pcl::visualization::PCLVisualizer viz("3D Viewer");
     viz.setBackgroundColor(0, 0, 0);
     viz.initCameraParameters();
-    viz.setCameraPosition(0, 0, 0, 0, -1, 0);
+//    viz.setCameraPosition(0, 0, 0, 0, -1, 0);
+    viz.setCameraPosition(0, 0, 0, 0, 0, -1, 0, 1, 0);
     
     int v1(0);
     viz.createViewPort (0.0, 0.0, 0.5, 1.0, v1);
@@ -41,8 +44,10 @@ auto view(const std::shared_ptr<point_cloud>& cloud1, const std::shared_ptr<poin
     
     viz.addPointCloud<point>(cloud1, "cloud1", v1);
     viz.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "cloud1");
+//    viz.resetCameraViewpoint("cloud1", v1);
     viz.addPointCloud<point>(cloud2, "cloud2", v2);
     viz.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "cloud2");
+//    viz.resetCameraViewpoint("cloud2", v2);
     
     viz.spin();
     viz.close();
@@ -54,7 +59,7 @@ auto view_clusters(const std::shared_ptr<point_cloud>& cloud,
     pcl::visualization::PCLVisualizer viz("3D Viewer");
     viz.setBackgroundColor(0, 0, 0);
     viz.initCameraParameters();
-    viz.setCameraPosition(0, 0, 0, 0, -1, 0);
+    viz.setCameraPosition(0, 0, 0, 0, 0, -1, 0, 1, 0);
     
     viz.addPointCloud<point>(cloud, "cloud");
     viz.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, "cloud");
