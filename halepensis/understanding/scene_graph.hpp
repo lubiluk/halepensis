@@ -29,3 +29,5 @@ auto objects(const scene_graph& g) -> std::vector<scene_entity>;
 auto features(const std::string& object_id, const scene_graph& g) -> std::vector<scene_graph::vertex_descriptor>;
 
 auto features(const std::vector<std::string>& object_ids, const scene_graph& g) -> std::vector<scene_graph::vertex_descriptor>;
+
+auto intersection(const scene_graph& g1, const scene_graph& g2) -> scene_graph;
