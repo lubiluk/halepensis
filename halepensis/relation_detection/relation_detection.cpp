@@ -37,5 +37,5 @@ auto is_inside(const scene_entity& entity1, const scene_entity& entity2) -> bool
     + abs(box2.max_corner().y() - box2.min_corner().y())
     + abs(box2.max_corner().z() - box2.min_corner().z());
     
-    return o && d1 < d2;
+    return o && d2 < d1;
 }

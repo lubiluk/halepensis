@@ -30,4 +30,6 @@ auto features(const std::string& object_id, const scene_graph& g) -> std::vector
 
 auto features(const std::vector<std::string>& object_ids, const scene_graph& g) -> std::vector<scene_graph::vertex_descriptor>;
 
-auto intersection(const scene_graph& g1, const scene_graph& g2) -> scene_graph;
+auto intersection(const scene_graph& g1, const scene_graph& g2) -> std::vector<scene_graph>;
+
+auto save_to_graphviz(const scene_graph& graph, const std::string& file_path) -> void;

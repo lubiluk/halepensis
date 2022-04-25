@@ -76,7 +76,7 @@ auto remove_outliers(const std::shared_ptr<point_cloud>& input) -> std::shared_p
     pcl::StatisticalOutlierRemoval<point> sor;
     sor.setInputCloud(input);
     sor.setMeanK(50);
-    sor.setStddevMulThresh(1.0);
+    sor.setStddevMulThresh(2.0);
     sor.filter(*output);
     
     return output;

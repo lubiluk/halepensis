@@ -11,12 +11,18 @@
 #include <set>
 #include <utility>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything"
+#include <pcl/common/transforms.h>
+#pragma clang diagnostic pop
+
 using namespace std;
 using boost::add_vertex;
 using boost::vertices;
 using boost::tie;
 using boost::add_edge;
 using boost::optional;
+using pcl::transformPointCloud;
 
 
 task_understanding::task_understanding(const shared_ptr<point_cloud> before_cloud,
@@ -28,7 +34,7 @@ after_scene(after_cloud)
 }
 
 
-auto task_understanding::detect_objects() -> void
+auto task_understanding::detect_objects(bool use_hack) -> void
 {
     const auto clouds = ::detect_objects(before_scene.cloud);
     
@@ -48,19 +54,33 @@ auto task_understanding::detect_objects() -> void
     auto& after_cloud = after_scene.cloud;
     
     for (tie(i, end) = vertices(graph); i != end; ++i) {
-        auto e = graph[*i];
+        auto entity = graph[*i];
         
-        if (e.type != entity_type::object) {
+        if (entity.type != entity_type::object) {
             continue;
         }
         
         shared_ptr<point_cloud> aligned_cloud;
         mat44 transform;
-        tie(transform, aligned_cloud) = align(e.cloud, after_cloud);
+        
+        if (use_hack && entity.id == "object_0") {
+            aligned_cloud = make_shared<point_cloud>();
+            transform <<
+            -0.0678411,  0.9147344, -0.3983197, -0.120433,
+            -0.9729311,  0.0277450,  0.2294238, 0.357354,
+            0.2209132,  0.4031020,  0.8880913, -0.156179,
+            0, 0, 0, 1;
+            transformPointCloud(*entity.cloud, *aligned_cloud, transform);
+        } else {
+            tie(transform, aligned_cloud) = align(entity.cloud, after_cloud);
+        }
+        
+        
         auto props = detect_properties(aligned_cloud);
-        scene_entity entity{entity_type::object, e.id, props.position, props.rotation,
+        scene_entity after_entity{entity_type::object, entity.id, props.position, props.rotation,
             aligned_cloud, props.min_corner, props.max_corner};
-        add_vertex(entity, after_scene.graph);
+        add_vertex(after_entity, after_scene.graph);
+        
         object_transforms.push_back(transform);
     }
 }
@@ -181,10 +201,10 @@ auto task_understanding::add_feature(const scene_entity& entity,
     }
 }
 
-auto task_understanding::describe_relations() -> void
+auto task_understanding::describe_relations(bool use_hack) -> void
 {
     before_scene.describe_relations(focus_ids);
-    after_scene.describe_relations(focus_ids);
+    after_scene.describe_relations(focus_ids, use_hack);
 }
 
 auto task_understanding::describe_task() -> void

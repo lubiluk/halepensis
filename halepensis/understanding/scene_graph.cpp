@@ -1,7 +1,14 @@
 #include "scene_graph.hpp"
 
+#include <fstream>
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything"
 #include <boost/graph/mcgregor_common_subgraphs.hpp>
 #include <boost/graph/copy.hpp>
+#include <boost/graph/graphviz.hpp>
+#pragma clang diagnostic pop
+
 
 using namespace std;
 using boost::optional;
@@ -179,15 +186,39 @@ private:
     Container& container;
 };
 
-auto intersection(const scene_graph& g1, const scene_graph& g2) -> scene_graph
+auto intersection(const scene_graph& g1, const scene_graph& g2) -> vector<scene_graph>
 {
     vector<scene_graph> sub_graphs;
     collect_callback<scene_graph, vector<scene_graph>> callback(g1, g2, sub_graphs);
-    mcgregor_common_subgraphs_maximum_unique(g1, g2, true, callback);
+    
+    mcgregor_common_subgraphs_maximum_unique(g1, g2,
+                                             get(vertex_index, g1), get(vertex_index, g2),
+                                             [&g1, &g2](auto e1, auto e2) {
+                                                return g1[e1].type == g2[e2].type;
+                                             }, [&g1, &g2](auto v1, auto v2) {
+                                                 return g1[v1].type == g2[v2].type;
+                                             }, true, callback);
+
     
     if (sub_graphs.empty()) {
         return {};
     }
     
-    return sub_graphs.front();
+    return sub_graphs;
+}
+
+auto save_to_graphviz(const scene_graph& graph, const string& file_path) -> void
+{
+    ofstream file(file_path);
+    write_graphviz(file, graph, [&graph](auto& out, const auto& v) {
+        out << "[label=\"" << graph[v].id << "\"";
+        
+        if (graph[v].type == entity_type::object) {
+            out << " shape=box";
+        }
+        
+        out << "]";
+    }, [&graph](auto& out, const auto& e) {
+        out << "[label=\"" << graph[e].description() << "\"]";
+    });
 }

@@ -3,6 +3,7 @@
 #include "geometry.hpp"
 #include <string>
 #include <memory>
+#include <boost/optional.hpp>
 
 using entity_id = std::string;
 
@@ -35,4 +36,9 @@ public:
     scene_entity(const scene_entity& original) = default;
     
     auto transformed(const mat44& transform) const -> scene_entity;
+    auto type_description() const -> std::string;
 };
+
+
+auto entity_type_to_string(entity_type type) -> std::string;
+auto entity_type_from_string(const std::string& string) -> boost::optional<entity_type>;

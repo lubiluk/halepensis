@@ -342,6 +342,15 @@
 		93D850B726FB96E800896B1F /* libvtkImagingGeneral-9.0.9.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84FC626FB96C600896B1F /* libvtkImagingGeneral-9.0.9.0.3.dylib */; };
 		93D850B926FB96E900896B1F /* libvtkFiltersAMR-9.0.9.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84FC726FB96C700896B1F /* libvtkFiltersAMR-9.0.9.0.3.dylib */; };
 		93D850BB26FB96E900896B1F /* libvtkFiltersProgrammable-9.0.9.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84FC826FB96C700896B1F /* libvtkFiltersProgrammable-9.0.9.0.3.dylib */; };
+		93E7E5F827CD77F9000A3324 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936320E026C3E408009B134A /* GLUT.framework */; };
+		93E7E60727CD77F9000A3324 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936320DF26C3E408009B134A /* OpenGL.framework */; };
+		93E7E63727CD783E000A3324 /* rs_capture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93E7E59827CD7742000A3324 /* rs_capture.cpp */; };
+		93E7E63B27CD7A16000A3324 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E7E63A27CD7A00000A3324 /* libglfw3.a */; };
+		93E7E63C27CD7A25000A3324 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385348227BC0453006ADDB5 /* Cocoa.framework */; };
+		93E7E63E27CD7A64000A3324 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E7E63D27CD7A64000A3324 /* IOKit.framework */; };
+		93E7E64027CD7AB1000A3324 /* librealsense2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E7E63F27CD7AAA000A3324 /* librealsense2.a */; };
+		93E7E64227CD7AC4000A3324 /* librealsense-file.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E7E64127CD7AC4000A3324 /* librealsense-file.a */; };
+		93E7E64427CD7AD0000A3324 /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E7E64327CD7AD0000A3324 /* libusb-1.0.a */; };
 		93EFE1602745B53D00072D5F /* relation_detection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1282745B53D00072D5F /* relation_detection.cpp */; };
 		93EFE1622745B53D00072D5F /* visualization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE12D2745B53D00072D5F /* visualization.cpp */; };
 		93EFE1632745B53D00072D5F /* regions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE12E2745B53D00072D5F /* regions.cpp */; };
@@ -381,6 +390,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		9389B8C926C139A5006ACA66 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		93E7E63227CD77F9000A3324 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -1251,6 +1269,21 @@
 		93D84FC626FB96C600896B1F /* libvtkImagingGeneral-9.0.9.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libvtkImagingGeneral-9.0.9.0.3.dylib"; path = "../../../../usr/local/Cellar/vtk/9.0.3/lib/libvtkImagingGeneral-9.0.9.0.3.dylib"; sourceTree = "<group>"; };
 		93D84FC726FB96C700896B1F /* libvtkFiltersAMR-9.0.9.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libvtkFiltersAMR-9.0.9.0.3.dylib"; path = "../../../../usr/local/Cellar/vtk/9.0.3/lib/libvtkFiltersAMR-9.0.9.0.3.dylib"; sourceTree = "<group>"; };
 		93D84FC826FB96C700896B1F /* libvtkFiltersProgrammable-9.0.9.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libvtkFiltersProgrammable-9.0.9.0.3.dylib"; path = "../../../../usr/local/Cellar/vtk/9.0.3/lib/libvtkFiltersProgrammable-9.0.9.0.3.dylib"; sourceTree = "<group>"; };
+		93E7E59827CD7742000A3324 /* rs_capture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rs_capture.cpp; sourceTree = "<group>"; };
+		93E7E59A27CD779A000A3324 /* example.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = example.hpp; sourceTree = "<group>"; };
+		93E7E63627CD77F9000A3324 /* rs_capture */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = rs_capture; sourceTree = BUILT_PRODUCTS_DIR; };
+		93E7E63827CD78E8000A3324 /* stb_easy_font.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stb_easy_font.hpp; sourceTree = "<group>"; };
+		93E7E63927CD791D000A3324 /* example-utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "example-utils.hpp"; sourceTree = "<group>"; };
+		93E7E63A27CD7A00000A3324 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = "../vcpkg/installed/x64-osx/lib/libglfw3.a"; sourceTree = "<group>"; };
+		93E7E63D27CD7A64000A3324 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		93E7E63F27CD7AAA000A3324 /* librealsense2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librealsense2.a; path = "../vcpkg/installed/x64-osx/lib/librealsense2.a"; sourceTree = "<group>"; };
+		93E7E64127CD7AC4000A3324 /* librealsense-file.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "librealsense-file.a"; path = "../vcpkg/installed/x64-osx/lib/librealsense-file.a"; sourceTree = "<group>"; };
+		93E7E64327CD7AD0000A3324 /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libusb-1.0.a"; path = "../vcpkg/installed/x64-osx/lib/libusb-1.0.a"; sourceTree = "<group>"; };
+		93E7E64527CD7B25000A3324 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		93E7E64727CD7B42000A3324 /* CoreMediaIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMediaIO.framework; path = System/Library/Frameworks/CoreMediaIO.framework; sourceTree = SDKROOT; };
+		93E7E64A27CD7B9D000A3324 /* IOUSBHost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOUSBHost.framework; path = System/Library/Frameworks/IOUSBHost.framework; sourceTree = SDKROOT; };
+		93E7E64B27CD7B9D000A3324 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		93E7E64C27CD7B9E000A3324 /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
 		93EFE1252745B53D00072D5F /* capture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = capture.cpp; sourceTree = "<group>"; };
 		93EFE1272745B53D00072D5F /* relation_detection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = relation_detection.hpp; sourceTree = "<group>"; };
 		93EFE1282745B53D00072D5F /* relation_detection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = relation_detection.cpp; sourceTree = "<group>"; };
@@ -1653,6 +1686,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		93E7E59E27CD77F9000A3324 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93E7E63C27CD7A25000A3324 /* Cocoa.framework in Frameworks */,
+				93E7E5F827CD77F9000A3324 /* GLUT.framework in Frameworks */,
+				93E7E60727CD77F9000A3324 /* OpenGL.framework in Frameworks */,
+				93E7E63E27CD7A64000A3324 /* IOKit.framework in Frameworks */,
+				93E7E63B27CD7A16000A3324 /* libglfw3.a in Frameworks */,
+				93E7E64027CD7AB1000A3324 /* librealsense2.a in Frameworks */,
+				93E7E64227CD7AC4000A3324 /* librealsense-file.a in Frameworks */,
+				93E7E64427CD7AD0000A3324 /* libusb-1.0.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1670,6 +1718,7 @@
 			children = (
 				9300235A263F3E0800FA265E /* halepensis */,
 				9389B8CD26C139A5006ACA66 /* capture */,
+				93E7E63627CD77F9000A3324 /* rs_capture */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1677,6 +1726,16 @@
 		93002386263F44DD00FA265E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				93E7E64B27CD7B9D000A3324 /* ImageIO.framework */,
+				93E7E64C27CD7B9E000A3324 /* IOSurface.framework */,
+				93E7E64A27CD7B9D000A3324 /* IOUSBHost.framework */,
+				93E7E64727CD7B42000A3324 /* CoreMediaIO.framework */,
+				93E7E64527CD7B25000A3324 /* Carbon.framework */,
+				93E7E64327CD7AD0000A3324 /* libusb-1.0.a */,
+				93E7E64127CD7AC4000A3324 /* librealsense-file.a */,
+				93E7E63F27CD7AAA000A3324 /* librealsense2.a */,
+				93E7E63D27CD7A64000A3324 /* IOKit.framework */,
+				93E7E63A27CD7A00000A3324 /* libglfw3.a */,
 				9385357427BC054C006ADDB5 /* libboost_atomic.a */,
 				9385356827BC054B006ADDB5 /* libboost_chrono.a */,
 				9385356627BC054B006ADDB5 /* libboost_container.a */,
@@ -2546,6 +2605,10 @@
 				93EFE1552745B53D00072D5F /* entity_detection */,
 				93EFE15E2745B53D00072D5F /* main.cpp */,
 				93EFE1252745B53D00072D5F /* capture.cpp */,
+				93E7E59827CD7742000A3324 /* rs_capture.cpp */,
+				93E7E59A27CD779A000A3324 /* example.hpp */,
+				93E7E63827CD78E8000A3324 /* stb_easy_font.hpp */,
+				93E7E63927CD791D000A3324 /* example-utils.hpp */,
 			);
 			path = halepensis;
 			sourceTree = "<group>";
@@ -2665,13 +2728,30 @@
 			productReference = 9389B8CD26C139A5006ACA66 /* capture */;
 			productType = "com.apple.product-type.tool";
 		};
+		93E7E59B27CD77F9000A3324 /* rs_capture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93E7E63327CD77F9000A3324 /* Build configuration list for PBXNativeTarget "rs_capture" */;
+			buildPhases = (
+				93E7E59C27CD77F9000A3324 /* Sources */,
+				93E7E59E27CD77F9000A3324 /* Frameworks */,
+				93E7E63227CD77F9000A3324 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rs_capture;
+			productName = halepensis;
+			productReference = 93E7E63627CD77F9000A3324 /* rs_capture */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		93002352263F3E0800FA265E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					93002359263F3E0800FA265E = {
 						CreatedOnToolsVersion = 12.5;
@@ -2693,6 +2773,7 @@
 			targets = (
 				93002359263F3E0800FA265E /* halepensis */,
 				9389B86B26C139A5006ACA66 /* capture */,
+				93E7E59B27CD77F9000A3324 /* rs_capture */,
 			);
 		};
 /* End PBXProject section */
@@ -2736,6 +2817,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				93EFE17A2745B56C00072D5F /* capture.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93E7E59C27CD77F9000A3324 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93E7E63727CD783E000A3324 /* rs_capture.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2954,6 +3043,41 @@
 			};
 			name = Release;
 		};
+		93E7E63427CD77F9000A3324 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DISABLE_PCAP,
+					DISABLE_LIBUSB_1_0,
+					DISABLE_PNG,
+					qh_QHpointer,
+					"vtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\"",
+					"vtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\"",
+					"DEBUG=1",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		93E7E63527CD77F9000A3324 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DISABLE_PCAP,
+					DISABLE_LIBUSB_1_0,
+					DISABLE_PNG,
+					qh_QHpointer,
+					"vtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\"",
+					"vtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2980,6 +3104,15 @@
 			buildConfigurations = (
 				9389B8CB26C139A5006ACA66 /* Debug */,
 				9389B8CC26C139A5006ACA66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93E7E63327CD77F9000A3324 /* Build configuration list for PBXNativeTarget "rs_capture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93E7E63427CD77F9000A3324 /* Debug */,
+				93E7E63527CD77F9000A3324 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

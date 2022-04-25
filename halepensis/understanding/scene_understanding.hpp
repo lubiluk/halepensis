@@ -16,5 +16,5 @@ public:
     
     scene_understanding(std::shared_ptr<point_cloud> cloud);
     auto object_clouds() const -> std::vector<std::shared_ptr<point_cloud>>;
-    auto describe_relations(const std::vector<std::string>& object_ids) -> void;
+    auto describe_relations(const std::vector<std::string>& object_ids, bool use_hack = false) -> void;
 };

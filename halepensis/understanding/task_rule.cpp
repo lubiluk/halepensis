@@ -62,8 +62,11 @@ auto graph_from_rules(set<task_rule> rules, scene_graph scene) -> scene_graph
     return graph;
 }
 
-auto rules_from_features(const vector<scene_graph::vertex_descriptor>& feats, const scene_graph& g) -> set<task_rule>
+auto rules_from_features(const vector<scene_graph::vertex_descriptor>& feats,
+                         const scene_graph& g,
+                         bool use_feature_ids) -> set<task_rule>
 {
+    using boost::tie;
     set<task_rule> rules;
     
     for (auto v : feats) {
@@ -73,9 +76,30 @@ auto rules_from_features(const vector<scene_graph::vertex_descriptor>& feats, co
             auto feat2_v = target(*it, g);
             auto obj1_v = object(feat1_v, g);
             auto obj2_v = object(feat2_v, g);
-            rules.emplace(g[obj1_v].id, g[feat1_v].id, g[*it].description(), g[obj2_v].id, g[feat2_v].id);
+            rules.emplace(g[obj1_v].id,
+                          use_feature_ids ? g[feat1_v].id : g[feat1_v].type_description(),
+                          g[*it].description(),
+                          g[obj2_v].id,
+                          use_feature_ids ? g[feat2_v].id : g[feat2_v].type_description());
         }
     }
     
     return rules;
+}
+
+auto rules_from_graph(const scene_graph& g, bool use_feature_ids) -> set<task_rule>
+{
+    using boost::tie;
+    
+    vector<scene_graph::vertex_descriptor> feats;
+    scene_graph::vertex_iterator i, end;
+    
+    for (tie(i, end) = vertices(g); i != end; ++i) {
+        auto& ent = g[*i];
+        if (ent.type != entity_type::object) {
+            feats.push_back(*i);
+        }
+    }
+    
+    return rules_from_features(feats, g, use_feature_ids);
 }

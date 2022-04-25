@@ -18,13 +18,13 @@ public:
     task_understanding(std::shared_ptr<point_cloud> before_cloud, const std::shared_ptr<point_cloud> after_cloud);
     
     
-    auto detect_objects() -> void;
+    auto detect_objects(bool use_hack = false) -> void;
     /// Detects which objects are involved in the task and fills in focus_descriptors in the task.
     auto detect_change() -> void;
     /// Detects features in focused entities
     auto detect_features() -> void;
     /// Describes relations between features of focused objects
-    auto describe_relations() -> void;
+    auto describe_relations(bool use_hack = false) -> void;
     auto describe_task() -> void;
 private:
     auto add_features(const std::vector<std::shared_ptr<point_cloud>>& clouds,

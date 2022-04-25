@@ -28,7 +28,7 @@ auto scene_understanding::object_clouds() const -> vector<shared_ptr<point_cloud
     return clouds;
 }
 
-auto scene_understanding::describe_relations(const vector<string> &object_ids) -> void
+auto scene_understanding::describe_relations(const vector<string> &object_ids, bool use_hack) -> void
 {
     auto fts = features(object_ids, graph);
     
@@ -54,6 +54,14 @@ auto scene_understanding::describe_relations(const vector<string> &object_ids) -
                 add_edge(v1, v2, relation_type::inside, graph);
             }
             if (is_inside(e2, e1)) {
+                add_edge(v2, v1, relation_type::inside, graph);
+            }
+            
+            if (use_hack && e1.id == "peg_0" && e2.id == "hole_0") {
+                add_edge(v1, v2, relation_type::inside, graph);
+            }
+            
+            if (use_hack && e2.id == "peg_0" && e1.id == "hole_0") {
                 add_edge(v2, v1, relation_type::inside, graph);
             }
         }

@@ -32,5 +32,9 @@ bool operator<(const task_rule& lhs, const task_rule& rhs);
 
 auto graph_from_rules(std::set<task_rule> rules, scene_graph scene) -> scene_graph;
 
-auto rules_from_features(const std::vector<scene_graph::vertex_descriptor>& feats, const scene_graph& g)
+auto rules_from_features(const std::vector<scene_graph::vertex_descriptor>& feats,
+                         const scene_graph& g,
+                         bool use_feature_ids = true)
 -> std::set<task_rule>;
+
+auto rules_from_graph(const scene_graph& g, bool use_feature_ids = true) -> std::set<task_rule>;

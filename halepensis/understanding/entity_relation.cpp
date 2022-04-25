@@ -4,7 +4,7 @@ using namespace std;
 using boost::optional;
 using boost::none;
 
-auto relation_type_to_string(relation_type type) -> std::string
+auto relation_type_to_string(relation_type type) -> string
 {
     switch (type) {
         case relation_type::has:
@@ -65,7 +65,7 @@ type(relation_type::has)
     
 }
 
-entity_relation::entity_relation(const std::string& description):
+entity_relation::entity_relation(const string& description):
 type(*relation_type_from_string(description))
 {
     
