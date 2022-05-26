@@ -204,6 +204,219 @@
 		9389B88526C139A5006ACA66 /* libboost_regex-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002788263F4A9800FA265E /* libboost_regex-mt.dylib */; };
 		9389B89126C139A5006ACA66 /* libflann_cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002797263F4BAE00FA265E /* libflann_cpp.dylib */; };
 		9389B8A226C139A5006ACA66 /* libpcl_common.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93002700263F453200FA265E /* libpcl_common.dylib */; };
+		93B9762A283D7698000BF6B6 /* regions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE12E2745B53D00072D5F /* regions.cpp */; };
+		93B9762B283D7698000BF6B6 /* task_rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93C643A0276522B5000E8E76 /* task_rule.cpp */; };
+		93B9762C283D7698000BF6B6 /* alignment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE13D2745B53D00072D5F /* alignment.cpp */; };
+		93B9762E283D7698000BF6B6 /* filtering.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1412745B53D00072D5F /* filtering.cpp */; };
+		93B9762F283D7698000BF6B6 /* features.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE13E2745B53D00072D5F /* features.cpp */; };
+		93B97630283D7698000BF6B6 /* ransac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1382745B53D00072D5F /* ransac.cpp */; };
+		93B97631283D7698000BF6B6 /* clusters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1352745B53D00072D5F /* clusters.cpp */; };
+		93B97632283D7698000BF6B6 /* recognition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1312745B53D00072D5F /* recognition.cpp */; };
+		93B97633283D7698000BF6B6 /* scene_visualization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE14B2745B53D00072D5F /* scene_visualization.cpp */; };
+		93B97634283D7698000BF6B6 /* visualization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE12D2745B53D00072D5F /* visualization.cpp */; };
+		93B97635283D7698000BF6B6 /* io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE13A2745B53D00072D5F /* io.cpp */; };
+		93B97636283D7698000BF6B6 /* object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1582745B53D00072D5F /* object.cpp */; };
+		93B97637283D7698000BF6B6 /* scaling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1362745B53D00072D5F /* scaling.cpp */; };
+		93B97638283D7698000BF6B6 /* scene_understanding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1472745B53D00072D5F /* scene_understanding.cpp */; };
+		93B97639283D7698000BF6B6 /* scene_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1482745B53D00072D5F /* scene_entity.cpp */; };
+		93B9763A283D7698000BF6B6 /* scene_graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1492745B53D00072D5F /* scene_graph.cpp */; };
+		93B9763B283D7698000BF6B6 /* entity_relation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1512745B53D00072D5F /* entity_relation.cpp */; };
+		93B9763C283D7698000BF6B6 /* normals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1432745B53D00072D5F /* normals.cpp */; };
+		93B9763D283D7698000BF6B6 /* relation_detection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1282745B53D00072D5F /* relation_detection.cpp */; };
+		93B9763E283D7698000BF6B6 /* search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE13C2745B53D00072D5F /* search.cpp */; };
+		93B9763F283D7698000BF6B6 /* graph_visualization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE14C2745B53D00072D5F /* graph_visualization.cpp */; };
+		93B97640283D7698000BF6B6 /* properties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE15C2745B53D00072D5F /* properties.cpp */; };
+		93B97641283D7698000BF6B6 /* task_understanding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE14E2745B53D00072D5F /* task_understanding.cpp */; };
+		93B97642283D7698000BF6B6 /* hole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE15A2745B53D00072D5F /* hole.cpp */; };
+		93B97643283D7698000BF6B6 /* peg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE1562745B53D00072D5F /* peg.cpp */; };
+		93B97645283D7698000BF6B6 /* libboost_math_tr1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385356427BC054A006ADDB5 /* libboost_math_tr1.a */; };
+		93B97646283D7698000BF6B6 /* libboost_math_c99.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385356527BC054A006ADDB5 /* libboost_math_c99.a */; };
+		93B97647283D7698000BF6B6 /* libboost_container.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385356627BC054B006ADDB5 /* libboost_container.a */; };
+		93B97648283D7698000BF6B6 /* libboost_random.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385356727BC054B006ADDB5 /* libboost_random.a */; };
+		93B97649283D7698000BF6B6 /* libboost_chrono.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385356827BC054B006ADDB5 /* libboost_chrono.a */; };
+		93B9764A283D7698000BF6B6 /* libboost_math_c99f.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385356927BC054B006ADDB5 /* libboost_math_c99f.a */; };
+		93B9764B283D7698000BF6B6 /* libboost_wserialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385356A27BC054B006ADDB5 /* libboost_wserialization.a */; };
+		93B9764C283D7698000BF6B6 /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385356B27BC054B006ADDB5 /* libboost_system.a */; };
+		93B9764D283D7698000BF6B6 /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385356C27BC054B006ADDB5 /* libboost_filesystem.a */; };
+		93B9764E283D7698000BF6B6 /* libboost_coroutine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385356D27BC054B006ADDB5 /* libboost_coroutine.a */; };
+		93B9764F283D7698000BF6B6 /* libboost_graph.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385356E27BC054B006ADDB5 /* libboost_graph.a */; };
+		93B97650283D7698000BF6B6 /* libboost_regex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385356F27BC054B006ADDB5 /* libboost_regex.a */; };
+		93B97651283D7698000BF6B6 /* libboost_math_tr1f.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385357027BC054B006ADDB5 /* libboost_math_tr1f.a */; };
+		93B97652283D7698000BF6B6 /* libboost_iostreams.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385357127BC054B006ADDB5 /* libboost_iostreams.a */; };
+		93B97653283D7698000BF6B6 /* libboost_exception.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385357227BC054B006ADDB5 /* libboost_exception.a */; };
+		93B97654283D7698000BF6B6 /* libboost_date_time.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385357327BC054B006ADDB5 /* libboost_date_time.a */; };
+		93B97655283D7698000BF6B6 /* libboost_atomic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385357427BC054C006ADDB5 /* libboost_atomic.a */; };
+		93B97656283D7698000BF6B6 /* libboost_context.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385357527BC054C006ADDB5 /* libboost_context.a */; };
+		93B97657283D7698000BF6B6 /* libboost_math_tr1l.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385357627BC054C006ADDB5 /* libboost_math_tr1l.a */; };
+		93B97658283D7698000BF6B6 /* libboost_serialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385357727BC054C006ADDB5 /* libboost_serialization.a */; };
+		93B97659283D7698000BF6B6 /* libboost_math_c99l.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385357827BC054C006ADDB5 /* libboost_math_c99l.a */; };
+		93B9765A283D7698000BF6B6 /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385357927BC054C006ADDB5 /* libboost_thread.a */; };
+		93B9765B283D7698000BF6B6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385348227BC0453006ADDB5 /* Cocoa.framework */; };
+		93B9765C283D7698000BF6B6 /* libbrotlidec-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938534F427BC04F1006ADDB5 /* libbrotlidec-static.a */; };
+		93B9765D283D7698000BF6B6 /* libqhullstatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938534F527BC04F1006ADDB5 /* libqhullstatic.a */; };
+		93B9765E283D7698000BF6B6 /* liblz4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938534F627BC04F1006ADDB5 /* liblz4.a */; };
+		93B9765F283D7698000BF6B6 /* libhdf5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938534F727BC04F1006ADDB5 /* libhdf5.a */; };
+		93B97660283D7698000BF6B6 /* libpugixml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938534F827BC04F1006ADDB5 /* libpugixml.a */; };
+		93B97661283D7698000BF6B6 /* libtheoradec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938534F927BC04F1006ADDB5 /* libtheoradec.a */; };
+		93B97662283D7698000BF6B6 /* libsqlite3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938534FA27BC04F1006ADDB5 /* libsqlite3.a */; };
+		93B97663283D7698000BF6B6 /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938534FB27BC04F1006ADDB5 /* libGLEW.a */; };
+		93B97664283D7698000BF6B6 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938534FC27BC04F2006ADDB5 /* libcurl.a */; };
+		93B97665283D7698000BF6B6 /* libszip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938534FD27BC04F2006ADDB5 /* libszip.a */; };
+		93B97666283D7698000BF6B6 /* libtiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938534FE27BC04F2006ADDB5 /* libtiff.a */; };
+		93B97667283D7698000BF6B6 /* libpcl_recognition.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938534FF27BC04F2006ADDB5 /* libpcl_recognition.a */; };
+		93B97668283D7698000BF6B6 /* libpcl_visualization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350027BC04F2006ADDB5 /* libpcl_visualization.a */; };
+		93B97669283D7698000BF6B6 /* libjsoncpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350127BC04F2006ADDB5 /* libjsoncpp.a */; };
+		93B9766A283D7698000BF6B6 /* libqhullcpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350227BC04F2006ADDB5 /* libqhullcpp.a */; };
+		93B9766B283D7698000BF6B6 /* libbrotlienc-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350327BC04F2006ADDB5 /* libbrotlienc-static.a */; };
+		93B9766C283D7698000BF6B6 /* libpcl_sample_consensus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350427BC04F2006ADDB5 /* libpcl_sample_consensus.a */; };
+		93B9766D283D7698000BF6B6 /* libpcl_search.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350527BC04F2006ADDB5 /* libpcl_search.a */; };
+		93B9766E283D7698000BF6B6 /* libpcl_features.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350627BC04F2006ADDB5 /* libpcl_features.a */; };
+		93B9766F283D7698000BF6B6 /* libbz2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350727BC04F2006ADDB5 /* libbz2.a */; };
+		93B97670283D7698000BF6B6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936320DF26C3E408009B134A /* OpenGL.framework */; };
+		93B97671283D7698000BF6B6 /* libflann_cpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350827BC04F2006ADDB5 /* libflann_cpp.a */; };
+		93B97672283D7698000BF6B6 /* libpcl_io.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350927BC04F2006ADDB5 /* libpcl_io.a */; };
+		93B97673283D7698000BF6B6 /* libexpat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350A27BC04F2006ADDB5 /* libexpat.a */; };
+		93B97674283D7698000BF6B6 /* liblzma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350B27BC04F3006ADDB5 /* liblzma.a */; };
+		93B97675283D7698000BF6B6 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350C27BC04F3006ADDB5 /* libnetcdf.a */; };
+		93B97676283D7698000BF6B6 /* libflann.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350D27BC04F3006ADDB5 /* libflann.a */; };
+		93B97677283D7698000BF6B6 /* libpng16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350E27BC04F3006ADDB5 /* libpng16.a */; };
+		93B97678283D7698000BF6B6 /* libzstd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385350F27BC04F3006ADDB5 /* libzstd.a */; };
+		93B97679283D7698000BF6B6 /* libproj.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351027BC04F3006ADDB5 /* libproj.a */; };
+		93B9767A283D7698000BF6B6 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351127BC04F3006ADDB5 /* libfreetype.a */; };
+		93B9767B283D7698000BF6B6 /* libpcl_segmentation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351227BC04F3006ADDB5 /* libpcl_segmentation.a */; };
+		93B9767C283D7698000BF6B6 /* libpcl_common.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351327BC04F3006ADDB5 /* libpcl_common.a */; };
+		93B9767D283D7698000BF6B6 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351427BC04F3006ADDB5 /* libjpeg.a */; };
+		93B9767E283D7698000BF6B6 /* libtheora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351527BC04F3006ADDB5 /* libtheora.a */; };
+		93B9767F283D7698000BF6B6 /* libpcl_tracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351627BC04F3006ADDB5 /* libpcl_tracking.a */; };
+		93B97680283D7698000BF6B6 /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351727BC04F3006ADDB5 /* libturbojpeg.a */; };
+		93B97681283D7698000BF6B6 /* libpcl_people.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351827BC04F4006ADDB5 /* libpcl_people.a */; };
+		93B97682283D7698000BF6B6 /* libpcl_keypoints.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351927BC04F4006ADDB5 /* libpcl_keypoints.a */; };
+		93B97683283D7698000BF6B6 /* libpcl_filters.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351A27BC04F4006ADDB5 /* libpcl_filters.a */; };
+		93B97684283D7698000BF6B6 /* libhdf5_hl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351B27BC04F4006ADDB5 /* libhdf5_hl.a */; };
+		93B97685283D7698000BF6B6 /* libpcl_outofcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351C27BC04F4006ADDB5 /* libpcl_outofcore.a */; };
+		93B97686283D7698000BF6B6 /* libpcl_ml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351D27BC04F4006ADDB5 /* libpcl_ml.a */; };
+		93B97687283D7698000BF6B6 /* libdouble-conversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385351E27BC04F4006ADDB5 /* libdouble-conversion.a */; };
+		93B97688283D7698000BF6B6 /* libpcl_registration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385352027BC04F4006ADDB5 /* libpcl_registration.a */; };
+		93B97689283D7698000BF6B6 /* libhpdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385352127BC04F4006ADDB5 /* libhpdf.a */; };
+		93B9768A283D7698000BF6B6 /* libtheoraenc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385352227BC04F4006ADDB5 /* libtheoraenc.a */; };
+		93B9768B283D7698000BF6B6 /* libpcl_io_ply.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385352327BC04F4006ADDB5 /* libpcl_io_ply.a */; };
+		93B9768C283D7698000BF6B6 /* libpkgconf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385352427BC04F4006ADDB5 /* libpkgconf.a */; };
+		93B9768D283D7698000BF6B6 /* libpcl_octree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385352527BC04F4006ADDB5 /* libpcl_octree.a */; };
+		93B9768E283D7698000BF6B6 /* libpcl_stereo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385352627BC04F4006ADDB5 /* libpcl_stereo.a */; };
+		93B9768F283D7698000BF6B6 /* libbrotlicommon-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385352727BC04F5006ADDB5 /* libbrotlicommon-static.a */; };
+		93B97690283D7698000BF6B6 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936320E026C3E408009B134A /* GLUT.framework */; };
+		93B97691283D7698000BF6B6 /* libqhullstatic_r.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385352827BC04F5006ADDB5 /* libqhullstatic_r.a */; };
+		93B97692283D7698000BF6B6 /* libpcl_kdtree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385352927BC04F5006ADDB5 /* libpcl_kdtree.a */; };
+		93B97693283D7698000BF6B6 /* libogg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385352A27BC04F5006ADDB5 /* libogg.a */; };
+		93B97694283D7698000BF6B6 /* libvtkChartsCore-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533BE27BC0424006ADDB5 /* libvtkChartsCore-9.0.a */; };
+		93B97695283D7698000BF6B6 /* libvtkCommonColor-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385341727BC0430006ADDB5 /* libvtkCommonColor-9.0.a */; };
+		93B97696283D7698000BF6B6 /* libvtkCommonComputationalGeometry-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533DB27BC0427006ADDB5 /* libvtkCommonComputationalGeometry-9.0.a */; };
+		93B97697283D7698000BF6B6 /* libvtkCommonCore-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533CF27BC0425006ADDB5 /* libvtkCommonCore-9.0.a */; };
+		93B97698283D7698000BF6B6 /* libvtkCommonDataModel-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533D727BC0426006ADDB5 /* libvtkCommonDataModel-9.0.a */; };
+		93B97699283D7698000BF6B6 /* libvtkCommonExecutionModel-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385341027BC042F006ADDB5 /* libvtkCommonExecutionModel-9.0.a */; };
+		93B9769A283D7698000BF6B6 /* libvtkCommonMath-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340D27BC042F006ADDB5 /* libvtkCommonMath-9.0.a */; };
+		93B9769B283D7698000BF6B6 /* libvtkCommonMisc-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533E027BC0428006ADDB5 /* libvtkCommonMisc-9.0.a */; };
+		93B9769C283D7698000BF6B6 /* libvtkCommonSystem-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533BA27BC0423006ADDB5 /* libvtkCommonSystem-9.0.a */; };
+		93B9769D283D7698000BF6B6 /* libvtkCommonTransforms-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533D527BC0426006ADDB5 /* libvtkCommonTransforms-9.0.a */; };
+		93B9769E283D7698000BF6B6 /* libvtkDICOMParser-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533B027BC0422006ADDB5 /* libvtkDICOMParser-9.0.a */; };
+		93B9769F283D7698000BF6B6 /* libvtkexodusII-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533CE27BC0425006ADDB5 /* libvtkexodusII-9.0.a */; };
+		93B976A0283D7698000BF6B6 /* libvtkFiltersAMR-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533E227BC0428006ADDB5 /* libvtkFiltersAMR-9.0.a */; };
+		93B976A1283D7698000BF6B6 /* libvtkFiltersCore-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533CA27BC0425006ADDB5 /* libvtkFiltersCore-9.0.a */; };
+		93B976A2283D7698000BF6B6 /* libvtkFiltersExtraction-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533B327BC0422006ADDB5 /* libvtkFiltersExtraction-9.0.a */; };
+		93B976A3283D7698000BF6B6 /* libvtkFiltersFlowPaths-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533FA27BC042B006ADDB5 /* libvtkFiltersFlowPaths-9.0.a */; };
+		93B976A4283D7698000BF6B6 /* libvtkFiltersGeneral-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533EE27BC042A006ADDB5 /* libvtkFiltersGeneral-9.0.a */; };
+		93B976A5283D7698000BF6B6 /* libvtkFiltersGeneric-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340727BC042E006ADDB5 /* libvtkFiltersGeneric-9.0.a */; };
+		93B976A6283D7698000BF6B6 /* libvtkFiltersGeometry-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533FB27BC042C006ADDB5 /* libvtkFiltersGeometry-9.0.a */; };
+		93B976A7283D7698000BF6B6 /* libvtkFiltersHybrid-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533CD27BC0425006ADDB5 /* libvtkFiltersHybrid-9.0.a */; };
+		93B976A8283D7698000BF6B6 /* libvtkFiltersHyperTree-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533BD27BC0424006ADDB5 /* libvtkFiltersHyperTree-9.0.a */; };
+		93B976A9283D7698000BF6B6 /* libvtkFiltersImaging-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533B727BC0423006ADDB5 /* libvtkFiltersImaging-9.0.a */; };
+		93B976AA283D7698000BF6B6 /* libvtkFiltersModeling-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533C127BC0424006ADDB5 /* libvtkFiltersModeling-9.0.a */; };
+		93B976AB283D7698000BF6B6 /* libvtkFiltersParallel-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533EB27BC0429006ADDB5 /* libvtkFiltersParallel-9.0.a */; };
+		93B976AC283D7698000BF6B6 /* libvtkFiltersParallelImaging-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533C427BC0424006ADDB5 /* libvtkFiltersParallelImaging-9.0.a */; };
+		93B976AD283D7698000BF6B6 /* libvtkFiltersPoints-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533EF27BC042A006ADDB5 /* libvtkFiltersPoints-9.0.a */; };
+		93B976AE283D7698000BF6B6 /* libvtkFiltersProgrammable-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385341627BC0430006ADDB5 /* libvtkFiltersProgrammable-9.0.a */; };
+		93B976AF283D7698000BF6B6 /* libvtkFiltersSelection-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533C727BC0425006ADDB5 /* libvtkFiltersSelection-9.0.a */; };
+		93B976B0283D7698000BF6B6 /* libvtkFiltersSMP-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340027BC042D006ADDB5 /* libvtkFiltersSMP-9.0.a */; };
+		93B976B1283D7698000BF6B6 /* libvtkFiltersSources-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340B27BC042F006ADDB5 /* libvtkFiltersSources-9.0.a */; };
+		93B976B2283D7698000BF6B6 /* libvtkFiltersStatistics-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340227BC042D006ADDB5 /* libvtkFiltersStatistics-9.0.a */; };
+		93B976B3283D7698000BF6B6 /* libvtkFiltersTexture-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340527BC042E006ADDB5 /* libvtkFiltersTexture-9.0.a */; };
+		93B976B4283D7698000BF6B6 /* libvtkFiltersTopology-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533C027BC0424006ADDB5 /* libvtkFiltersTopology-9.0.a */; };
+		93B976B5283D7698000BF6B6 /* libvtkFiltersVerdict-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533B927BC0423006ADDB5 /* libvtkFiltersVerdict-9.0.a */; };
+		93B976B6283D7698000BF6B6 /* libvtkGeovisCore-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533DA27BC0427006ADDB5 /* libvtkGeovisCore-9.0.a */; };
+		93B976B7283D7698000BF6B6 /* libvtkgl2ps-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385341827BC0431006ADDB5 /* libvtkgl2ps-9.0.a */; };
+		93B976B8283D7698000BF6B6 /* libvtkImagingColor-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533F727BC042B006ADDB5 /* libvtkImagingColor-9.0.a */; };
+		93B976B9283D7698000BF6B6 /* libvtkImagingCore-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533C827BC0425006ADDB5 /* libvtkImagingCore-9.0.a */; };
+		93B976BA283D7698000BF6B6 /* libvtkImagingFourier-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340F27BC042F006ADDB5 /* libvtkImagingFourier-9.0.a */; };
+		93B976BB283D7698000BF6B6 /* libvtkImagingGeneral-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533E427BC0428006ADDB5 /* libvtkImagingGeneral-9.0.a */; };
+		93B976BC283D7698000BF6B6 /* libvtkImagingHybrid-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533F027BC042A006ADDB5 /* libvtkImagingHybrid-9.0.a */; };
+		93B976BD283D7698000BF6B6 /* libvtkImagingMath-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533DE27BC0427006ADDB5 /* libvtkImagingMath-9.0.a */; };
+		93B976BE283D7698000BF6B6 /* libvtkImagingMorphological-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533B427BC0422006ADDB5 /* libvtkImagingMorphological-9.0.a */; };
+		93B976BF283D7698000BF6B6 /* libvtkImagingSources-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533F927BC042B006ADDB5 /* libvtkImagingSources-9.0.a */; };
+		93B976C0283D7698000BF6B6 /* libvtkImagingStatistics-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533EA27BC0429006ADDB5 /* libvtkImagingStatistics-9.0.a */; };
+		93B976C1283D7698000BF6B6 /* libvtkImagingStencil-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340827BC042E006ADDB5 /* libvtkImagingStencil-9.0.a */; };
+		93B976C2283D7698000BF6B6 /* libvtkInfovisCore-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533B827BC0423006ADDB5 /* libvtkInfovisCore-9.0.a */; };
+		93B976C3283D7698000BF6B6 /* libvtkInfovisLayout-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533FC27BC042C006ADDB5 /* libvtkInfovisLayout-9.0.a */; };
+		93B976C4283D7698000BF6B6 /* libvtkInteractionImage-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385341327BC0430006ADDB5 /* libvtkInteractionImage-9.0.a */; };
+		93B976C5283D7698000BF6B6 /* libvtkInteractionStyle-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533AD27BC03DB006ADDB5 /* libvtkInteractionStyle-9.0.a */; };
+		93B976C6283D7698000BF6B6 /* libvtkInteractionWidgets-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533D327BC0426006ADDB5 /* libvtkInteractionWidgets-9.0.a */; };
+		93B976C7283D7698000BF6B6 /* libvtkIOAMR-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533CB27BC0425006ADDB5 /* libvtkIOAMR-9.0.a */; };
+		93B976C8283D7698000BF6B6 /* libvtkIOAsynchronous-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340327BC042E006ADDB5 /* libvtkIOAsynchronous-9.0.a */; };
+		93B976C9283D7698000BF6B6 /* libvtkIOCityGML-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533F127BC042A006ADDB5 /* libvtkIOCityGML-9.0.a */; };
+		93B976CA283D7698000BF6B6 /* libvtkIOCONVERGECFD-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385341127BC042F006ADDB5 /* libvtkIOCONVERGECFD-9.0.a */; };
+		93B976CB283D7698000BF6B6 /* libvtkIOCore-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533BC27BC0424006ADDB5 /* libvtkIOCore-9.0.a */; };
+		93B976CC283D7698000BF6B6 /* libvtkIOEnSight-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340127BC042D006ADDB5 /* libvtkIOEnSight-9.0.a */; };
+		93B976CD283D7698000BF6B6 /* libvtkIOExodus-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533F227BC042A006ADDB5 /* libvtkIOExodus-9.0.a */; };
+		93B976CE283D7698000BF6B6 /* libvtkIOExport-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533D427BC0426006ADDB5 /* libvtkIOExport-9.0.a */; };
+		93B976CF283D7698000BF6B6 /* libvtkIOExportGL2PS-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533C327BC0424006ADDB5 /* libvtkIOExportGL2PS-9.0.a */; };
+		93B976D0283D7698000BF6B6 /* libvtkIOExportPDF-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533ED27BC0429006ADDB5 /* libvtkIOExportPDF-9.0.a */; };
+		93B976D1283D7698000BF6B6 /* libvtkIOGeometry-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533FF27BC042D006ADDB5 /* libvtkIOGeometry-9.0.a */; };
+		93B976D2283D7698000BF6B6 /* libvtkIOImage-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385341527BC0430006ADDB5 /* libvtkIOImage-9.0.a */; };
+		93B976D3283D7698000BF6B6 /* libvtkIOImport-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533B127BC0422006ADDB5 /* libvtkIOImport-9.0.a */; };
+		93B976D4283D7698000BF6B6 /* libvtkIOInfovis-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533E727BC0428006ADDB5 /* libvtkIOInfovis-9.0.a */; };
+		93B976D5283D7698000BF6B6 /* libvtkIOLegacy-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340427BC042E006ADDB5 /* libvtkIOLegacy-9.0.a */; };
+		93B976D6283D7698000BF6B6 /* libvtkIOLSDyna-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533B627BC0423006ADDB5 /* libvtkIOLSDyna-9.0.a */; };
+		93B976D7283D7698000BF6B6 /* libvtkIOMINC-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533D127BC0426006ADDB5 /* libvtkIOMINC-9.0.a */; };
+		93B976D8283D7698000BF6B6 /* libvtkIOMotionFX-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533D027BC0425006ADDB5 /* libvtkIOMotionFX-9.0.a */; };
+		93B976D9283D7698000BF6B6 /* libvtkIOMovie-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533E327BC0428006ADDB5 /* libvtkIOMovie-9.0.a */; };
+		93B976DA283D7698000BF6B6 /* libvtkIONetCDF-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533D927BC0427006ADDB5 /* libvtkIONetCDF-9.0.a */; };
+		93B976DB283D7698000BF6B6 /* libvtkIOOggTheora-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533D827BC0427006ADDB5 /* libvtkIOOggTheora-9.0.a */; };
+		93B976DC283D7698000BF6B6 /* libvtkIOParallel-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533E127BC0428006ADDB5 /* libvtkIOParallel-9.0.a */; };
+		93B976DD283D7698000BF6B6 /* libvtkIOParallelXML-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340A27BC042F006ADDB5 /* libvtkIOParallelXML-9.0.a */; };
+		93B976DE283D7698000BF6B6 /* libvtkIOPLY-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385341227BC0430006ADDB5 /* libvtkIOPLY-9.0.a */; };
+		93B976DF283D7698000BF6B6 /* libvtkIOSegY-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533B527BC0423006ADDB5 /* libvtkIOSegY-9.0.a */; };
+		93B976E0283D7698000BF6B6 /* libvtkIOSQL-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533E927BC0429006ADDB5 /* libvtkIOSQL-9.0.a */; };
+		93B976E1283D7698000BF6B6 /* libvtkIOTecplotTable-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340C27BC042F006ADDB5 /* libvtkIOTecplotTable-9.0.a */; };
+		93B976E2283D7698000BF6B6 /* libvtkIOVeraOut-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533E827BC0429006ADDB5 /* libvtkIOVeraOut-9.0.a */; };
+		93B976E3283D7698000BF6B6 /* libvtkIOVideo-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340E27BC042F006ADDB5 /* libvtkIOVideo-9.0.a */; };
+		93B976E4283D7698000BF6B6 /* libvtkIOXML-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533E527BC0428006ADDB5 /* libvtkIOXML-9.0.a */; };
+		93B976E5283D7698000BF6B6 /* libvtkIOXMLParser-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533F327BC042A006ADDB5 /* libvtkIOXMLParser-9.0.a */; };
+		93B976E6283D7698000BF6B6 /* libvtkloguru-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533C227BC0424006ADDB5 /* libvtkloguru-9.0.a */; };
+		93B976E7283D7698000BF6B6 /* libvtkmetaio-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533B227BC0422006ADDB5 /* libvtkmetaio-9.0.a */; };
+		93B976E8283D7698000BF6B6 /* libvtkParallelCore-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533BF27BC0424006ADDB5 /* libvtkParallelCore-9.0.a */; };
+		93B976E9283D7698000BF6B6 /* libvtkParallelDIY-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533F527BC042B006ADDB5 /* libvtkParallelDIY-9.0.a */; };
+		93B976EA283D7698000BF6B6 /* libvtkRenderingAnnotation-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533DC27BC0427006ADDB5 /* libvtkRenderingAnnotation-9.0.a */; };
+		93B976EB283D7698000BF6B6 /* libvtkRenderingContext2D-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533F827BC042B006ADDB5 /* libvtkRenderingContext2D-9.0.a */; };
+		93B976EC283D7698000BF6B6 /* libvtkRenderingCore-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533CC27BC0425006ADDB5 /* libvtkRenderingCore-9.0.a */; };
+		93B976ED283D7698000BF6B6 /* libvtkRenderingFreeType-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533C527BC0424006ADDB5 /* libvtkRenderingFreeType-9.0.a */; };
+		93B976EE283D7698000BF6B6 /* libvtkRenderingGL2PSOpenGL2-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533DD27BC0427006ADDB5 /* libvtkRenderingGL2PSOpenGL2-9.0.a */; };
+		93B976EF283D7698000BF6B6 /* libvtkRenderingImage-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533F627BC042B006ADDB5 /* libvtkRenderingImage-9.0.a */; };
+		93B976F0283D7698000BF6B6 /* libvtkRenderingLabel-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340927BC042E006ADDB5 /* libvtkRenderingLabel-9.0.a */; };
+		93B976F1283D7698000BF6B6 /* libvtkRenderingLOD-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533E627BC0428006ADDB5 /* libvtkRenderingLOD-9.0.a */; };
+		93B976F2283D7698000BF6B6 /* libvtkRenderingOpenGL2-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385340627BC042E006ADDB5 /* libvtkRenderingOpenGL2-9.0.a */; };
+		93B976F3283D7698000BF6B6 /* libvtkRenderingSceneGraph-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385341427BC0430006ADDB5 /* libvtkRenderingSceneGraph-9.0.a */; };
+		93B976F4283D7698000BF6B6 /* libvtkRenderingUI-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533D227BC0426006ADDB5 /* libvtkRenderingUI-9.0.a */; };
+		93B976F5283D7698000BF6B6 /* libvtkRenderingVolume-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533BB27BC0423006ADDB5 /* libvtkRenderingVolume-9.0.a */; };
+		93B976F6283D7698000BF6B6 /* libvtkRenderingVtkJS-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533F427BC042A006ADDB5 /* libvtkRenderingVtkJS-9.0.a */; };
+		93B976F7283D7698000BF6B6 /* libvtksys-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533DF27BC0427006ADDB5 /* libvtksys-9.0.a */; };
+		93B976F8283D7698000BF6B6 /* libvtkTestingRendering-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533D627BC0426006ADDB5 /* libvtkTestingRendering-9.0.a */; };
+		93B976F9283D7698000BF6B6 /* libvtkverdict-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533C927BC0425006ADDB5 /* libvtkverdict-9.0.a */; };
+		93B976FA283D7698000BF6B6 /* libvtkViewsContext2D-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533C627BC0425006ADDB5 /* libvtkViewsContext2D-9.0.a */; };
+		93B976FB283D7698000BF6B6 /* libvtkViewsCore-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533EC27BC0429006ADDB5 /* libvtkViewsCore-9.0.a */; };
+		93B976FC283D7698000BF6B6 /* libvtkViewsInfovis-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533FE27BC042D006ADDB5 /* libvtkViewsInfovis-9.0.a */; };
+		93B976FD283D7698000BF6B6 /* libvtkWrappingTools-9.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938533FD27BC042C006ADDB5 /* libvtkWrappingTools-9.0.a */; };
+		93B976FE283D7698000BF6B6 /* libxml2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385348427BC0474006ADDB5 /* libxml2.a */; };
+		93B976FF283D7698000BF6B6 /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9385348527BC0474006ADDB5 /* libz.a */; };
+		93B97705283D76BB000BF6B6 /* stacking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93B97627283D767D000BF6B6 /* stacking.cpp */; };
 		93C643A2276522B5000E8E76 /* task_rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93C643A0276522B5000E8E76 /* task_rule.cpp */; };
 		93D84F3A26FB92A400896B1F /* libpcl_common.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84F0526FB928000896B1F /* libpcl_common.dylib */; };
 		93D84F3B26FB92A400896B1F /* libpcl_features.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D84F0126FB928000896B1F /* libpcl_features.dylib */; };
@@ -390,6 +603,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		9389B8C926C139A5006ACA66 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		93B97700283D7698000BF6B6 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -1114,6 +1336,8 @@
 		9385357927BC054C006ADDB5 /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = "../vcpkg/installed/x64-osx/lib/libboost_thread.a"; sourceTree = "<group>"; };
 		9389B86926C1394B006ACA66 /* libfreenect.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreenect.dylib; path = ../../../../usr/local/Cellar/libfreenect/0.6.2/lib/libfreenect.dylib; sourceTree = "<group>"; };
 		9389B8CD26C139A5006ACA66 /* capture */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capture; sourceTree = BUILT_PRODUCTS_DIR; };
+		93B97627283D767D000BF6B6 /* stacking.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stacking.cpp; sourceTree = "<group>"; };
+		93B97704283D7698000BF6B6 /* stacking */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = stacking; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C6439E2763BC70000E8E76 /* libflann_cpp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libflann_cpp.dylib; path = ../../../../usr/local/Cellar/flann/1.9.1_11/lib/libflann_cpp.dylib; sourceTree = "<group>"; };
 		93C643A0276522B5000E8E76 /* task_rule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = task_rule.cpp; sourceTree = "<group>"; };
 		93C643A1276522B5000E8E76 /* task_rule.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = task_rule.hpp; sourceTree = "<group>"; };
@@ -1686,6 +1910,200 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		93B97644283D7698000BF6B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93B97645283D7698000BF6B6 /* libboost_math_tr1.a in Frameworks */,
+				93B97646283D7698000BF6B6 /* libboost_math_c99.a in Frameworks */,
+				93B97647283D7698000BF6B6 /* libboost_container.a in Frameworks */,
+				93B97648283D7698000BF6B6 /* libboost_random.a in Frameworks */,
+				93B97649283D7698000BF6B6 /* libboost_chrono.a in Frameworks */,
+				93B9764A283D7698000BF6B6 /* libboost_math_c99f.a in Frameworks */,
+				93B9764B283D7698000BF6B6 /* libboost_wserialization.a in Frameworks */,
+				93B9764C283D7698000BF6B6 /* libboost_system.a in Frameworks */,
+				93B9764D283D7698000BF6B6 /* libboost_filesystem.a in Frameworks */,
+				93B9764E283D7698000BF6B6 /* libboost_coroutine.a in Frameworks */,
+				93B9764F283D7698000BF6B6 /* libboost_graph.a in Frameworks */,
+				93B97650283D7698000BF6B6 /* libboost_regex.a in Frameworks */,
+				93B97651283D7698000BF6B6 /* libboost_math_tr1f.a in Frameworks */,
+				93B97652283D7698000BF6B6 /* libboost_iostreams.a in Frameworks */,
+				93B97653283D7698000BF6B6 /* libboost_exception.a in Frameworks */,
+				93B97654283D7698000BF6B6 /* libboost_date_time.a in Frameworks */,
+				93B97655283D7698000BF6B6 /* libboost_atomic.a in Frameworks */,
+				93B97656283D7698000BF6B6 /* libboost_context.a in Frameworks */,
+				93B97657283D7698000BF6B6 /* libboost_math_tr1l.a in Frameworks */,
+				93B97658283D7698000BF6B6 /* libboost_serialization.a in Frameworks */,
+				93B97659283D7698000BF6B6 /* libboost_math_c99l.a in Frameworks */,
+				93B9765A283D7698000BF6B6 /* libboost_thread.a in Frameworks */,
+				93B9765B283D7698000BF6B6 /* Cocoa.framework in Frameworks */,
+				93B9765C283D7698000BF6B6 /* libbrotlidec-static.a in Frameworks */,
+				93B9765D283D7698000BF6B6 /* libqhullstatic.a in Frameworks */,
+				93B9765E283D7698000BF6B6 /* liblz4.a in Frameworks */,
+				93B9765F283D7698000BF6B6 /* libhdf5.a in Frameworks */,
+				93B97660283D7698000BF6B6 /* libpugixml.a in Frameworks */,
+				93B97661283D7698000BF6B6 /* libtheoradec.a in Frameworks */,
+				93B97662283D7698000BF6B6 /* libsqlite3.a in Frameworks */,
+				93B97663283D7698000BF6B6 /* libGLEW.a in Frameworks */,
+				93B97664283D7698000BF6B6 /* libcurl.a in Frameworks */,
+				93B97665283D7698000BF6B6 /* libszip.a in Frameworks */,
+				93B97666283D7698000BF6B6 /* libtiff.a in Frameworks */,
+				93B97667283D7698000BF6B6 /* libpcl_recognition.a in Frameworks */,
+				93B97668283D7698000BF6B6 /* libpcl_visualization.a in Frameworks */,
+				93B97669283D7698000BF6B6 /* libjsoncpp.a in Frameworks */,
+				93B9766A283D7698000BF6B6 /* libqhullcpp.a in Frameworks */,
+				93B9766B283D7698000BF6B6 /* libbrotlienc-static.a in Frameworks */,
+				93B9766C283D7698000BF6B6 /* libpcl_sample_consensus.a in Frameworks */,
+				93B9766D283D7698000BF6B6 /* libpcl_search.a in Frameworks */,
+				93B9766E283D7698000BF6B6 /* libpcl_features.a in Frameworks */,
+				93B9766F283D7698000BF6B6 /* libbz2.a in Frameworks */,
+				93B97670283D7698000BF6B6 /* OpenGL.framework in Frameworks */,
+				93B97671283D7698000BF6B6 /* libflann_cpp.a in Frameworks */,
+				93B97672283D7698000BF6B6 /* libpcl_io.a in Frameworks */,
+				93B97673283D7698000BF6B6 /* libexpat.a in Frameworks */,
+				93B97674283D7698000BF6B6 /* liblzma.a in Frameworks */,
+				93B97675283D7698000BF6B6 /* libnetcdf.a in Frameworks */,
+				93B97676283D7698000BF6B6 /* libflann.a in Frameworks */,
+				93B97677283D7698000BF6B6 /* libpng16.a in Frameworks */,
+				93B97678283D7698000BF6B6 /* libzstd.a in Frameworks */,
+				93B97679283D7698000BF6B6 /* libproj.a in Frameworks */,
+				93B9767A283D7698000BF6B6 /* libfreetype.a in Frameworks */,
+				93B9767B283D7698000BF6B6 /* libpcl_segmentation.a in Frameworks */,
+				93B9767C283D7698000BF6B6 /* libpcl_common.a in Frameworks */,
+				93B9767D283D7698000BF6B6 /* libjpeg.a in Frameworks */,
+				93B9767E283D7698000BF6B6 /* libtheora.a in Frameworks */,
+				93B9767F283D7698000BF6B6 /* libpcl_tracking.a in Frameworks */,
+				93B97680283D7698000BF6B6 /* libturbojpeg.a in Frameworks */,
+				93B97681283D7698000BF6B6 /* libpcl_people.a in Frameworks */,
+				93B97682283D7698000BF6B6 /* libpcl_keypoints.a in Frameworks */,
+				93B97683283D7698000BF6B6 /* libpcl_filters.a in Frameworks */,
+				93B97684283D7698000BF6B6 /* libhdf5_hl.a in Frameworks */,
+				93B97685283D7698000BF6B6 /* libpcl_outofcore.a in Frameworks */,
+				93B97686283D7698000BF6B6 /* libpcl_ml.a in Frameworks */,
+				93B97687283D7698000BF6B6 /* libdouble-conversion.a in Frameworks */,
+				93B97688283D7698000BF6B6 /* libpcl_registration.a in Frameworks */,
+				93B97689283D7698000BF6B6 /* libhpdf.a in Frameworks */,
+				93B9768A283D7698000BF6B6 /* libtheoraenc.a in Frameworks */,
+				93B9768B283D7698000BF6B6 /* libpcl_io_ply.a in Frameworks */,
+				93B9768C283D7698000BF6B6 /* libpkgconf.a in Frameworks */,
+				93B9768D283D7698000BF6B6 /* libpcl_octree.a in Frameworks */,
+				93B9768E283D7698000BF6B6 /* libpcl_stereo.a in Frameworks */,
+				93B9768F283D7698000BF6B6 /* libbrotlicommon-static.a in Frameworks */,
+				93B97690283D7698000BF6B6 /* GLUT.framework in Frameworks */,
+				93B97691283D7698000BF6B6 /* libqhullstatic_r.a in Frameworks */,
+				93B97692283D7698000BF6B6 /* libpcl_kdtree.a in Frameworks */,
+				93B97693283D7698000BF6B6 /* libogg.a in Frameworks */,
+				93B97694283D7698000BF6B6 /* libvtkChartsCore-9.0.a in Frameworks */,
+				93B97695283D7698000BF6B6 /* libvtkCommonColor-9.0.a in Frameworks */,
+				93B97696283D7698000BF6B6 /* libvtkCommonComputationalGeometry-9.0.a in Frameworks */,
+				93B97697283D7698000BF6B6 /* libvtkCommonCore-9.0.a in Frameworks */,
+				93B97698283D7698000BF6B6 /* libvtkCommonDataModel-9.0.a in Frameworks */,
+				93B97699283D7698000BF6B6 /* libvtkCommonExecutionModel-9.0.a in Frameworks */,
+				93B9769A283D7698000BF6B6 /* libvtkCommonMath-9.0.a in Frameworks */,
+				93B9769B283D7698000BF6B6 /* libvtkCommonMisc-9.0.a in Frameworks */,
+				93B9769C283D7698000BF6B6 /* libvtkCommonSystem-9.0.a in Frameworks */,
+				93B9769D283D7698000BF6B6 /* libvtkCommonTransforms-9.0.a in Frameworks */,
+				93B9769E283D7698000BF6B6 /* libvtkDICOMParser-9.0.a in Frameworks */,
+				93B9769F283D7698000BF6B6 /* libvtkexodusII-9.0.a in Frameworks */,
+				93B976A0283D7698000BF6B6 /* libvtkFiltersAMR-9.0.a in Frameworks */,
+				93B976A1283D7698000BF6B6 /* libvtkFiltersCore-9.0.a in Frameworks */,
+				93B976A2283D7698000BF6B6 /* libvtkFiltersExtraction-9.0.a in Frameworks */,
+				93B976A3283D7698000BF6B6 /* libvtkFiltersFlowPaths-9.0.a in Frameworks */,
+				93B976A4283D7698000BF6B6 /* libvtkFiltersGeneral-9.0.a in Frameworks */,
+				93B976A5283D7698000BF6B6 /* libvtkFiltersGeneric-9.0.a in Frameworks */,
+				93B976A6283D7698000BF6B6 /* libvtkFiltersGeometry-9.0.a in Frameworks */,
+				93B976A7283D7698000BF6B6 /* libvtkFiltersHybrid-9.0.a in Frameworks */,
+				93B976A8283D7698000BF6B6 /* libvtkFiltersHyperTree-9.0.a in Frameworks */,
+				93B976A9283D7698000BF6B6 /* libvtkFiltersImaging-9.0.a in Frameworks */,
+				93B976AA283D7698000BF6B6 /* libvtkFiltersModeling-9.0.a in Frameworks */,
+				93B976AB283D7698000BF6B6 /* libvtkFiltersParallel-9.0.a in Frameworks */,
+				93B976AC283D7698000BF6B6 /* libvtkFiltersParallelImaging-9.0.a in Frameworks */,
+				93B976AD283D7698000BF6B6 /* libvtkFiltersPoints-9.0.a in Frameworks */,
+				93B976AE283D7698000BF6B6 /* libvtkFiltersProgrammable-9.0.a in Frameworks */,
+				93B976AF283D7698000BF6B6 /* libvtkFiltersSelection-9.0.a in Frameworks */,
+				93B976B0283D7698000BF6B6 /* libvtkFiltersSMP-9.0.a in Frameworks */,
+				93B976B1283D7698000BF6B6 /* libvtkFiltersSources-9.0.a in Frameworks */,
+				93B976B2283D7698000BF6B6 /* libvtkFiltersStatistics-9.0.a in Frameworks */,
+				93B976B3283D7698000BF6B6 /* libvtkFiltersTexture-9.0.a in Frameworks */,
+				93B976B4283D7698000BF6B6 /* libvtkFiltersTopology-9.0.a in Frameworks */,
+				93B976B5283D7698000BF6B6 /* libvtkFiltersVerdict-9.0.a in Frameworks */,
+				93B976B6283D7698000BF6B6 /* libvtkGeovisCore-9.0.a in Frameworks */,
+				93B976B7283D7698000BF6B6 /* libvtkgl2ps-9.0.a in Frameworks */,
+				93B976B8283D7698000BF6B6 /* libvtkImagingColor-9.0.a in Frameworks */,
+				93B976B9283D7698000BF6B6 /* libvtkImagingCore-9.0.a in Frameworks */,
+				93B976BA283D7698000BF6B6 /* libvtkImagingFourier-9.0.a in Frameworks */,
+				93B976BB283D7698000BF6B6 /* libvtkImagingGeneral-9.0.a in Frameworks */,
+				93B976BC283D7698000BF6B6 /* libvtkImagingHybrid-9.0.a in Frameworks */,
+				93B976BD283D7698000BF6B6 /* libvtkImagingMath-9.0.a in Frameworks */,
+				93B976BE283D7698000BF6B6 /* libvtkImagingMorphological-9.0.a in Frameworks */,
+				93B976BF283D7698000BF6B6 /* libvtkImagingSources-9.0.a in Frameworks */,
+				93B976C0283D7698000BF6B6 /* libvtkImagingStatistics-9.0.a in Frameworks */,
+				93B976C1283D7698000BF6B6 /* libvtkImagingStencil-9.0.a in Frameworks */,
+				93B976C2283D7698000BF6B6 /* libvtkInfovisCore-9.0.a in Frameworks */,
+				93B976C3283D7698000BF6B6 /* libvtkInfovisLayout-9.0.a in Frameworks */,
+				93B976C4283D7698000BF6B6 /* libvtkInteractionImage-9.0.a in Frameworks */,
+				93B976C5283D7698000BF6B6 /* libvtkInteractionStyle-9.0.a in Frameworks */,
+				93B976C6283D7698000BF6B6 /* libvtkInteractionWidgets-9.0.a in Frameworks */,
+				93B976C7283D7698000BF6B6 /* libvtkIOAMR-9.0.a in Frameworks */,
+				93B976C8283D7698000BF6B6 /* libvtkIOAsynchronous-9.0.a in Frameworks */,
+				93B976C9283D7698000BF6B6 /* libvtkIOCityGML-9.0.a in Frameworks */,
+				93B976CA283D7698000BF6B6 /* libvtkIOCONVERGECFD-9.0.a in Frameworks */,
+				93B976CB283D7698000BF6B6 /* libvtkIOCore-9.0.a in Frameworks */,
+				93B976CC283D7698000BF6B6 /* libvtkIOEnSight-9.0.a in Frameworks */,
+				93B976CD283D7698000BF6B6 /* libvtkIOExodus-9.0.a in Frameworks */,
+				93B976CE283D7698000BF6B6 /* libvtkIOExport-9.0.a in Frameworks */,
+				93B976CF283D7698000BF6B6 /* libvtkIOExportGL2PS-9.0.a in Frameworks */,
+				93B976D0283D7698000BF6B6 /* libvtkIOExportPDF-9.0.a in Frameworks */,
+				93B976D1283D7698000BF6B6 /* libvtkIOGeometry-9.0.a in Frameworks */,
+				93B976D2283D7698000BF6B6 /* libvtkIOImage-9.0.a in Frameworks */,
+				93B976D3283D7698000BF6B6 /* libvtkIOImport-9.0.a in Frameworks */,
+				93B976D4283D7698000BF6B6 /* libvtkIOInfovis-9.0.a in Frameworks */,
+				93B976D5283D7698000BF6B6 /* libvtkIOLegacy-9.0.a in Frameworks */,
+				93B976D6283D7698000BF6B6 /* libvtkIOLSDyna-9.0.a in Frameworks */,
+				93B976D7283D7698000BF6B6 /* libvtkIOMINC-9.0.a in Frameworks */,
+				93B976D8283D7698000BF6B6 /* libvtkIOMotionFX-9.0.a in Frameworks */,
+				93B976D9283D7698000BF6B6 /* libvtkIOMovie-9.0.a in Frameworks */,
+				93B976DA283D7698000BF6B6 /* libvtkIONetCDF-9.0.a in Frameworks */,
+				93B976DB283D7698000BF6B6 /* libvtkIOOggTheora-9.0.a in Frameworks */,
+				93B976DC283D7698000BF6B6 /* libvtkIOParallel-9.0.a in Frameworks */,
+				93B976DD283D7698000BF6B6 /* libvtkIOParallelXML-9.0.a in Frameworks */,
+				93B976DE283D7698000BF6B6 /* libvtkIOPLY-9.0.a in Frameworks */,
+				93B976DF283D7698000BF6B6 /* libvtkIOSegY-9.0.a in Frameworks */,
+				93B976E0283D7698000BF6B6 /* libvtkIOSQL-9.0.a in Frameworks */,
+				93B976E1283D7698000BF6B6 /* libvtkIOTecplotTable-9.0.a in Frameworks */,
+				93B976E2283D7698000BF6B6 /* libvtkIOVeraOut-9.0.a in Frameworks */,
+				93B976E3283D7698000BF6B6 /* libvtkIOVideo-9.0.a in Frameworks */,
+				93B976E4283D7698000BF6B6 /* libvtkIOXML-9.0.a in Frameworks */,
+				93B976E5283D7698000BF6B6 /* libvtkIOXMLParser-9.0.a in Frameworks */,
+				93B976E6283D7698000BF6B6 /* libvtkloguru-9.0.a in Frameworks */,
+				93B976E7283D7698000BF6B6 /* libvtkmetaio-9.0.a in Frameworks */,
+				93B976E8283D7698000BF6B6 /* libvtkParallelCore-9.0.a in Frameworks */,
+				93B976E9283D7698000BF6B6 /* libvtkParallelDIY-9.0.a in Frameworks */,
+				93B976EA283D7698000BF6B6 /* libvtkRenderingAnnotation-9.0.a in Frameworks */,
+				93B976EB283D7698000BF6B6 /* libvtkRenderingContext2D-9.0.a in Frameworks */,
+				93B976EC283D7698000BF6B6 /* libvtkRenderingCore-9.0.a in Frameworks */,
+				93B976ED283D7698000BF6B6 /* libvtkRenderingFreeType-9.0.a in Frameworks */,
+				93B976EE283D7698000BF6B6 /* libvtkRenderingGL2PSOpenGL2-9.0.a in Frameworks */,
+				93B976EF283D7698000BF6B6 /* libvtkRenderingImage-9.0.a in Frameworks */,
+				93B976F0283D7698000BF6B6 /* libvtkRenderingLabel-9.0.a in Frameworks */,
+				93B976F1283D7698000BF6B6 /* libvtkRenderingLOD-9.0.a in Frameworks */,
+				93B976F2283D7698000BF6B6 /* libvtkRenderingOpenGL2-9.0.a in Frameworks */,
+				93B976F3283D7698000BF6B6 /* libvtkRenderingSceneGraph-9.0.a in Frameworks */,
+				93B976F4283D7698000BF6B6 /* libvtkRenderingUI-9.0.a in Frameworks */,
+				93B976F5283D7698000BF6B6 /* libvtkRenderingVolume-9.0.a in Frameworks */,
+				93B976F6283D7698000BF6B6 /* libvtkRenderingVtkJS-9.0.a in Frameworks */,
+				93B976F7283D7698000BF6B6 /* libvtksys-9.0.a in Frameworks */,
+				93B976F8283D7698000BF6B6 /* libvtkTestingRendering-9.0.a in Frameworks */,
+				93B976F9283D7698000BF6B6 /* libvtkverdict-9.0.a in Frameworks */,
+				93B976FA283D7698000BF6B6 /* libvtkViewsContext2D-9.0.a in Frameworks */,
+				93B976FB283D7698000BF6B6 /* libvtkViewsCore-9.0.a in Frameworks */,
+				93B976FC283D7698000BF6B6 /* libvtkViewsInfovis-9.0.a in Frameworks */,
+				93B976FD283D7698000BF6B6 /* libvtkWrappingTools-9.0.a in Frameworks */,
+				93B976FE283D7698000BF6B6 /* libxml2.a in Frameworks */,
+				93B976FF283D7698000BF6B6 /* libz.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93E7E59E27CD77F9000A3324 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1719,6 +2137,7 @@
 				9300235A263F3E0800FA265E /* halepensis */,
 				9389B8CD26C139A5006ACA66 /* capture */,
 				93E7E63627CD77F9000A3324 /* rs_capture */,
+				93B97704283D7698000BF6B6 /* stacking */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2604,6 +3023,7 @@
 				93EFE1542745B53D00072D5F /* geometry.hpp */,
 				93EFE1552745B53D00072D5F /* entity_detection */,
 				93EFE15E2745B53D00072D5F /* main.cpp */,
+				93B97627283D767D000BF6B6 /* stacking.cpp */,
 				93EFE1252745B53D00072D5F /* capture.cpp */,
 				93E7E59827CD7742000A3324 /* rs_capture.cpp */,
 				93E7E59A27CD779A000A3324 /* example.hpp */,
@@ -2629,7 +3049,6 @@
 				93EFE12B2745B53D00072D5F /* features.hpp */,
 				93EFE12D2745B53D00072D5F /* visualization.cpp */,
 				93EFE12E2745B53D00072D5F /* regions.cpp */,
-				93EFE12F2745B53D00072D5F /* filtering.hpp */,
 				93EFE1302745B53D00072D5F /* normals.hpp */,
 				93EFE1312745B53D00072D5F /* recognition.cpp */,
 				93EFE1322745B53D00072D5F /* ransac.hpp */,
@@ -2645,6 +3064,7 @@
 				93EFE13D2745B53D00072D5F /* alignment.cpp */,
 				93EFE13E2745B53D00072D5F /* features.cpp */,
 				93EFE1402745B53D00072D5F /* visualization.hpp */,
+				93EFE12F2745B53D00072D5F /* filtering.hpp */,
 				93EFE1412745B53D00072D5F /* filtering.cpp */,
 				93EFE1422745B53D00072D5F /* regions.hpp */,
 				93EFE1432745B53D00072D5F /* normals.cpp */,
@@ -2728,6 +3148,23 @@
 			productReference = 9389B8CD26C139A5006ACA66 /* capture */;
 			productType = "com.apple.product-type.tool";
 		};
+		93B97628283D7698000BF6B6 /* stacking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93B97701283D7698000BF6B6 /* Build configuration list for PBXNativeTarget "stacking" */;
+			buildPhases = (
+				93B97629283D7698000BF6B6 /* Sources */,
+				93B97644283D7698000BF6B6 /* Frameworks */,
+				93B97700283D7698000BF6B6 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = stacking;
+			productName = halepensis;
+			productReference = 93B97704283D7698000BF6B6 /* stacking */;
+			productType = "com.apple.product-type.tool";
+		};
 		93E7E59B27CD77F9000A3324 /* rs_capture */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93E7E63327CD77F9000A3324 /* Build configuration list for PBXNativeTarget "rs_capture" */;
@@ -2774,6 +3211,7 @@
 				93002359263F3E0800FA265E /* halepensis */,
 				9389B86B26C139A5006ACA66 /* capture */,
 				93E7E59B27CD77F9000A3324 /* rs_capture */,
+				93B97628283D7698000BF6B6 /* stacking */,
 			);
 		};
 /* End PBXProject section */
@@ -2817,6 +3255,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				93EFE17A2745B56C00072D5F /* capture.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93B97629283D7698000BF6B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93B9762A283D7698000BF6B6 /* regions.cpp in Sources */,
+				93B9762B283D7698000BF6B6 /* task_rule.cpp in Sources */,
+				93B9762C283D7698000BF6B6 /* alignment.cpp in Sources */,
+				93B9762E283D7698000BF6B6 /* filtering.cpp in Sources */,
+				93B9762F283D7698000BF6B6 /* features.cpp in Sources */,
+				93B97630283D7698000BF6B6 /* ransac.cpp in Sources */,
+				93B97631283D7698000BF6B6 /* clusters.cpp in Sources */,
+				93B97632283D7698000BF6B6 /* recognition.cpp in Sources */,
+				93B97633283D7698000BF6B6 /* scene_visualization.cpp in Sources */,
+				93B97634283D7698000BF6B6 /* visualization.cpp in Sources */,
+				93B97635283D7698000BF6B6 /* io.cpp in Sources */,
+				93B97636283D7698000BF6B6 /* object.cpp in Sources */,
+				93B97637283D7698000BF6B6 /* scaling.cpp in Sources */,
+				93B97638283D7698000BF6B6 /* scene_understanding.cpp in Sources */,
+				93B97639283D7698000BF6B6 /* scene_entity.cpp in Sources */,
+				93B9763A283D7698000BF6B6 /* scene_graph.cpp in Sources */,
+				93B9763B283D7698000BF6B6 /* entity_relation.cpp in Sources */,
+				93B9763C283D7698000BF6B6 /* normals.cpp in Sources */,
+				93B9763D283D7698000BF6B6 /* relation_detection.cpp in Sources */,
+				93B9763E283D7698000BF6B6 /* search.cpp in Sources */,
+				93B9763F283D7698000BF6B6 /* graph_visualization.cpp in Sources */,
+				93B97640283D7698000BF6B6 /* properties.cpp in Sources */,
+				93B97641283D7698000BF6B6 /* task_understanding.cpp in Sources */,
+				93B97705283D76BB000BF6B6 /* stacking.cpp in Sources */,
+				93B97642283D7698000BF6B6 /* hole.cpp in Sources */,
+				93B97643283D7698000BF6B6 /* peg.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3043,6 +3514,41 @@
 			};
 			name = Release;
 		};
+		93B97702283D7698000BF6B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DISABLE_PCAP,
+					DISABLE_LIBUSB_1_0,
+					DISABLE_PNG,
+					qh_QHpointer,
+					"vtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\"",
+					"vtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\"",
+					"DEBUG=1",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		93B97703283D7698000BF6B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DISABLE_PCAP,
+					DISABLE_LIBUSB_1_0,
+					DISABLE_PNG,
+					qh_QHpointer,
+					"vtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\"",
+					"vtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		93E7E63427CD77F9000A3324 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3104,6 +3610,15 @@
 			buildConfigurations = (
 				9389B8CB26C139A5006ACA66 /* Debug */,
 				9389B8CC26C139A5006ACA66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93B97701283D7698000BF6B6 /* Build configuration list for PBXNativeTarget "stacking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93B97702283D7698000BF6B6 /* Debug */,
+				93B97703283D7698000BF6B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

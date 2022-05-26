@@ -34,7 +34,7 @@ after_scene(after_cloud)
 }
 
 
-auto task_understanding::detect_objects(bool use_hack) -> void
+auto task_understanding::detect_objects(map<string, mat44> given_transforms) -> void
 {
     const auto clouds = ::detect_objects(before_scene.cloud);
     
@@ -63,25 +63,18 @@ auto task_understanding::detect_objects(bool use_hack) -> void
         shared_ptr<point_cloud> aligned_cloud;
         mat44 transform;
         
-        if (use_hack && entity.id == "object_0") {
+        if (given_transforms.find(entity.id) != given_transforms.end()) {
             aligned_cloud = make_shared<point_cloud>();
-            transform <<
-            -0.0678411,  0.9147344, -0.3983197, -0.120433,
-            -0.9729311,  0.0277450,  0.2294238, 0.357354,
-            0.2209132,  0.4031020,  0.8880913, -0.156179,
-            0, 0, 0, 1;
+            transform = given_transforms[entity.id];
             transformPointCloud(*entity.cloud, *aligned_cloud, transform);
         } else {
             tie(transform, aligned_cloud) = align(entity.cloud, after_cloud);
         }
         
-        
-        auto props = detect_properties(aligned_cloud);
-        scene_entity after_entity{entity_type::object, entity.id, props.position, props.rotation,
-            aligned_cloud, props.min_corner, props.max_corner};
+        scene_entity after_entity = entity.transformed(transform);
         add_vertex(after_entity, after_scene.graph);
         
-        object_transforms.push_back(transform);
+        object_transforms[entity.id] = transform;
     }
 }
 
@@ -128,7 +121,7 @@ auto task_understanding::detect_features() -> void
         auto &fid = focus_ids[i];
         auto object_desc = find_object(fid, graph);
         auto object_cpy = find_object(fid, after_graph);
-        auto& cpy_transform = object_transforms[i];
+        auto& cpy_transform = object_transforms[fid];
         
         if (!object_desc) {
             continue;
@@ -201,10 +194,10 @@ auto task_understanding::add_feature(const scene_entity& entity,
     }
 }
 
-auto task_understanding::describe_relations(bool use_hack) -> void
+auto task_understanding::describe_relations() -> void
 {
     before_scene.describe_relations(focus_ids);
-    after_scene.describe_relations(focus_ids, use_hack);
+    after_scene.describe_relations(focus_ids);
 }
 
 auto task_understanding::describe_task() -> void

@@ -14,9 +14,13 @@
 #include <pcl/kdtree/kdtree_flann.h>
 #pragma clang diagnostic pop
 
+#include <chrono>
+
 auto detect_holes(const std::shared_ptr<point_cloud> &cloud, float pixel_radius)
 -> std::vector<std::shared_ptr<point_cloud>>
 {
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    
     // Create a set of planar coefficients with X=Y=0,Z=1
     pcl::ModelCoefficients::Ptr coefficients (new pcl::ModelCoefficients ());
     coefficients->values.resize (4);
@@ -188,6 +192,9 @@ auto detect_holes(const std::shared_ptr<point_cloud> &cloud, float pixel_radius)
         indices->indices = i;
         return extract_cloud(cloud, indices);
     });
+    
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    std::cout << "detect_holes time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
     
     return holes;
 }
