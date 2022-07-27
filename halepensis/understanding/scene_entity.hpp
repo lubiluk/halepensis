@@ -11,7 +11,10 @@ enum class entity_type {
     object,
     mass_center,
     hole,
-    peg
+    peg,
+    surface,
+    edge,
+    base
 };
 
 class scene_entity {

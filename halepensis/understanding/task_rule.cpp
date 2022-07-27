@@ -32,6 +32,17 @@ auto find_or_copy_object(const entity_id& obj_id, scene_graph& graph, const scen
     return *obj_v;
 }
 
+auto find_or_create_object(const entity_id& obj_id, scene_graph& graph)
+-> scene_graph::vertex_descriptor
+{
+    auto obj_v = find_object(obj_id, graph);
+    if (!obj_v) {
+        obj_v = add_vertex({entity_type::object, obj_id, {0.0f, 0.0f, 0.0f}}, graph);
+    }
+    
+    return *obj_v;
+}
+
 auto find_or_copy_feature(scene_graph::vertex_descriptor obj_v, const entity_id& feat_id,
                           scene_graph& graph, const scene_graph& scene)
 -> scene_graph::vertex_descriptor
@@ -40,6 +51,19 @@ auto find_or_copy_feature(scene_graph::vertex_descriptor obj_v, const entity_id&
     if (!feat_v) {
         auto feat_src_v = find_feature(graph[obj_v].id, feat_id, scene);
         feat_v = add_vertex(scene[*feat_src_v], graph);
+        add_edge(obj_v, *feat_v, relation_type::has, graph);
+    }
+    
+    return *feat_v;
+}
+
+auto find_or_create_feature(scene_graph::vertex_descriptor obj_v, const entity_id& feat_id,
+                          scene_graph& graph)
+-> scene_graph::vertex_descriptor
+{
+    auto feat_v = find_feature(obj_v, feat_id, graph);
+    if (!feat_v) {
+        feat_v = add_vertex({*entity_type_from_string(feat_id), feat_id, {0.0f, 0.0f, 0.0f}}, graph);
         add_edge(obj_v, *feat_v, relation_type::has, graph);
     }
     
@@ -56,6 +80,22 @@ auto graph_from_rules(set<task_rule> rules, scene_graph scene) -> scene_graph
         auto feat1_v = find_or_copy_feature(obj1_v, r.feature1_id, graph, scene);
         auto obj2_v = find_or_copy_object(r.object2_id, graph, scene);
         auto feat2_v = find_or_copy_feature(obj2_v, r.feature2_id, graph, scene);
+        add_edge(feat1_v, feat2_v, r.relation_type, graph);
+    }
+    
+    return graph;
+}
+
+auto graph_from_rules(set<task_rule> rules) -> scene_graph
+{
+    map<string, scene_graph::vertex_descriptor> nodes;
+    scene_graph graph;
+    
+    for (auto& r : rules) {
+        auto obj1_v = find_or_create_object(r.object1_id, graph);
+        auto feat1_v = find_or_create_feature(obj1_v, r.feature1_id, graph);
+        auto obj2_v = find_or_create_object(r.object2_id, graph);
+        auto feat2_v = find_or_create_feature(obj2_v, r.feature2_id, graph);
         add_edge(feat1_v, feat2_v, r.relation_type, graph);
     }
     

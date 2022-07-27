@@ -1,12 +1,14 @@
 #include "task_understanding.hpp"
-#include "task_understanding.hpp"
 #include "scene_entity.hpp"
 #include "object.hpp"
 #include "properties.hpp"
 #include "alignment.hpp"
 #include "hole.hpp"
 #include "peg.hpp"
+#include "surface.hpp"
+#include "edge.hpp"
 #include "task_rule.hpp"
+#include "base.hpp"
 #include <tuple>
 #include <set>
 #include <utility>
@@ -139,15 +141,23 @@ auto task_understanding::detect_features() -> void
         
         /* Holes */
         auto holes = detect_holes(object.cloud);
-        add_features(holes, "hole_", entity_type::hole,
-                     *object_desc,
-                     object_cpy, cpy_transform);
+        add_features(holes, "hole_", entity_type::hole, *object_desc, object_cpy, cpy_transform);
         
         /* Pegs */
         const auto pegs = detect_pegs(object.cloud);
-        add_features(pegs, "peg_", entity_type::peg,
-                     *object_desc,
-                     object_cpy, cpy_transform);
+        add_features(pegs, "peg_", entity_type::peg, *object_desc, object_cpy, cpy_transform);
+        
+        /* Surfaces */
+        const auto surfaces = detect_surfaces(object.cloud);
+        add_features(surfaces, "surface_", entity_type::surface, *object_desc, object_cpy, cpy_transform);
+
+        /* Edges */
+        const auto edges = detect_edges(object.cloud);
+        add_features(edges, "edge_", entity_type::edge, *object_desc, object_cpy, cpy_transform);
+
+        /* Bottom */
+        const auto base = detect_base(object.cloud);
+        add_features(base, "base_", entity_type::base, *object_desc, object_cpy, cpy_transform);
     }
 }
 

@@ -1,0 +1,15 @@
+digraph G {
+0[label="object_0" shape=box];
+1[label="hole_0"];
+2[label="hole_1"];
+3[label="mass_center"];
+4[label="object_1" shape=box];
+5[label="peg_3"];
+0->1 [label=""];
+0->2 [label=""];
+1->2 [label="touching"];
+0->3 [label=""];
+3->1 [label="below"];
+4->5 [label=""];
+3->5 [label="below"];
+}

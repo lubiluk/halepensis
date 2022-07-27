@@ -85,6 +85,12 @@ auto entity_type_to_string(entity_type type) -> string
             return "hole";
         case entity_type::peg:
             return "peg";
+        case entity_type::surface:
+            return "surface";
+        case entity_type::edge:
+            return "edge";
+        case entity_type::base:
+            return "base";
         default:
             return "unknown_entity_type";
     }
@@ -106,6 +112,18 @@ auto entity_type_from_string(const string& string) -> optional<entity_type>
     
     if (string == entity_type_to_string(entity_type::peg)) {
         return entity_type::peg;
+    }
+    
+    if (string == entity_type_to_string(entity_type::surface)) {
+        return entity_type::surface;
+    }
+    
+    if (string == entity_type_to_string(entity_type::edge)) {
+        return entity_type::edge;
+    }
+    
+    if (string == entity_type_to_string(entity_type::base)) {
+        return entity_type::base;
     }
     
     return none;

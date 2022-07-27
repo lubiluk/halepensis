@@ -28,11 +28,11 @@ auto segment_regions(const std::shared_ptr<point_cloud>& input_cloud)
     reg.setMinClusterSize (10);
     reg.setMaxClusterSize (1000);
     reg.setSearchMethod (tree);
-    reg.setNumberOfNeighbours (10);
+    reg.setNumberOfNeighbours (15);
     reg.setInputCloud (input_cloud);
     reg.setIndices (indices);
     reg.setInputNormals (input_normals);
-    reg.setSmoothnessThreshold (8 / 180.0 * M_PI);
+    reg.setSmoothnessThreshold (6 / 180.0 * M_PI);
     reg.setCurvatureThreshold (1.0);
     reg.setSmoothModeFlag(true);
     reg.setCurvatureTestFlag(false);

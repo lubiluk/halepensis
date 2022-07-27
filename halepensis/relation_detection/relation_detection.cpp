@@ -12,6 +12,7 @@ using model::box;
 
 const float epsilon_vertical = 0.01;
 const float epsilon_horizontal = 0.025;
+const float touching_epsilon = 0.01;
 
 auto is_below(const scene_entity& entity1, const scene_entity& entity2) -> bool
 {
@@ -38,4 +39,38 @@ auto is_inside(const scene_entity& entity1, const scene_entity& entity2) -> bool
     + abs(box2.max_corner().z() - box2.min_corner().z());
     
     return o && d2 < d1;
+}
+
+auto is_touching(const scene_entity& entity1, const scene_entity& entity2) -> bool
+{
+    box<point_xyz<float>> box1 {
+        {
+            entity1.min_corner.x - touching_epsilon,
+            entity1.min_corner.y - touching_epsilon,
+            entity1.min_corner.z - touching_epsilon
+            
+        },
+        {
+            entity1.max_corner.x + touching_epsilon,
+            entity1.max_corner.y + touching_epsilon,
+            entity1.max_corner.z + touching_epsilon
+            
+        }
+    };
+    box<point_xyz<float>> box2 {
+        {
+            entity2.min_corner.x - touching_epsilon,
+            entity2.min_corner.y - touching_epsilon,
+            entity2.min_corner.z - touching_epsilon
+            
+        },
+        {
+            entity2.max_corner.x + touching_epsilon,
+            entity2.max_corner.y + touching_epsilon,
+            entity2.max_corner.z + touching_epsilon
+            
+        }
+    };
+    
+    return overlaps(box1, box2);
 }

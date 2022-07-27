@@ -68,6 +68,14 @@
             argument = "/Users/lubiluk/Code/halepensis/data/stacking/6.pcd"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/lubiluk/Code/halepensis/data/stacking/0.pcd"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/lubiluk/Code/halepensis/data/stacking/1.pcd"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>
    <ProfileAction

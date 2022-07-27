@@ -52,11 +52,16 @@ auto scene_understanding::describe_relations(const vector<string> &object_ids) -
             }
             
             /* Inside */
-            if (is_inside(e1, e2)) {
-                add_edge(v1, v2, relation_type::inside, graph);
-            }
-            if (is_inside(e2, e1)) {
-                add_edge(v2, v1, relation_type::inside, graph);
+//            if (is_inside(e1, e2)) {
+//                add_edge(v1, v2, relation_type::inside, graph);
+//            }
+//            if (is_inside(e2, e1)) {
+//                add_edge(v2, v1, relation_type::inside, graph);
+//            }
+            
+            /* Touching */
+            if (is_touching(e1, e2)) {
+                add_edge(v1, v2, relation_type::touching, graph);
             }
         }
     }

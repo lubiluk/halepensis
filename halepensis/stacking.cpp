@@ -61,7 +61,7 @@ int main(int argc, const char *argv[])
 //        view(cloud_before, cloud_after);
 
         /* Remove table */
-        auto indics = fit_plane(cloud_before);
+        auto indics = fit_plane(cloud_before, 0.015);
         cloud_before = extract_cloud(cloud_before, std::get<0>(indics.value()), true);
         indics = fit_plane(cloud_after);
         cloud_after = extract_cloud(cloud_after, std::get<0>(indics.value()), true);
@@ -75,21 +75,39 @@ int main(int argc, const char *argv[])
         /* Task Reasoning Part */
         map<string, mat44> obj_transforms;
         
-        mat44 transform_0;
-        transform_0 <<
-        1, 0, 0, 0.165205,
-        0, 1, 0, 0.062942,
-        0, 0, 1, 0.036419,
-        0, 0, 0, 1;
-        obj_transforms["object_1"] = transform_0;
-        
-        mat44 transform_1;
-        transform_1 <<
-        1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1;
-        obj_transforms["object_0"] = transform_1;
+        if (i == 0) {
+            mat44 transform_0;
+            transform_0 <<
+            1, 0, 0, 0.165205,
+            0, 1, 0, 0.062942,
+            0, 0, 1, 0.036419,
+            0, 0, 0, 1;
+            obj_transforms["object_1"] = transform_0;
+            
+            mat44 transform_1;
+            transform_1 <<
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1;
+            obj_transforms["object_0"] = transform_1;
+        } else {
+            mat44 transform_0;
+            transform_0 <<
+            0.9829, 0.0000, -0.1842, 0.0841,
+            0.0000, 1.0000,  0.0000, 0.0650,
+            0.1842, 0.0000,  0.9829, 0.0493,
+            0.0000, 0.0000,  0.0000, 1.0000;
+            obj_transforms["object_1"] = transform_0;
+            
+            mat44 transform_1;
+            transform_1 <<
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1;
+            obj_transforms["object_0"] = transform_1;
+        }
         
         task_understanding task { cloud_before, cloud_after };
         task.detect_objects(obj_transforms);
@@ -110,9 +128,9 @@ int main(int argc, const char *argv[])
     }
     
     auto graph1 = understandings.front().task_description;
-    save_to_graphviz(graph1, "/Users/lubiluk/Code/halepensis/graph1.dot");
+    save_to_graphviz(graph1, "/Users/lubiluk/Code/halepensis/graph_task_before.dot");
     auto graph2 = understandings.back().task_description;
-    save_to_graphviz(graph2, "/Users/lubiluk/Code/halepensis/graph2.dot");
+    save_to_graphviz(graph2, "/Users/lubiluk/Code/halepensis/graph_task_after.dot");
     
     
     // Skill inference
@@ -131,7 +149,8 @@ int main(int argc, const char *argv[])
         << r.object2_id << " - " << r.feature2_id << endl;
     }
 
-//    auto skill_graph = graph_from_rules(skill_rules, after_scene.graph);
+    auto skill_graph = graph_from_rules(skill_rules);
+    save_to_graphviz(skill_graph, "/Users/lubiluk/Code/halepensis/graph_skill.dot");
     
     return 0;
 }
