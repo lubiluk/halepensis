@@ -183,7 +183,7 @@ int main(int argc, const char *argv[])
         task.detect_features();
         task.describe_relations();
 
-        view_scenes(task);
+//        view_scenes(task);
         // There is a bug that prevents us from showing graphs side by side...
 //        view(task.before_scene.graph);
 //        view(task.after_scene.graph);
@@ -198,10 +198,12 @@ int main(int argc, const char *argv[])
             task.after_scene.add_relation({"object_1", "peg_1", relation_type::inside, "object_0", "hole_1"});
         } else if (i == 4) {
             task.after_scene.add_relation({"object_1", "peg_1", relation_type::inside, "object_0", "hole_0"});
+        } else if (i == 5) {
+            task.after_scene.add_relation({"object_1", "peg_0", relation_type::inside, "object_0", "hole_1"});
         }
         
         task.describe_task();
-        view(task.task_description);
+//        view(task.task_description);
         
         understandings.push_back(task);
     }
@@ -222,7 +224,6 @@ int main(int argc, const char *argv[])
         
         if (skill_rules.empty()) {
             skill_rules = task_rules;
-            continue;
         }
         
         set<task_rule> updated_skill_rules;
@@ -232,7 +233,7 @@ int main(int argc, const char *argv[])
         
         skill_rules = updated_skill_rules;
         
-        cout << "Skill rules " << i << ":" << endl;
+        cout << "Skill rules " << i << ": " << skill_rules.size() << endl;
         for (auto &r : skill_rules)  {
             cout << r.object1_id << " - " << r.feature1_id
             << " --" << r.relation_type << "--> "

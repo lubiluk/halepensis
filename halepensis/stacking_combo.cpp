@@ -94,7 +94,7 @@ int main(int argc, const char *argv[])
         
 //        std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
         
-        view(cloud_before, cloud_after);
+//        view(cloud_before, cloud_after);
         
         /* Task Reasoning Part */
         map<string, mat44> obj_transforms;
@@ -118,22 +118,6 @@ int main(int argc, const char *argv[])
         } else if (i == 1) {
             mat44 transform_0;
             transform_0 <<
-            0.9898858070373535, 0.0, 0.14186647534370422, -0.1073008701205253,
-            0.0, 1.0, 0.0, 0.07755453884601593,
-            -0.14186647534370422, 0.0, 0.9898858070373535, 0.028391443192958832,
-            0.0, 0.0, 0.0, 1.0;
-            obj_transforms["object_0"] = transform_0;
-
-            mat44 transform_1;
-            transform_1 <<
-            1, 0, 0, 0,
-            0, 1, 0, 0,
-            0, 0, 1, 0,
-            0, 0, 0, 1;
-            obj_transforms["object_1"] = transform_1;
-        } else if (i == 2) {
-            mat44 transform_0;
-            transform_0 <<
             1.0, 0.0, 0.0, 0.20187997817993164,
             0.0, 1.0, 0.0, 0.07851298153400421,
             0.0, 0.0, 1.0, 0.07304024696350098,
@@ -147,23 +131,7 @@ int main(int argc, const char *argv[])
             0, 0, 1, 0,
             0, 0, 0, 1;
             obj_transforms["object_0"] = transform_1;
-        } else if (i == 3) {
-            mat44 transform_0;
-            transform_0 <<
-            1.0, 0.0, 0.0, -0.18519198894500732,
-            0.0, 1.0, 0.0, 0.08033152669668198,
-            0.0, 0.0, 1.0, 0.018137631937861443,
-            0.0, 0.0, 0.0, 1.0;
-            obj_transforms["object_0"] = transform_0;
-
-            mat44 transform_1;
-            transform_1 <<
-            1, 0, 0, 0,
-            0, 1, 0, 0,
-            0, 0, 1, 0,
-            0, 0, 0, 1;
-            obj_transforms["object_1"] = transform_1;
-        } else if (i == 4) {
+        } else if (i == 2) {
             mat44 transform_0;
             transform_0 <<
             1.0, 0.0, 0.0, 0.2256317138671875,
@@ -180,7 +148,7 @@ int main(int argc, const char *argv[])
             0, 0, 0, 1;
             obj_transforms["object_0"] = transform_1;
         }
-        else if (i == 5) {
+        else if (i == 3) {
            mat44 transform_0;
            transform_0 <<
             1.0, 0.0, 0.0, -0.26169833540916443,
@@ -205,31 +173,58 @@ int main(int argc, const char *argv[])
         task.detect_features();
         task.describe_relations();
 
-        view_scenes(task);
+//        view_scenes(task);
         // There is a bug that prevents us from showing graphs side by side...
 //        view(task.before_scene.graph);
 //        view(task.after_scene.graph);
+        
+        if (i == 0) {
+            task.after_scene.add_relation({"object_1", "base_0", relation_type::touching, "object_0", "surface_1"});
+            task.after_scene.add_relation({"object_1", "mass_center", relation_type::above, "object_0", "base_0"});
+        } else if (i == 1) {
+            task.after_scene.add_relation({"object_1", "base_0", relation_type::touching, "object_0", "surface_0"});
+            task.after_scene.add_relation({"object_1", "mass_center", relation_type::above, "object_0", "base_0"});
+        } else if (i == 2) {
+            task.after_scene.add_relation({"object_1", "base_0", relation_type::touching, "object_0", "surface_1"});
+            task.after_scene.add_relation({"object_1", "mass_center", relation_type::above, "object_0", "base_0"});
+        } else if (i == 3) {
+            task.after_scene.add_relation({"object_1", "base_0", relation_type::touching, "object_0", "surface_0"});
+            task.after_scene.add_relation({"object_1", "mass_center", relation_type::above, "object_0", "base_0"});
+        }
 
         task.describe_task();
-        view(task.task_description);
+//        view(task.task_description);
         
         understandings.push_back(task);
     }
     
-    auto graph1 = understandings.front().task_description;
-    save_to_graphviz(graph1, "/Users/lubiluk/Code/halepensis/graph_task_before.dot");
-    auto graph2 = understandings.back().task_description;
-    save_to_graphviz(graph2, "/Users/lubiluk/Code/halepensis/graph_task_after.dot");
-    
-    
-    // Skill inference
-    set<task_rule> before_rules = rules_from_graph(graph1, false);
-    set<task_rule> after_rules = rules_from_graph(graph2, false);
-    
     set<task_rule> skill_rules;
-    set_intersection(after_rules.begin(), after_rules.end(),
-                   before_rules.begin(), before_rules.end(),
-                   inserter(skill_rules, skill_rules.begin()));
+    int i = 0;
+    
+    for (auto it = understandings.begin(); it != understandings.end(); ++it) {
+        i++;
+        auto u = *it;
+        auto task_rules = rules_from_graph(u.task_description, false);
+        
+        if (skill_rules.empty()) {
+            skill_rules = task_rules;
+        }
+        
+        set<task_rule> updated_skill_rules;
+        set_intersection(skill_rules.begin(), skill_rules.end(),
+                         task_rules.begin(), task_rules.end(),
+                       inserter(updated_skill_rules, updated_skill_rules.begin()));
+        
+        skill_rules = updated_skill_rules;
+        
+        cout << "Skill rules " << i << ": " << skill_rules.size() << endl;
+        for (auto &r : skill_rules)  {
+            cout << r.object1_id << " - " << r.feature1_id
+            << " --" << r.relation_type << "--> "
+            << r.object2_id << " - " << r.feature2_id << endl;
+        }
+    }
+    
     
     cout << "Skill rules:" << endl;
     for (auto &r : skill_rules)  {
